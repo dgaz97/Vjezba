@@ -8,6 +8,9 @@ angular
             .when('/view2', {
                 templateUrl: '/view2/view2.html'
             })
+            .when('/bootstrap/container',{
+                template: '<container><container/>'
+            })
             .otherwise('/home');
     }]
 );
