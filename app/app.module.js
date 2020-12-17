@@ -6,5 +6,6 @@ angular.module('myApp', [
   'myApp.home',
   'myApp.view2',
   'myApp.bs1',
+  'myApp.bs2',
   'myApp.version'
 ]);

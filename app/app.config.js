@@ -11,6 +11,8 @@ angular
             .when('/bootstrap/bs1',{
                 template: '<bs1></bs1>'
             })
+            .when('/bootstrap/bs2',{
+                template: '<bs2></bs2>'
             })
             .otherwise('/home');
     }]
