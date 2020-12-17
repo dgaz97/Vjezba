@@ -5,6 +5,6 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.home',
   'myApp.view2',
-  'myApp.container',
+  'myApp.bs1',
   'myApp.version'
 ]);
