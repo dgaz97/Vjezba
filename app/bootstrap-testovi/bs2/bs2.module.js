@@ -1,2 +1,2 @@
 angular
-.module('myApp.bs2', []);
+.module('myApp.bs2', ['myApp.home', 'myApp.view2']);
