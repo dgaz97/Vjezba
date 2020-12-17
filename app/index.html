@@ -2,81 +2,105 @@
 <!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js">
+<!--<![endif]-->
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="app.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
-  <script src="lib/angular/angular.js"></script>
-  <script src="lib/angular-route/angular-route.js"></script>
-  <script src="app.module.js"></script>
-  <script src="app.config.js"></script>
-  
-  <script src="home/home.module.js"></script>
-  <script src="home/home.component.js"></script>
-  <script src="view2/view2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-  <script src="bootstrap-testovi/bs1/bs1.module.js"></script>
-  <script src="bootstrap-testovi/bs1/bs1.component.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
 
-  <script src="bootstrap-testovi/bs2/bs2.module.js"></script>
-  <script src="bootstrap-testovi/bs2/bs2.component.js"></script>
-  
-  <script src="bootstrap-testovi/bs3/bs3.module.js"></script>
-  <script src="bootstrap-testovi/bs3/bs3.component.js"></script>
-  
+    <script src="home/home.module.js"></script>
+    <script src="home/home.component.js"></script>
+    <script src="view2/view2.js"></script>
 
-  <script src="core/version/version.js"></script>
-  <script src="core/version/version-directive.js"></script>
-  <script src="core/version/interpolate-filter.js"></script>
-  
+    <script src="bootstrap-testovi/bs1/bs1.module.js"></script>
+    <script src="bootstrap-testovi/bs1/bs1.component.js"></script>
+
+    <script src="bootstrap-testovi/bs2/bs2.module.js"></script>
+    <script src="bootstrap-testovi/bs2/bs2.component.js"></script>
+
+    <script src="bootstrap-testovi/bs3/bs3.module.js"></script>
+    <script src="bootstrap-testovi/bs3/bs3.component.js"></script>
+
+
+    <script src="core/version/version.js"></script>
+    <script src="core/version/version-directive.js"></script>
+    <script src="core/version/interpolate-filter.js"></script>
+
 </head>
-<body>
-  <div class="jumbotron page-header text-center">
-    <h1>My First Bootstrap Page</h1>
-    <p>Resize this responsive page to see the effect!</p> 
-  </div>
 
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#!/home">WebSiteName</a>
+<body>
+    <div class="jumbotron page-header text-center">
+        <h1>My First Bootstrap Page</h1>
+        <p>Resize this responsive page to see the effect!</p>
+    </div>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#!/home">My First Bootstrap Page</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <p class="navbar-text">Some text</p>
+                <ul class="nav navbar-nav">
+                    <li><a href="#!/bootstrap/bs1">Bootstrap1</a></li>
+                    <li><a href="#!/bootstrap/bs2">Bootstrap2</a></li>
+                    <li><a href="#!/bootstrap/bs3">Bootstrap3</a></li>
+                    <button class="btn btn-danger navbar-btn"
+                        onclick='window.location.replace("#!/view2")'>Button</button>
+                </ul>
+                <form class="navbar-form navbar-left" action="#!/home">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#!/home"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#!/home"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
         </div>
-        <ul class="nav navbar-nav">
-          <li><a href="#!/view2">view2</a></li>
-          <li><a href="#!/bootstrap/bs1">Bootstrap1</a></li>
-          <li><a href="#!/bootstrap/bs2">Bootstrap2</a></li>
-          <li><a href="#!/bootstrap/bs3">Bootstrap3</a></li>
-        </ul>
-      </div>
     </nav>
 
-  
 
-  <!--[if lt IE 7]>
+
+    <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div class="view-container">
-      <div ng-view class="view-frame"></div>
-  </div>
+    <div class="view-container">
+        <div ng-view class="view-frame"></div>
+    </div>
 
-  <div>AngularJS seed app: v<span app-version></span></div>
+    <div>AngularJS seed app: v<span app-version></span></div>
 
-  <!-- In production use:
+    <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
 </body>
+
 </html>
