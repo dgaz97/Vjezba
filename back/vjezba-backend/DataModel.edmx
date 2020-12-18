@@ -34,29 +34,21 @@
             <End Role="movieList" EntitySet="movieListSet" />
           </AssociationSet>
           <AssociationSet Name="tvShowtvShowEpisode" Association="Model1.tvShowtvShowEpisode">
-            <End Role="tvShow" EntitySet="actorInFilmEntrySet" />
-            <End Role="tvShowEpisode" EntitySet="actorInFilmEntrySet" />
+            <End Role="tvShow" EntitySet="personInFilmEntrySet" />
+            <End Role="tvShowEpisode" EntitySet="personInFilmEntrySet" />
           </AssociationSet>
-          <EntitySet Name="actorSet" EntityType="Model1.actor" />
-          <EntitySet Name="actorInFilmEntrySet" EntityType="Model1.actorInFilmEntry" />
+          <EntitySet Name="personSet" EntityType="Model1.person" />
+          <EntitySet Name="personInFilmEntrySet" EntityType="Model1.personInFilmEntry" />
           <EntitySet Name="filmEntrySet" EntityType="Model1.filmEntry" />
           <AssociationSet Name="filmEntryactorInFilmEntry" Association="Model1.filmEntryactorInFilmEntry">
             <End Role="filmEntry" EntitySet="filmEntrySet" />
-            <End Role="actorInFilmEntry" EntitySet="actorInFilmEntrySet" />
+            <End Role="actorInFilmEntry" EntitySet="personInFilmEntrySet" />
           </AssociationSet>
           <EntitySet Name="characterSet" EntityType="Model1.character" />
           <EntitySet Name="actorDoingCharacterSet" EntityType="Model1.actorDoingCharacter" />
           <AssociationSet Name="characteractorDoingCharacter" Association="Model1.characteractorDoingCharacter">
             <End Role="character" EntitySet="characterSet" />
             <End Role="actorDoingCharacter" EntitySet="actorDoingCharacterSet" />
-          </AssociationSet>
-          <AssociationSet Name="actoractorDoingCharacter" Association="Model1.actoractorDoingCharacter">
-            <End Role="actor" EntitySet="actorSet" />
-            <End Role="actorDoingCharacter" EntitySet="actorDoingCharacterSet" />
-          </AssociationSet>
-          <AssociationSet Name="actorDoingCharacteractorInFilmEntry" Association="Model1.actorDoingCharacteractorInFilmEntry">
-            <End Role="actorDoingCharacter" EntitySet="actorDoingCharacterSet" />
-            <End Role="actorInFilmEntry" EntitySet="actorInFilmEntrySet" />
           </AssociationSet>
           <AssociationSet Name="filmEntryfilmEntryImage" Association="Model1.filmEntryfilmEntryImage">
             <End Role="filmEntry" EntitySet="filmEntrySet" />
@@ -68,8 +60,31 @@
             <End Role="characterImage" EntitySet="imageSet" />
           </AssociationSet>
           <AssociationSet Name="actoractorImage" Association="Model1.actoractorImage">
-            <End Role="actor" EntitySet="actorSet" />
+            <End Role="actor" EntitySet="personSet" />
             <End Role="actorImage" EntitySet="imageSet" />
+          </AssociationSet>
+          <EntitySet Name="filmEntryHasGenreSet" EntityType="Model1.filmEntryHasGenre" />
+          <EntitySet Name="genreSet" EntityType="Model1.genre" />
+          <AssociationSet Name="genrefilmEntryHasGenre" Association="Model1.genrefilmEntryHasGenre">
+            <End Role="genre" EntitySet="genreSet" />
+            <End Role="filmEntryHasGenre" EntitySet="filmEntryHasGenreSet" />
+          </AssociationSet>
+          <AssociationSet Name="filmEntryfilmEntryHasGenre" Association="Model1.filmEntryfilmEntryHasGenre">
+            <End Role="filmEntry" EntitySet="filmEntrySet" />
+            <End Role="filmEntryHasGenre" EntitySet="filmEntryHasGenreSet" />
+          </AssociationSet>
+          <AssociationSet Name="personpersonInFilmEntry" Association="Model1.personpersonInFilmEntry">
+            <End Role="person" EntitySet="personSet" />
+            <End Role="personInFilmEntry" EntitySet="personInFilmEntrySet" />
+          </AssociationSet>
+          <EntitySet Name="personRoleSet" EntityType="Model1.personRole" />
+          <AssociationSet Name="personRolepersonInFilmEntry" Association="Model1.personRolepersonInFilmEntry">
+            <End Role="personRole" EntitySet="personRoleSet" />
+            <End Role="personInFilmEntry" EntitySet="personInFilmEntrySet" />
+          </AssociationSet>
+          <AssociationSet Name="personInFilmEntryactorDoingCharacter" Association="Model1.personInFilmEntryactorDoingCharacter">
+            <End Role="personInFilmEntry" EntitySet="personInFilmEntrySet" />
+            <End Role="actorDoingCharacter" EntitySet="actorDoingCharacterSet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="user">
@@ -135,6 +150,8 @@
         </Association>
         <EntityType Name="tvShow" BaseType="Model1.filmEntry">
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dateFirstEpisodeAired" Type="DateTime" Nullable="true" />
+          <Property Name="dateLastEpisodeAired" Type="DateTime" Nullable="true" />
           <NavigationProperty Name="tvShowEpisode" Relationship="Model1.tvShowtvShowEpisode" FromRole="tvShow" ToRole="tvShowEpisode" />
         </EntityType>
         <EntityType Name="filmEntry">
@@ -149,6 +166,8 @@
           <Property Name="status" Type="String" Nullable="false" />
           <Property Name="dateCreated" Type="DateTime" Nullable="false" />
           <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="filmEntryHasGenre" Relationship="Model1.filmEntryfilmEntryHasGenre" FromRole="filmEntry" ToRole="filmEntryHasGenre" />
+          <Property Name="countryOfOrigin" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="filmEntrymovieListEntry">
           <End Type="Model1.filmEntry" Role="filmEntry" Multiplicity="1" />
@@ -166,7 +185,7 @@
           <End Type="Model1.tvShow" Role="tvShow" Multiplicity="1" />
           <End Type="Model1.tvShowEpisode" Role="tvShowEpisode" Multiplicity="*" />
         </Association>
-        <EntityType Name="actor">
+        <EntityType Name="person">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -176,10 +195,10 @@
           <Property Name="birthdate" Type="String" Nullable="false" />
           <Property Name="dateCreated" Type="DateTime" Nullable="false" />
           <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="actorDoingCharacter" Relationship="Model1.actoractorDoingCharacter" FromRole="actor" ToRole="actorDoingCharacter" />
           <NavigationProperty Name="actorImage" Relationship="Model1.actoractorImage" FromRole="actor" ToRole="actorImage" />
+          <NavigationProperty Name="personInFilmEntry" Relationship="Model1.personpersonInFilmEntry" FromRole="person" ToRole="personInFilmEntry" />
         </EntityType>
-        <EntityType Name="actorInFilmEntry">
+        <EntityType Name="personInFilmEntry">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -187,11 +206,13 @@
           <Property Name="dateCreated" Type="DateTime" Nullable="false" />
           <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="filmEntry" Relationship="Model1.filmEntryactorInFilmEntry" FromRole="actorInFilmEntry" ToRole="filmEntry" />
-          <NavigationProperty Name="actorDoingCharacter" Relationship="Model1.actorDoingCharacteractorInFilmEntry" FromRole="actorInFilmEntry" ToRole="actorDoingCharacter" />
+          <NavigationProperty Name="person" Relationship="Model1.personpersonInFilmEntry" FromRole="personInFilmEntry" ToRole="person" />
+          <NavigationProperty Name="personRole" Relationship="Model1.personRolepersonInFilmEntry" FromRole="personInFilmEntry" ToRole="personRole" />
+          <NavigationProperty Name="actorDoingCharacter" Relationship="Model1.personInFilmEntryactorDoingCharacter" FromRole="personInFilmEntry" ToRole="actorDoingCharacter" />
         </EntityType>
         <Association Name="filmEntryactorInFilmEntry">
           <End Type="Model1.filmEntry" Role="filmEntry" Multiplicity="1" />
-          <End Type="Model1.actorInFilmEntry" Role="actorInFilmEntry" Multiplicity="*" />
+          <End Type="Model1.personInFilmEntry" Role="actorInFilmEntry" Multiplicity="*" />
         </Association>
         <EntityType Name="character">
           <Key>
@@ -211,22 +232,13 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="character" Relationship="Model1.characteractorDoingCharacter" FromRole="actorDoingCharacter" ToRole="character" />
-          <NavigationProperty Name="actor" Relationship="Model1.actoractorDoingCharacter" FromRole="actorDoingCharacter" ToRole="actor" />
-          <NavigationProperty Name="actorInFilmEntry" Relationship="Model1.actorDoingCharacteractorInFilmEntry" FromRole="actorDoingCharacter" ToRole="actorInFilmEntry" />
           <Property Name="dateCreated" Type="DateTime" Nullable="false" />
           <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="personInFilmEntry" Relationship="Model1.personInFilmEntryactorDoingCharacter" FromRole="actorDoingCharacter" ToRole="personInFilmEntry" />
         </EntityType>
         <Association Name="characteractorDoingCharacter">
           <End Type="Model1.character" Role="character" Multiplicity="1" />
           <End Type="Model1.actorDoingCharacter" Role="actorDoingCharacter" Multiplicity="*" />
-        </Association>
-        <Association Name="actoractorDoingCharacter">
-          <End Type="Model1.actor" Role="actor" Multiplicity="1" />
-          <End Type="Model1.actorDoingCharacter" Role="actorDoingCharacter" Multiplicity="*" />
-        </Association>
-        <Association Name="actorDoingCharacteractorInFilmEntry">
-          <End Type="Model1.actorDoingCharacter" Role="actorDoingCharacter" Multiplicity="1" />
-          <End Type="Model1.actorInFilmEntry" Role="actorInFilmEntry" Multiplicity="*" />
         </Association>
         <EntityType Name="filmEntryImage" BaseType="Model1.image">
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
@@ -236,7 +248,7 @@
           <End Type="Model1.filmEntry" Role="filmEntry" Multiplicity="1" />
           <End Type="Model1.filmEntryImage" Role="filmEntryImage" Multiplicity="*" />
         </Association>
-        <EntityType Name="actorImage" BaseType="Model1.image">
+        <EntityType Name="personImage" BaseType="Model1.image">
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="actor" Relationship="Model1.actoractorImage" FromRole="actorImage" ToRole="actor" />
         </EntityType>
@@ -259,8 +271,53 @@
           <End Type="Model1.characterImage" Role="characterImage" Multiplicity="*" />
         </Association>
         <Association Name="actoractorImage">
-          <End Type="Model1.actor" Role="actor" Multiplicity="1" />
-          <End Type="Model1.actorImage" Role="actorImage" Multiplicity="*" />
+          <End Type="Model1.person" Role="actor" Multiplicity="1" />
+          <End Type="Model1.personImage" Role="actorImage" Multiplicity="*" />
+        </Association>
+        <EntityType Name="filmEntryHasGenre">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="genre" Relationship="Model1.genrefilmEntryHasGenre" FromRole="filmEntryHasGenre" ToRole="genre" />
+          <NavigationProperty Name="filmEntry" Relationship="Model1.filmEntryfilmEntryHasGenre" FromRole="filmEntryHasGenre" ToRole="filmEntry" />
+        </EntityType>
+        <EntityType Name="genre">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" />
+          <Property Name="description" Type="String" Nullable="false" />
+          <NavigationProperty Name="filmEntryHasGenre" Relationship="Model1.genrefilmEntryHasGenre" FromRole="genre" ToRole="filmEntryHasGenre" />
+        </EntityType>
+        <Association Name="genrefilmEntryHasGenre">
+          <End Type="Model1.genre" Role="genre" Multiplicity="1" />
+          <End Type="Model1.filmEntryHasGenre" Role="filmEntryHasGenre" Multiplicity="*" />
+        </Association>
+        <Association Name="filmEntryfilmEntryHasGenre">
+          <End Type="Model1.filmEntry" Role="filmEntry" Multiplicity="1" />
+          <End Type="Model1.filmEntryHasGenre" Role="filmEntryHasGenre" Multiplicity="*" />
+        </Association>
+        <Association Name="personpersonInFilmEntry">
+          <End Type="Model1.person" Role="person" Multiplicity="1" />
+          <End Type="Model1.personInFilmEntry" Role="personInFilmEntry" Multiplicity="*" />
+        </Association>
+        <EntityType Name="personRole">
+          <Key>
+            <PropertyRef Name="roleName" />
+          </Key>
+          <Property Name="roleName" Type="String" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="roleDescription" Type="String" Nullable="false" />
+          <NavigationProperty Name="personInFilmEntry" Relationship="Model1.personRolepersonInFilmEntry" FromRole="personRole" ToRole="personInFilmEntry" />
+        </EntityType>
+        <Association Name="personRolepersonInFilmEntry">
+          <End Type="Model1.personRole" Role="personRole" Multiplicity="1" />
+          <End Type="Model1.personInFilmEntry" Role="personInFilmEntry" Multiplicity="*" />
+        </Association>
+        <Association Name="personInFilmEntryactorDoingCharacter">
+          <End Type="Model1.personInFilmEntry" Role="personInFilmEntry" Multiplicity="1" />
+          <End Type="Model1.actorDoingCharacter" Role="actorDoingCharacter" Multiplicity="0..1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
