@@ -83,6 +83,11 @@
 	</div>
 </div>
 <div class="container">
+	<a href="#" data-toggle="tooltip" data-placement="top" title="Hooray!">Hover</a>
+	<a href="#" data-toggle="tooltip" data-placement="bottom" title="Hooray!">Hover</a>
+	<a href="#" data-toggle="tooltip" data-placement="left" title="Hooray!">Hover</a>
+	<a href="#" data-toggle="tooltip" data-placement="right" title="Hooray!">Hover</a>
+
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
@@ -130,9 +135,11 @@
 	</div>
 </div>
 <div class="container">
-	<!-- Trigger the modal with a button -->
-	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
+
+	<!-- Trigger the modal with a button -->
+	<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"
+		data-placement="top" title="Opens a modal window" id="modal-toggle">Open Modal</button>
 	<!-- Modal -->
 	<div id="myModal" class="modal fade" role="dialog">
 		<div class="modal-dialog modal-lg">
@@ -153,10 +160,19 @@
 
 		</div>
 	</div>
-</div>
-<div class="container">
+
+
 
 </div>
 <div class="container">
 
 </div>
+<div class="container">
+
+</div>
+<script>
+	$(document).ready(function () {
+		$('[data-toggle="tooltip"]').tooltip();
+		$('#modal-toggle').tooltip();
+	});
+</script>
