@@ -139,7 +139,7 @@
 
 	<!-- Trigger the modal with a button -->
 	<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal"
-		data-placement="top" title="Opens a modal window" id="modal-toggle">Open Modal</button>
+		data-placement="top"  id="modal-toggle">Open Modal</button>
 	<!-- Modal -->
 	<div id="myModal" class="modal fade" role="dialog">
 		<div class="modal-dialog modal-lg">
@@ -148,9 +148,10 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Modal Header</h4>
+					<h4 class="modal-title" >Modal Header</h4>
 				</div>
 				<div class="modal-body">
+					<button type="button" class="btn btn-success" title="Popover Header" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="<home>neda, izgleda</home>">dugme</button>
 					<p>Some text in the modal.</p>
 				</div>
 				<div class="modal-footer">
@@ -174,5 +175,6 @@
 	$(document).ready(function () {
 		$('[data-toggle="tooltip"]').tooltip();
 		$('#modal-toggle').tooltip();
+		$('button[data-toggle="popover"]').popover();
 	});
 </script>
