@@ -4,45 +4,46 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="96f15f0ea097474eb5ae29b1c28cffd5" Name="Diagram1" ZoomLevel="96" >
+      <Diagram DiagramId="96f15f0ea097474eb5ae29b1c28cffd5" Name="Diagram1" ZoomLevel="83" >
         <EntityTypeShape EntityType="Model1.user" Width="1.5" PointX="4" PointY="0.625" />
         <EntityTypeShape EntityType="Model1.role" Width="1.5" PointX="0.875" PointY="1" />
         <AssociationConnector Association="Model1.roleuser" />
-        <EntityTypeShape EntityType="Model1.movie" Width="1.5" PointX="9.125" PointY="6.25" />
+        <EntityTypeShape EntityType="Model1.movie" Width="1.5" PointX="10.5" PointY="6.5" />
         <EntityTypeShape EntityType="Model1.movieList" Width="1.5" PointX="6.625" PointY="0.625" />
         <EntityTypeShape EntityType="Model1.movieListEntry" Width="1.5" PointX="6.625" PointY="3.625" />
         <AssociationConnector Association="Model1.movieListmovieListEntry" />
         <EntityTypeShape EntityType="Model1.tvShow" Width="1.5" PointX="9.625" PointY="0.625" />
-        <EntityTypeShape EntityType="Model1.filmEntry" Width="1.5" PointX="9.375" PointY="2.75" />
+        <EntityTypeShape EntityType="Model1.filmEntry" Width="1.5" PointX="9.5" PointY="2.75" />
         <InheritanceConnector EntityType="Model1.movie" />
-        <InheritanceConnector EntityType="Model1.tvShow" ManuallyRouted="true" >
-          <ConnectorPoint PointX="9.7265524477373138" PointY="2.75" />
-          <ConnectorPoint PointX="9.7265524477373138" PointY="2.63561611328125" />
-          <ConnectorPoint PointX="9.7447916666666679" PointY="2.63561611328125" />
-          <ConnectorPoint PointX="9.7447916666666679" PointY="2.4033821614583335" />
-          <ConnectorPoint PointX="10.375" PointY="2.4033821614583335" />
-          <ConnectorPoint PointX="10.375" PointY="2.0283821614583335" />
+        <InheritanceConnector EntityType="Model1.tvShow" ManuallyRouted="false" >
         </InheritanceConnector>
         <AssociationConnector Association="Model1.filmEntrymovieListEntry" />
         <AssociationConnector Association="Model1.usermovieList" />
         <EntityTypeShape EntityType="Model1.tvShowEpisode" Width="1.5" PointX="14" PointY="0.5" />
         <AssociationConnector Association="Model1.tvShowtvShowEpisode" />
-        <EntityTypeShape EntityType="Model1.actor" Width="1.5" PointX="16.125" PointY="3.5" />
-        <InheritanceConnector EntityType="Model1.tvShowEpisode" ManuallyRouted="true" >
-          <ConnectorPoint PointX="10.125" PointY="2.75" />
-          <ConnectorPoint PointX="10.125" PointY="2.62625" />
-          <ConnectorPoint PointX="10.682291666666668" PointY="2.62625" />
-          <ConnectorPoint PointX="10.682291666666668" PointY="2.375" />
-          <ConnectorPoint PointX="14.75" PointY="2.375" />
-          <ConnectorPoint PointX="14.75" PointY="1.9033821614583335" />
+        <EntityTypeShape EntityType="Model1.actor" Width="1.5" PointX="15.875" PointY="3" />
+        <InheritanceConnector EntityType="Model1.tvShowEpisode" ManuallyRouted="false" >
         </InheritanceConnector>
-        <EntityTypeShape EntityType="Model1.actorInFilmEntry" Width="1.625" PointX="12.125" PointY="3.125" />
+        <EntityTypeShape EntityType="Model1.actorInFilmEntry" Width="1.625" PointX="12.25" PointY="3" />
         <AssociationConnector Association="Model1.filmEntryactorInFilmEntry" />
-        <EntityTypeShape EntityType="Model1.character" Width="1.5" PointX="16.625" PointY="6.375" />
+        <EntityTypeShape EntityType="Model1.character" Width="1.5" PointX="15.125" PointY="6.375" />
         <EntityTypeShape EntityType="Model1.actorDoingCharacter" Width="1.5" PointX="12.25" PointY="6.125" />
         <AssociationConnector Association="Model1.characteractorDoingCharacter" />
-        <AssociationConnector Association="Model1.actoractorDoingCharacter" />
+        <AssociationConnector Association="Model1.actoractorDoingCharacter" ManuallyRouted="false" >
+        </AssociationConnector>
         <AssociationConnector Association="Model1.actorDoingCharacteractorInFilmEntry" />
+        <EntityTypeShape EntityType="Model1.filmEntryImage" Width="1.5" PointX="8.375" PointY="6.75" />
+        <AssociationConnector Association="Model1.filmEntryfilmEntryImage" />
+        <EntityTypeShape EntityType="Model1.actorImage" Width="1.5" PointX="18.5" PointY="4.5" />
+        <EntityTypeShape EntityType="Model1.image" Width="1.5" PointX="13.125" PointY="9.75" />
+        <InheritanceConnector EntityType="Model1.filmEntryImage" />
+        <InheritanceConnector EntityType="Model1.actorImage" ManuallyRouted="false" >
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="Model1.characterImage" Width="1.5" PointX="17.5" PointY="6.375" />
+        <InheritanceConnector EntityType="Model1.characterImage" ManuallyRouted="false" >
+        </InheritanceConnector>
+        <AssociationConnector Association="Model1.charactercharacterImage" />
+        <AssociationConnector Association="Model1.actoractorImage" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

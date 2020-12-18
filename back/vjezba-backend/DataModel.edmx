@@ -58,6 +58,19 @@
             <End Role="actorDoingCharacter" EntitySet="actorDoingCharacterSet" />
             <End Role="actorInFilmEntry" EntitySet="actorInFilmEntrySet" />
           </AssociationSet>
+          <AssociationSet Name="filmEntryfilmEntryImage" Association="Model1.filmEntryfilmEntryImage">
+            <End Role="filmEntry" EntitySet="filmEntrySet" />
+            <End Role="filmEntryImage" EntitySet="imageSet" />
+          </AssociationSet>
+          <EntitySet Name="imageSet" EntityType="Model1.image" />
+          <AssociationSet Name="charactercharacterImage" Association="Model1.charactercharacterImage">
+            <End Role="character" EntitySet="characterSet" />
+            <End Role="characterImage" EntitySet="imageSet" />
+          </AssociationSet>
+          <AssociationSet Name="actoractorImage" Association="Model1.actoractorImage">
+            <End Role="actor" EntitySet="actorSet" />
+            <End Role="actorImage" EntitySet="imageSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="user">
           <Key>
@@ -77,7 +90,8 @@
           <Property Name="lastName" Type="String" Nullable="false" />
           <Property Name="birthdate" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="movieList" Relationship="Model1.usermovieList" FromRole="user" ToRole="movieList" />
-        </EntityType>
+          <Property Name="avatarLink" Type="String" Nullable="false" />
+          </EntityType>
         <EntityType Name="role">
           <Key>
             <PropertyRef Name="roleName" />
@@ -99,18 +113,21 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="listName" Type="String" Nullable="false" />
-          <Property Name="creationTime" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="movieListEntry" Relationship="Model1.movieListmovieListEntry" FromRole="movieList" ToRole="movieListEntry" />
           <NavigationProperty Name="user" Relationship="Model1.usermovieList" FromRole="movieList" ToRole="user" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
         </EntityType>
         <EntityType Name="movieListEntry">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="creationTime" Type="String" Nullable="false" />
           <NavigationProperty Name="movieList" Relationship="Model1.movieListmovieListEntry" FromRole="movieListEntry" ToRole="movieList" />
           <NavigationProperty Name="filmEntry" Relationship="Model1.filmEntrymovieListEntry" FromRole="movieListEntry" ToRole="filmEntry" />
+          <Property Name="userRating" Type="String" Nullable="false" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
         </EntityType>
         <Association Name="movieListmovieListEntry">
           <End Type="Model1.movieList" Role="movieList" Multiplicity="1" />
@@ -128,6 +145,10 @@
           <Property Name="duration" Type="Time" Nullable="false" />
           <Property Name="releaseDate" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="actorInFilmEntry" Relationship="Model1.filmEntryactorInFilmEntry" FromRole="filmEntry" ToRole="actorInFilmEntry" />
+          <NavigationProperty Name="filmEntryImage" Relationship="Model1.filmEntryfilmEntryImage" FromRole="filmEntry" ToRole="filmEntryImage" />
+          <Property Name="status" Type="String" Nullable="false" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
         </EntityType>
         <Association Name="filmEntrymovieListEntry">
           <End Type="Model1.filmEntry" Role="filmEntry" Multiplicity="1" />
@@ -153,13 +174,18 @@
           <Property Name="firstName" Type="String" Nullable="false" />
           <Property Name="lastName" Type="String" Nullable="false" />
           <Property Name="birthdate" Type="String" Nullable="false" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="actorDoingCharacter" Relationship="Model1.actoractorDoingCharacter" FromRole="actor" ToRole="actorDoingCharacter" />
+          <NavigationProperty Name="actorImage" Relationship="Model1.actoractorImage" FromRole="actor" ToRole="actorImage" />
         </EntityType>
         <EntityType Name="actorInFilmEntry">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="filmEntry" Relationship="Model1.filmEntryactorInFilmEntry" FromRole="actorInFilmEntry" ToRole="filmEntry" />
           <NavigationProperty Name="actorDoingCharacter" Relationship="Model1.actorDoingCharacteractorInFilmEntry" FromRole="actorInFilmEntry" ToRole="actorDoingCharacter" />
         </EntityType>
@@ -174,7 +200,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" />
           <Property Name="description" Type="String" Nullable="false" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="actorDoingCharacter" Relationship="Model1.characteractorDoingCharacter" FromRole="character" ToRole="actorDoingCharacter" />
+          <NavigationProperty Name="characterImage" Relationship="Model1.charactercharacterImage" FromRole="character" ToRole="characterImage" />
         </EntityType>
         <EntityType Name="actorDoingCharacter">
           <Key>
@@ -184,6 +213,8 @@
           <NavigationProperty Name="character" Relationship="Model1.characteractorDoingCharacter" FromRole="actorDoingCharacter" ToRole="character" />
           <NavigationProperty Name="actor" Relationship="Model1.actoractorDoingCharacter" FromRole="actorDoingCharacter" ToRole="actor" />
           <NavigationProperty Name="actorInFilmEntry" Relationship="Model1.actorDoingCharacteractorInFilmEntry" FromRole="actorDoingCharacter" ToRole="actorInFilmEntry" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
         </EntityType>
         <Association Name="characteractorDoingCharacter">
           <End Type="Model1.character" Role="character" Multiplicity="1" />
@@ -196,6 +227,40 @@
         <Association Name="actorDoingCharacteractorInFilmEntry">
           <End Type="Model1.actorDoingCharacter" Role="actorDoingCharacter" Multiplicity="1" />
           <End Type="Model1.actorInFilmEntry" Role="actorInFilmEntry" Multiplicity="*" />
+        </Association>
+        <EntityType Name="filmEntryImage" BaseType="Model1.image">
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="filmEntry" Relationship="Model1.filmEntryfilmEntryImage" FromRole="filmEntryImage" ToRole="filmEntry" />
+        </EntityType>
+        <Association Name="filmEntryfilmEntryImage">
+          <End Type="Model1.filmEntry" Role="filmEntry" Multiplicity="1" />
+          <End Type="Model1.filmEntryImage" Role="filmEntryImage" Multiplicity="*" />
+        </Association>
+        <EntityType Name="actorImage" BaseType="Model1.image">
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="actor" Relationship="Model1.actoractorImage" FromRole="actorImage" ToRole="actor" />
+        </EntityType>
+        <EntityType Name="image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="link" Type="String" Nullable="false" />
+          <Property Name="altText" Type="String" Nullable="false" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="characterImage" BaseType="Model1.image">
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="character" Relationship="Model1.charactercharacterImage" FromRole="characterImage" ToRole="character" />
+        </EntityType>
+        <Association Name="charactercharacterImage">
+          <End Type="Model1.character" Role="character" Multiplicity="1" />
+          <End Type="Model1.characterImage" Role="characterImage" Multiplicity="*" />
+        </Association>
+        <Association Name="actoractorImage">
+          <End Type="Model1.actor" Role="actor" Multiplicity="1" />
+          <End Type="Model1.actorImage" Role="actorImage" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
