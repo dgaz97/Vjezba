@@ -4,10 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="96f15f0ea097474eb5ae29b1c28cffd5" Name="Diagram1" ZoomLevel="83" >
+      <Diagram DiagramId="96f15f0ea097474eb5ae29b1c28cffd5" Name="Diagram1" ZoomLevel="80" >
         <EntityTypeShape EntityType="Model1.user" Width="1.5" PointX="4" PointY="0.625" />
         <EntityTypeShape EntityType="Model1.role" Width="1.5" PointX="0.875" PointY="1" />
-        <AssociationConnector Association="Model1.roleuser" />
         <EntityTypeShape EntityType="Model1.movie" Width="1.5" PointX="11" PointY="8.125" />
         <EntityTypeShape EntityType="Model1.movieList" Width="1.5" PointX="6.625" PointY="0.625" />
         <EntityTypeShape EntityType="Model1.movieListEntry" Width="1.5" PointX="6.625" PointY="3.625" />
@@ -20,7 +19,6 @@
         <AssociationConnector Association="Model1.filmEntrymovieListEntry" />
         <AssociationConnector Association="Model1.usermovieList" />
         <EntityTypeShape EntityType="Model1.tvShowEpisode" Width="1.5" PointX="12.125" PointY="0.5" />
-        <AssociationConnector Association="Model1.tvShowtvShowEpisode" />
         <EntityTypeShape EntityType="Model1.person" Width="1.5" PointX="16" PointY="3.375" />
         <InheritanceConnector EntityType="Model1.tvShowEpisode" ManuallyRouted="false" >
         </InheritanceConnector>
@@ -49,6 +47,8 @@
         <EntityTypeShape EntityType="Model1.personRole" Width="1.5" PointX="14.875" PointY="1.375" />
         <AssociationConnector Association="Model1.personRolepersonInFilmEntry" />
         <AssociationConnector Association="Model1.personInFilmEntryactorDoingCharacter" />
+        <AssociationConnector Association="Model1.tvShowtvShowEpisode" />
+        <AssociationConnector Association="Model1.roleuser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
