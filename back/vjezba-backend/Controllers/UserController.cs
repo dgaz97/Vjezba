@@ -9,6 +9,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json.Linq;
+using System.Text;
 
 namespace vjezba_backend.Controllers
 {
@@ -45,15 +46,52 @@ namespace vjezba_backend.Controllers
         }
         // POST api/<controller>
         [HttpPost]
-        public string Post(/*[FromBody] string value*/)
+        public HttpResponseMessage Post(/*[FromBody] string value*/)
         {
             Task<string> t = Request.Content.ReadAsStringAsync();
             t.Wait();
             using (var db=new VjezbaEntities())
             {
-                user k = (user) JsonSerializer.Deserialize(t.Result, typeof(user));
-                return k.ToString();
+                user u = (user) JsonSerializer.Deserialize(t.Result, typeof(user));
+                StringBuilder sb = new StringBuilder();
+                HttpResponseMessage m;
+                HttpStatusCode status;
 
+                int usersWithUsername = (from x in db.user
+                            where x.username == u.username
+                            select x).Count();
+                if (usersWithUsername != 0)
+                {
+                    status = HttpStatusCode.BadRequest;
+                    sb.AppendLine($"{{");
+                    sb.AppendLine($"\"success\":false,");
+                    sb.AppendLine($"\"errorMsg\":\"User already exists\"");
+                    sb.AppendLine($"}}");
+                }
+                else try
+                {
+                    Console.WriteLine(u.Id);
+                    db.user.Add(u);
+                    db.SaveChanges();
+
+                    status = HttpStatusCode.OK;
+                    sb.AppendLine($"{{");
+                    sb.AppendLine($"\"success\":true,");
+                    sb.AppendLine($"\"errorMsg\":\"User added successfully\"");
+                    sb.AppendLine($"}}");
+                }
+                catch (System.Data.Entity.Validation.DbEntityValidationException)
+                {
+                    status = HttpStatusCode.BadRequest;
+                    sb.AppendLine($"{{");
+                    sb.AppendLine($"\"success\":false,");
+                    sb.AppendLine($"\"errorMsg\":\"User attributes missing\"");
+                    sb.AppendLine($"}}");
+
+                }
+                m = new HttpResponseMessage(status);
+                m.Content = new StringContent(sb.ToString(), System.Text.Encoding.UTF8, "application/json");
+                return m;
             }
             
         }
