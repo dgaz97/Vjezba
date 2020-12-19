@@ -4,1178 +4,1228 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="Model1StoreContainer">
-    <EntitySet Name="userSet" EntityType="Model1.Store.userSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="roleSet" EntityType="Model1.Store.roleSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="movieListSet" EntityType="Model1.Store.movieListSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="movieListEntrySet" EntityType="Model1.Store.movieListEntrySet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="personSet" EntityType="Model1.Store.personSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="personInFilmEntrySet" EntityType="Model1.Store.personInFilmEntrySet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="filmEntrySet" EntityType="Model1.Store.filmEntrySet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="characterSet" EntityType="Model1.Store.characterSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="actorDoingCharacterSet" EntityType="Model1.Store.actorDoingCharacterSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="imageSet" EntityType="Model1.Store.imageSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="filmEntryHasGenreSet" EntityType="Model1.Store.filmEntryHasGenreSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="genreSet" EntityType="Model1.Store.genreSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="personRoleSet" EntityType="Model1.Store.personRoleSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="imageSet_filmEntryImage" EntityType="Model1.Store.imageSet_filmEntryImage" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="imageSet_characterImage" EntityType="Model1.Store.imageSet_characterImage" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="imageSet_personImage" EntityType="Model1.Store.imageSet_personImage" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="filmEntrySet_tvShow" EntityType="Model1.Store.filmEntrySet_tvShow" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="filmEntrySet_tvShowEpisode" EntityType="Model1.Store.filmEntrySet_tvShowEpisode" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="filmEntrySet_movie" EntityType="Model1.Store.filmEntrySet_movie" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="movieListmovieListEntry" Association="Model1.Store.movieListmovieListEntry">
-      <End Role="movieList" EntitySet="movieListSet" />
-      <End Role="movieListEntry" EntitySet="movieListEntrySet" />
-    </AssociationSet>
-    <AssociationSet Name="filmEntrymovieListEntry" Association="Model1.Store.filmEntrymovieListEntry">
-      <End Role="filmEntry" EntitySet="filmEntrySet" />
-      <End Role="movieListEntry" EntitySet="movieListEntrySet" />
-    </AssociationSet>
-    <AssociationSet Name="usermovieList" Association="Model1.Store.usermovieList">
-      <End Role="user" EntitySet="userSet" />
-      <End Role="movieList" EntitySet="movieListSet" />
-    </AssociationSet>
-    <AssociationSet Name="filmEntryactorInFilmEntry" Association="Model1.Store.filmEntryactorInFilmEntry">
-      <End Role="filmEntry" EntitySet="filmEntrySet" />
-      <End Role="actorInFilmEntry" EntitySet="personInFilmEntrySet" />
-    </AssociationSet>
-    <AssociationSet Name="characteractorDoingCharacter" Association="Model1.Store.characteractorDoingCharacter">
-      <End Role="character" EntitySet="characterSet" />
-      <End Role="actorDoingCharacter" EntitySet="actorDoingCharacterSet" />
-    </AssociationSet>
-    <AssociationSet Name="filmEntryfilmEntryImage" Association="Model1.Store.filmEntryfilmEntryImage">
-      <End Role="filmEntry" EntitySet="filmEntrySet" />
-      <End Role="filmEntryImage" EntitySet="imageSet_filmEntryImage" />
-    </AssociationSet>
-    <AssociationSet Name="charactercharacterImage" Association="Model1.Store.charactercharacterImage">
-      <End Role="character" EntitySet="characterSet" />
-      <End Role="characterImage" EntitySet="imageSet_characterImage" />
-    </AssociationSet>
-    <AssociationSet Name="actoractorImage" Association="Model1.Store.actoractorImage">
-      <End Role="actor" EntitySet="personSet" />
-      <End Role="actorImage" EntitySet="imageSet_personImage" />
-    </AssociationSet>
-    <AssociationSet Name="genrefilmEntryHasGenre" Association="Model1.Store.genrefilmEntryHasGenre">
-      <End Role="genre" EntitySet="genreSet" />
-      <End Role="filmEntryHasGenre" EntitySet="filmEntryHasGenreSet" />
-    </AssociationSet>
-    <AssociationSet Name="filmEntryfilmEntryHasGenre" Association="Model1.Store.filmEntryfilmEntryHasGenre">
-      <End Role="filmEntry" EntitySet="filmEntrySet" />
-      <End Role="filmEntryHasGenre" EntitySet="filmEntryHasGenreSet" />
-    </AssociationSet>
-    <AssociationSet Name="personpersonInFilmEntry" Association="Model1.Store.personpersonInFilmEntry">
-      <End Role="person" EntitySet="personSet" />
-      <End Role="personInFilmEntry" EntitySet="personInFilmEntrySet" />
-    </AssociationSet>
-    <AssociationSet Name="personRolepersonInFilmEntry" Association="Model1.Store.personRolepersonInFilmEntry">
-      <End Role="personRole" EntitySet="personRoleSet" />
-      <End Role="personInFilmEntry" EntitySet="personInFilmEntrySet" />
-    </AssociationSet>
-    <AssociationSet Name="personInFilmEntryactorDoingCharacter" Association="Model1.Store.personInFilmEntryactorDoingCharacter">
-      <End Role="personInFilmEntry" EntitySet="personInFilmEntrySet" />
-      <End Role="actorDoingCharacter" EntitySet="actorDoingCharacterSet" />
-    </AssociationSet>
-    <AssociationSet Name="tvShowtvShowEpisode" Association="Model1.Store.tvShowtvShowEpisode">
-      <End Role="tvShow" EntitySet="filmEntrySet_tvShow" />
-      <End Role="tvShowEpisode" EntitySet="filmEntrySet_tvShowEpisode" />
-    </AssociationSet>
-    <AssociationSet Name="roleuser" Association="Model1.Store.roleuser">
-      <End Role="role" EntitySet="roleSet" />
-      <End Role="user" EntitySet="userSet" />
-    </AssociationSet>
-    <AssociationSet Name="FK_filmEntryImage_inherits_image" Association="Model1.Store.FK_filmEntryImage_inherits_image">
-      <End Role="image" EntitySet="imageSet" />
-      <End Role="filmEntryImage" EntitySet="imageSet_filmEntryImage" />
-    </AssociationSet>
-    <AssociationSet Name="FK_characterImage_inherits_image" Association="Model1.Store.FK_characterImage_inherits_image">
-      <End Role="image" EntitySet="imageSet" />
-      <End Role="characterImage" EntitySet="imageSet_characterImage" />
-    </AssociationSet>
-    <AssociationSet Name="FK_personImage_inherits_image" Association="Model1.Store.FK_personImage_inherits_image">
-      <End Role="image" EntitySet="imageSet" />
-      <End Role="personImage" EntitySet="imageSet_personImage" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tvShow_inherits_filmEntry" Association="Model1.Store.FK_tvShow_inherits_filmEntry">
-      <End Role="filmEntry" EntitySet="filmEntrySet" />
-      <End Role="tvShow" EntitySet="filmEntrySet_tvShow" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tvShowEpisode_inherits_filmEntry" Association="Model1.Store.FK_tvShowEpisode_inherits_filmEntry">
-      <End Role="filmEntry" EntitySet="filmEntrySet" />
-      <End Role="tvShowEpisode" EntitySet="filmEntrySet_tvShowEpisode" />
-    </AssociationSet>
-    <AssociationSet Name="FK_movie_inherits_filmEntry" Association="Model1.Store.FK_movie_inherits_filmEntry">
-      <End Role="filmEntry" EntitySet="filmEntrySet" />
-      <End Role="movie" EntitySet="filmEntrySet_movie" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="userSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="passSalt" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="passHash" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="verified" Type="bit" Nullable="false" DefaultValue="false" />
-    <Property Name="banned" Type="bit" Nullable="false" DefaultValue="false" />
-    <Property Name="banReason" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="registrationTime" Type="datetime" Nullable="false" />
-    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="firstName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="birthdate" Type="datetime" Nullable="false" />
-    <Property Name="avatarLink" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="role_roleName" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="roleSet">
-    <Key>
-      <PropertyRef Name="roleName" />
-    </Key>
-    <Property Name="roleName" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="roleDescription" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="movieListSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="listName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="dateCreated" Type="datetime" Nullable="false" />
-    <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
-    <Property Name="user_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="movieListEntrySet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="userRating" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="dateCreated" Type="datetime" Nullable="false" />
-    <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
-    <Property Name="movieList_Id" Type="int" Nullable="false" />
-    <Property Name="filmEntry_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="personSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="firstName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="birthdate" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="dateCreated" Type="datetime" Nullable="false" />
-    <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
-  </EntityType>
-  <EntityType Name="personInFilmEntrySet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="dateCreated" Type="datetime" Nullable="false" />
-    <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
-    <Property Name="filmEntry_Id" Type="int" Nullable="false" />
-    <Property Name="person_Id" Type="int" Nullable="false" />
-    <Property Name="personRole_roleName" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="filmEntrySet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="duration" Type="time" Nullable="false" />
-    <Property Name="releaseDate" Type="datetime" Nullable="false" />
-    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="dateCreated" Type="datetime" Nullable="false" />
-    <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
-    <Property Name="countryOfOrigin" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="characterSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="dateCreated" Type="datetime" Nullable="false" />
-    <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
-  </EntityType>
-  <EntityType Name="actorDoingCharacterSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="dateCreated" Type="datetime" Nullable="false" />
-    <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
-    <Property Name="character_Id" Type="int" Nullable="false" />
-    <Property Name="personInFilmEntry_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="imageSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="link" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="altText" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="dateCreated" Type="datetime" Nullable="false" />
-    <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
-  </EntityType>
-  <EntityType Name="filmEntryHasGenreSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="genre_Id" Type="int" Nullable="false" />
-    <Property Name="filmEntry_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="genreSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="personRoleSet">
-    <Key>
-      <PropertyRef Name="roleName" />
-    </Key>
-    <Property Name="roleName" Type="nvarchar" StoreGeneratedPattern="Identity" Nullable="false" MaxLength="50" />
-    <Property Name="roleDescription" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="imageSet_filmEntryImage">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="filmEntry_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="imageSet_characterImage">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="character_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="imageSet_personImage">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="actor_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="filmEntrySet_tvShow">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="dateFirstEpisodeAired" Type="datetime" Nullable="true" />
-    <Property Name="dateLastEpisodeAired" Type="datetime" Nullable="true" />
-    <Property Name="Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="filmEntrySet_tvShowEpisode">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="tvShow_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="filmEntrySet_movie">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-  </EntityType>
-  <Association Name="movieListmovieListEntry">
-    <End Role="movieList" Type="Model1.Store.movieListSet" Multiplicity="1" />
-    <End Role="movieListEntry" Type="Model1.Store.movieListEntrySet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="movieList">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="movieListEntry">
-        <PropertyRef Name="movieList_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="filmEntrymovieListEntry">
-    <End Role="filmEntry" Type="Model1.Store.filmEntrySet" Multiplicity="1" />
-    <End Role="movieListEntry" Type="Model1.Store.movieListEntrySet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="filmEntry">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="movieListEntry">
-        <PropertyRef Name="filmEntry_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="usermovieList">
-    <End Role="user" Type="Model1.Store.userSet" Multiplicity="1" />
-    <End Role="movieList" Type="Model1.Store.movieListSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="user">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="movieList">
-        <PropertyRef Name="user_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="filmEntryactorInFilmEntry">
-    <End Role="filmEntry" Type="Model1.Store.filmEntrySet" Multiplicity="1" />
-    <End Role="actorInFilmEntry" Type="Model1.Store.personInFilmEntrySet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="filmEntry">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="actorInFilmEntry">
-        <PropertyRef Name="filmEntry_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="characteractorDoingCharacter">
-    <End Role="character" Type="Model1.Store.characterSet" Multiplicity="1" />
-    <End Role="actorDoingCharacter" Type="Model1.Store.actorDoingCharacterSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="character">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="actorDoingCharacter">
-        <PropertyRef Name="character_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="filmEntryfilmEntryImage">
-    <End Role="filmEntry" Type="Model1.Store.filmEntrySet" Multiplicity="1" />
-    <End Role="filmEntryImage" Type="Model1.Store.imageSet_filmEntryImage" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="filmEntry">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="filmEntryImage">
-        <PropertyRef Name="filmEntry_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="charactercharacterImage">
-    <End Role="character" Type="Model1.Store.characterSet" Multiplicity="1" />
-    <End Role="characterImage" Type="Model1.Store.imageSet_characterImage" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="character">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="characterImage">
-        <PropertyRef Name="character_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="actoractorImage">
-    <End Role="actor" Type="Model1.Store.personSet" Multiplicity="1" />
-    <End Role="actorImage" Type="Model1.Store.imageSet_personImage" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="actor">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="actorImage">
-        <PropertyRef Name="actor_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="genrefilmEntryHasGenre">
-    <End Role="genre" Type="Model1.Store.genreSet" Multiplicity="1" />
-    <End Role="filmEntryHasGenre" Type="Model1.Store.filmEntryHasGenreSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="genre">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="filmEntryHasGenre">
-        <PropertyRef Name="genre_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="filmEntryfilmEntryHasGenre">
-    <End Role="filmEntry" Type="Model1.Store.filmEntrySet" Multiplicity="1" />
-    <End Role="filmEntryHasGenre" Type="Model1.Store.filmEntryHasGenreSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="filmEntry">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="filmEntryHasGenre">
-        <PropertyRef Name="filmEntry_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="personpersonInFilmEntry">
-    <End Role="person" Type="Model1.Store.personSet" Multiplicity="1" />
-    <End Role="personInFilmEntry" Type="Model1.Store.personInFilmEntrySet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="person">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="personInFilmEntry">
-        <PropertyRef Name="person_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="personRolepersonInFilmEntry">
-    <End Role="personRole" Type="Model1.Store.personRoleSet" Multiplicity="1" />
-    <End Role="personInFilmEntry" Type="Model1.Store.personInFilmEntrySet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="personRole">
-        <PropertyRef Name="roleName" />
-      </Principal>
-      <Dependent Role="personInFilmEntry">
-        <PropertyRef Name="personRole_roleName" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="personInFilmEntryactorDoingCharacter">
-    <End Role="personInFilmEntry" Type="Model1.Store.personInFilmEntrySet" Multiplicity="1" />
-    <End Role="actorDoingCharacter" Type="Model1.Store.actorDoingCharacterSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="personInFilmEntry">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="actorDoingCharacter">
-        <PropertyRef Name="personInFilmEntry_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="tvShowtvShowEpisode">
-    <End Role="tvShow" Type="Model1.Store.filmEntrySet_tvShow" Multiplicity="1" />
-    <End Role="tvShowEpisode" Type="Model1.Store.filmEntrySet_tvShowEpisode" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tvShow">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="tvShowEpisode">
-        <PropertyRef Name="tvShow_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="roleuser">
-    <End Role="role" Type="Model1.Store.roleSet" Multiplicity="1" />
-    <End Role="user" Type="Model1.Store.userSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="role">
-        <PropertyRef Name="roleName" />
-      </Principal>
-      <Dependent Role="user">
-        <PropertyRef Name="role_roleName" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_filmEntryImage_inherits_image">
-    <End Role="image" Type="Model1.Store.imageSet" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="filmEntryImage" Type="Model1.Store.imageSet_filmEntryImage" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="image">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="filmEntryImage">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_characterImage_inherits_image">
-    <End Role="image" Type="Model1.Store.imageSet" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="characterImage" Type="Model1.Store.imageSet_characterImage" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="image">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="characterImage">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_personImage_inherits_image">
-    <End Role="image" Type="Model1.Store.imageSet" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="personImage" Type="Model1.Store.imageSet_personImage" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="image">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="personImage">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tvShow_inherits_filmEntry">
-    <End Role="filmEntry" Type="Model1.Store.filmEntrySet" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="tvShow" Type="Model1.Store.filmEntrySet_tvShow" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="filmEntry">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="tvShow">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tvShowEpisode_inherits_filmEntry">
-    <End Role="filmEntry" Type="Model1.Store.filmEntrySet" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="tvShowEpisode" Type="Model1.Store.filmEntrySet_tvShowEpisode" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="filmEntry">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="tvShowEpisode">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_movie_inherits_filmEntry">
-    <End Role="filmEntry" Type="Model1.Store.filmEntrySet" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="movie" Type="Model1.Store.filmEntrySet_movie" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="filmEntry">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="movie">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
-    <!-- CSDL content -->
-    <edmx:ConceptualModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
-        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="userSet" EntityType="Model1.user" />
-          <EntitySet Name="roleSet" EntityType="Model1.role" />
-          <EntitySet Name="movieListSet" EntityType="Model1.movieList" />
-          <EntitySet Name="movieListEntrySet" EntityType="Model1.movieListEntry" />
-          <AssociationSet Name="movieListmovieListEntry" Association="Model1.movieListmovieListEntry">
-            <End Role="movieList" EntitySet="movieListSet" />
-            <End Role="movieListEntry" EntitySet="movieListEntrySet" />
+      <Schema Namespace="VjezbaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="actorDoingCharacterSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dateCreated" Type="datetime" Nullable="false" />
+          <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
+          <Property Name="character_Id" Type="int" Nullable="false" />
+          <Property Name="personInFilmEntry_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="characterSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="dateCreated" Type="datetime" Nullable="false" />
+          <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="filmEntryHasGenreSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="genre_Id" Type="int" Nullable="false" />
+          <Property Name="filmEntry_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="filmEntrySet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="duration" Type="time" Precision="7" Nullable="false" />
+          <Property Name="releaseDate" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="dateCreated" Type="datetime" Nullable="false" />
+          <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
+          <Property Name="countryOfOrigin" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="filmEntrySet_movie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="filmEntrySet_tvShow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="dateFirstEpisodeAired" Type="datetime" />
+          <Property Name="dateLastEpisodeAired" Type="datetime" />
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="filmEntrySet_tvShowEpisode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="tvShow_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="genreSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="imageSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="link" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="altText" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="dateCreated" Type="datetime" Nullable="false" />
+          <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="imageSet_characterImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="character_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="imageSet_filmEntryImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="filmEntry_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="imageSet_personImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="actor_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="movieListEntrySet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userRating" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="dateCreated" Type="datetime" Nullable="false" />
+          <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
+          <Property Name="movieList_Id" Type="int" Nullable="false" />
+          <Property Name="filmEntry_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="movieListSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="listName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="dateCreated" Type="datetime" Nullable="false" />
+          <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
+          <Property Name="user_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personInFilmEntrySet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dateCreated" Type="datetime" Nullable="false" />
+          <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
+          <Property Name="filmEntry_Id" Type="int" Nullable="false" />
+          <Property Name="person_Id" Type="int" Nullable="false" />
+          <Property Name="personRole_roleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personRoleSet">
+          <Key>
+            <PropertyRef Name="roleName" />
+          </Key>
+          <Property Name="roleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="roleDescription" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="birthdate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="dateCreated" Type="datetime" Nullable="false" />
+          <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="roleSet">
+          <Key>
+            <PropertyRef Name="roleName" />
+          </Key>
+          <Property Name="roleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="roleDescription" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="passSalt" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="passHash" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="verified" Type="bit" Nullable="false" />
+          <Property Name="banned" Type="bit" Nullable="false" />
+          <Property Name="banReason" Type="nvarchar(max)" />
+          <Property Name="registrationTime" Type="datetime" Nullable="false" />
+          <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="birthdate" Type="datetime" Nullable="false" />
+          <Property Name="avatarLink" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="role_roleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_actoractorImage">
+          <End Role="personSet" Type="Self.personSet" Multiplicity="1" />
+          <End Role="imageSet_personImage" Type="Self.imageSet_personImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="imageSet_personImage">
+              <PropertyRef Name="actor_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_characteractorDoingCharacter">
+          <End Role="characterSet" Type="Self.characterSet" Multiplicity="1" />
+          <End Role="actorDoingCharacterSet" Type="Self.actorDoingCharacterSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="characterSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="actorDoingCharacterSet">
+              <PropertyRef Name="character_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_charactercharacterImage">
+          <End Role="characterSet" Type="Self.characterSet" Multiplicity="1" />
+          <End Role="imageSet_characterImage" Type="Self.imageSet_characterImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="characterSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="imageSet_characterImage">
+              <PropertyRef Name="character_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_characterImage_inherits_image">
+          <End Role="imageSet" Type="Self.imageSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="imageSet_characterImage" Type="Self.imageSet_characterImage" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="imageSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="imageSet_characterImage">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_filmEntryactorInFilmEntry">
+          <End Role="filmEntrySet" Type="Self.filmEntrySet" Multiplicity="1" />
+          <End Role="personInFilmEntrySet" Type="Self.personInFilmEntrySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filmEntrySet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personInFilmEntrySet">
+              <PropertyRef Name="filmEntry_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_filmEntryfilmEntryHasGenre">
+          <End Role="filmEntrySet" Type="Self.filmEntrySet" Multiplicity="1" />
+          <End Role="filmEntryHasGenreSet" Type="Self.filmEntryHasGenreSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filmEntrySet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="filmEntryHasGenreSet">
+              <PropertyRef Name="filmEntry_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_filmEntryfilmEntryImage">
+          <End Role="filmEntrySet" Type="Self.filmEntrySet" Multiplicity="1" />
+          <End Role="imageSet_filmEntryImage" Type="Self.imageSet_filmEntryImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filmEntrySet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="imageSet_filmEntryImage">
+              <PropertyRef Name="filmEntry_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_filmEntryImage_inherits_image">
+          <End Role="imageSet" Type="Self.imageSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="imageSet_filmEntryImage" Type="Self.imageSet_filmEntryImage" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="imageSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="imageSet_filmEntryImage">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_filmEntrymovieListEntry">
+          <End Role="filmEntrySet" Type="Self.filmEntrySet" Multiplicity="1" />
+          <End Role="movieListEntrySet" Type="Self.movieListEntrySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filmEntrySet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="movieListEntrySet">
+              <PropertyRef Name="filmEntry_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_genrefilmEntryHasGenre">
+          <End Role="genreSet" Type="Self.genreSet" Multiplicity="1" />
+          <End Role="filmEntryHasGenreSet" Type="Self.filmEntryHasGenreSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genreSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="filmEntryHasGenreSet">
+              <PropertyRef Name="genre_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_movie_inherits_filmEntry">
+          <End Role="filmEntrySet" Type="Self.filmEntrySet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="filmEntrySet_movie" Type="Self.filmEntrySet_movie" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="filmEntrySet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="filmEntrySet_movie">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_movieListmovieListEntry">
+          <End Role="movieListSet" Type="Self.movieListSet" Multiplicity="1" />
+          <End Role="movieListEntrySet" Type="Self.movieListEntrySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movieListSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="movieListEntrySet">
+              <PropertyRef Name="movieList_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personImage_inherits_image">
+          <End Role="imageSet" Type="Self.imageSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="imageSet_personImage" Type="Self.imageSet_personImage" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="imageSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="imageSet_personImage">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personInFilmEntryactorDoingCharacter">
+          <End Role="personInFilmEntrySet" Type="Self.personInFilmEntrySet" Multiplicity="1" />
+          <End Role="actorDoingCharacterSet" Type="Self.actorDoingCharacterSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personInFilmEntrySet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="actorDoingCharacterSet">
+              <PropertyRef Name="personInFilmEntry_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personpersonInFilmEntry">
+          <End Role="personSet" Type="Self.personSet" Multiplicity="1" />
+          <End Role="personInFilmEntrySet" Type="Self.personInFilmEntrySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personInFilmEntrySet">
+              <PropertyRef Name="person_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personRolepersonInFilmEntry">
+          <End Role="personRoleSet" Type="Self.personRoleSet" Multiplicity="1" />
+          <End Role="personInFilmEntrySet" Type="Self.personInFilmEntrySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personRoleSet">
+              <PropertyRef Name="roleName" />
+            </Principal>
+            <Dependent Role="personInFilmEntrySet">
+              <PropertyRef Name="personRole_roleName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roleuser">
+          <End Role="roleSet" Type="Self.roleSet" Multiplicity="1" />
+          <End Role="userSet" Type="Self.userSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roleSet">
+              <PropertyRef Name="roleName" />
+            </Principal>
+            <Dependent Role="userSet">
+              <PropertyRef Name="role_roleName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tvShow_inherits_filmEntry">
+          <End Role="filmEntrySet" Type="Self.filmEntrySet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="filmEntrySet_tvShow" Type="Self.filmEntrySet_tvShow" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="filmEntrySet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="filmEntrySet_tvShow">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tvShowEpisode_inherits_filmEntry">
+          <End Role="filmEntrySet" Type="Self.filmEntrySet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="filmEntrySet_tvShowEpisode" Type="Self.filmEntrySet_tvShowEpisode" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="filmEntrySet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="filmEntrySet_tvShowEpisode">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tvShowtvShowEpisode">
+          <End Role="filmEntrySet_tvShow" Type="Self.filmEntrySet_tvShow" Multiplicity="1" />
+          <End Role="filmEntrySet_tvShowEpisode" Type="Self.filmEntrySet_tvShowEpisode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filmEntrySet_tvShow">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="filmEntrySet_tvShowEpisode">
+              <PropertyRef Name="tvShow_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usermovieList">
+          <End Role="userSet" Type="Self.userSet" Multiplicity="1" />
+          <End Role="movieListSet" Type="Self.movieListSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="movieListSet">
+              <PropertyRef Name="user_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VjezbaModelStoreContainer">
+          <EntitySet Name="actorDoingCharacterSet" EntityType="Self.actorDoingCharacterSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="characterSet" EntityType="Self.characterSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="filmEntryHasGenreSet" EntityType="Self.filmEntryHasGenreSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="filmEntrySet" EntityType="Self.filmEntrySet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="filmEntrySet_movie" EntityType="Self.filmEntrySet_movie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="filmEntrySet_tvShow" EntityType="Self.filmEntrySet_tvShow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="filmEntrySet_tvShowEpisode" EntityType="Self.filmEntrySet_tvShowEpisode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="genreSet" EntityType="Self.genreSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="imageSet" EntityType="Self.imageSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="imageSet_characterImage" EntityType="Self.imageSet_characterImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="imageSet_filmEntryImage" EntityType="Self.imageSet_filmEntryImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="imageSet_personImage" EntityType="Self.imageSet_personImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="movieListEntrySet" EntityType="Self.movieListEntrySet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="movieListSet" EntityType="Self.movieListSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personInFilmEntrySet" EntityType="Self.personInFilmEntrySet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personRoleSet" EntityType="Self.personRoleSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="personSet" EntityType="Self.personSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roleSet" EntityType="Self.roleSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userSet" EntityType="Self.userSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_actoractorImage" Association="Self.FK_actoractorImage">
+            <End Role="personSet" EntitySet="personSet" />
+            <End Role="imageSet_personImage" EntitySet="imageSet_personImage" />
           </AssociationSet>
-          <AssociationSet Name="filmEntrymovieListEntry" Association="Model1.filmEntrymovieListEntry">
-            <End Role="filmEntry" EntitySet="filmEntrySet" />
-            <End Role="movieListEntry" EntitySet="movieListEntrySet" />
+          <AssociationSet Name="FK_characteractorDoingCharacter" Association="Self.FK_characteractorDoingCharacter">
+            <End Role="characterSet" EntitySet="characterSet" />
+            <End Role="actorDoingCharacterSet" EntitySet="actorDoingCharacterSet" />
           </AssociationSet>
-          <AssociationSet Name="usermovieList" Association="Model1.usermovieList">
-            <End Role="user" EntitySet="userSet" />
-            <End Role="movieList" EntitySet="movieListSet" />
+          <AssociationSet Name="FK_charactercharacterImage" Association="Self.FK_charactercharacterImage">
+            <End Role="characterSet" EntitySet="characterSet" />
+            <End Role="imageSet_characterImage" EntitySet="imageSet_characterImage" />
           </AssociationSet>
-          <EntitySet Name="personSet" EntityType="Model1.person" />
-          <EntitySet Name="personInFilmEntrySet" EntityType="Model1.personInFilmEntry" />
-          <EntitySet Name="filmEntrySet" EntityType="Model1.filmEntry" />
-          <AssociationSet Name="filmEntryactorInFilmEntry" Association="Model1.filmEntryactorInFilmEntry">
-            <End Role="filmEntry" EntitySet="filmEntrySet" />
-            <End Role="actorInFilmEntry" EntitySet="personInFilmEntrySet" />
+          <AssociationSet Name="FK_characterImage_inherits_image" Association="Self.FK_characterImage_inherits_image">
+            <End Role="imageSet" EntitySet="imageSet" />
+            <End Role="imageSet_characterImage" EntitySet="imageSet_characterImage" />
           </AssociationSet>
-          <EntitySet Name="characterSet" EntityType="Model1.character" />
-          <EntitySet Name="actorDoingCharacterSet" EntityType="Model1.actorDoingCharacter" />
-          <AssociationSet Name="characteractorDoingCharacter" Association="Model1.characteractorDoingCharacter">
-            <End Role="character" EntitySet="characterSet" />
-            <End Role="actorDoingCharacter" EntitySet="actorDoingCharacterSet" />
+          <AssociationSet Name="FK_filmEntryactorInFilmEntry" Association="Self.FK_filmEntryactorInFilmEntry">
+            <End Role="filmEntrySet" EntitySet="filmEntrySet" />
+            <End Role="personInFilmEntrySet" EntitySet="personInFilmEntrySet" />
           </AssociationSet>
-          <AssociationSet Name="filmEntryfilmEntryImage" Association="Model1.filmEntryfilmEntryImage">
-            <End Role="filmEntry" EntitySet="filmEntrySet" />
-            <End Role="filmEntryImage" EntitySet="imageSet" />
+          <AssociationSet Name="FK_filmEntryfilmEntryHasGenre" Association="Self.FK_filmEntryfilmEntryHasGenre">
+            <End Role="filmEntrySet" EntitySet="filmEntrySet" />
+            <End Role="filmEntryHasGenreSet" EntitySet="filmEntryHasGenreSet" />
           </AssociationSet>
-          <EntitySet Name="imageSet" EntityType="Model1.image" />
-          <AssociationSet Name="charactercharacterImage" Association="Model1.charactercharacterImage">
-            <End Role="character" EntitySet="characterSet" />
-            <End Role="characterImage" EntitySet="imageSet" />
+          <AssociationSet Name="FK_filmEntryfilmEntryImage" Association="Self.FK_filmEntryfilmEntryImage">
+            <End Role="filmEntrySet" EntitySet="filmEntrySet" />
+            <End Role="imageSet_filmEntryImage" EntitySet="imageSet_filmEntryImage" />
           </AssociationSet>
-          <AssociationSet Name="actoractorImage" Association="Model1.actoractorImage">
-            <End Role="actor" EntitySet="personSet" />
-            <End Role="actorImage" EntitySet="imageSet" />
+          <AssociationSet Name="FK_filmEntryImage_inherits_image" Association="Self.FK_filmEntryImage_inherits_image">
+            <End Role="imageSet" EntitySet="imageSet" />
+            <End Role="imageSet_filmEntryImage" EntitySet="imageSet_filmEntryImage" />
           </AssociationSet>
-          <EntitySet Name="filmEntryHasGenreSet" EntityType="Model1.filmEntryHasGenre" />
-          <EntitySet Name="genreSet" EntityType="Model1.genre" />
-          <AssociationSet Name="genrefilmEntryHasGenre" Association="Model1.genrefilmEntryHasGenre">
-            <End Role="genre" EntitySet="genreSet" />
-            <End Role="filmEntryHasGenre" EntitySet="filmEntryHasGenreSet" />
+          <AssociationSet Name="FK_filmEntrymovieListEntry" Association="Self.FK_filmEntrymovieListEntry">
+            <End Role="filmEntrySet" EntitySet="filmEntrySet" />
+            <End Role="movieListEntrySet" EntitySet="movieListEntrySet" />
           </AssociationSet>
-          <AssociationSet Name="filmEntryfilmEntryHasGenre" Association="Model1.filmEntryfilmEntryHasGenre">
-            <End Role="filmEntry" EntitySet="filmEntrySet" />
-            <End Role="filmEntryHasGenre" EntitySet="filmEntryHasGenreSet" />
+          <AssociationSet Name="FK_genrefilmEntryHasGenre" Association="Self.FK_genrefilmEntryHasGenre">
+            <End Role="genreSet" EntitySet="genreSet" />
+            <End Role="filmEntryHasGenreSet" EntitySet="filmEntryHasGenreSet" />
           </AssociationSet>
-          <AssociationSet Name="personpersonInFilmEntry" Association="Model1.personpersonInFilmEntry">
-            <End Role="person" EntitySet="personSet" />
-            <End Role="personInFilmEntry" EntitySet="personInFilmEntrySet" />
+          <AssociationSet Name="FK_movie_inherits_filmEntry" Association="Self.FK_movie_inherits_filmEntry">
+            <End Role="filmEntrySet" EntitySet="filmEntrySet" />
+            <End Role="filmEntrySet_movie" EntitySet="filmEntrySet_movie" />
           </AssociationSet>
-          <EntitySet Name="personRoleSet" EntityType="Model1.personRole" />
-          <AssociationSet Name="personRolepersonInFilmEntry" Association="Model1.personRolepersonInFilmEntry">
-            <End Role="personRole" EntitySet="personRoleSet" />
-            <End Role="personInFilmEntry" EntitySet="personInFilmEntrySet" />
+          <AssociationSet Name="FK_movieListmovieListEntry" Association="Self.FK_movieListmovieListEntry">
+            <End Role="movieListSet" EntitySet="movieListSet" />
+            <End Role="movieListEntrySet" EntitySet="movieListEntrySet" />
           </AssociationSet>
-          <AssociationSet Name="personInFilmEntryactorDoingCharacter" Association="Model1.personInFilmEntryactorDoingCharacter">
-            <End Role="personInFilmEntry" EntitySet="personInFilmEntrySet" />
-            <End Role="actorDoingCharacter" EntitySet="actorDoingCharacterSet" />
+          <AssociationSet Name="FK_personImage_inherits_image" Association="Self.FK_personImage_inherits_image">
+            <End Role="imageSet" EntitySet="imageSet" />
+            <End Role="imageSet_personImage" EntitySet="imageSet_personImage" />
           </AssociationSet>
-          <AssociationSet Name="tvShowtvShowEpisode" Association="Model1.tvShowtvShowEpisode">
-            <End Role="tvShow" EntitySet="filmEntrySet" />
-            <End Role="tvShowEpisode" EntitySet="filmEntrySet" />
+          <AssociationSet Name="FK_personInFilmEntryactorDoingCharacter" Association="Self.FK_personInFilmEntryactorDoingCharacter">
+            <End Role="personInFilmEntrySet" EntitySet="personInFilmEntrySet" />
+            <End Role="actorDoingCharacterSet" EntitySet="actorDoingCharacterSet" />
           </AssociationSet>
-          <AssociationSet Name="roleuser" Association="Model1.roleuser">
-            <End Role="role" EntitySet="roleSet" />
-            <End Role="user" EntitySet="userSet" />
+          <AssociationSet Name="FK_personpersonInFilmEntry" Association="Self.FK_personpersonInFilmEntry">
+            <End Role="personSet" EntitySet="personSet" />
+            <End Role="personInFilmEntrySet" EntitySet="personInFilmEntrySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personRolepersonInFilmEntry" Association="Self.FK_personRolepersonInFilmEntry">
+            <End Role="personRoleSet" EntitySet="personRoleSet" />
+            <End Role="personInFilmEntrySet" EntitySet="personInFilmEntrySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roleuser" Association="Self.FK_roleuser">
+            <End Role="roleSet" EntitySet="roleSet" />
+            <End Role="userSet" EntitySet="userSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tvShow_inherits_filmEntry" Association="Self.FK_tvShow_inherits_filmEntry">
+            <End Role="filmEntrySet" EntitySet="filmEntrySet" />
+            <End Role="filmEntrySet_tvShow" EntitySet="filmEntrySet_tvShow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tvShowEpisode_inherits_filmEntry" Association="Self.FK_tvShowEpisode_inherits_filmEntry">
+            <End Role="filmEntrySet" EntitySet="filmEntrySet" />
+            <End Role="filmEntrySet_tvShowEpisode" EntitySet="filmEntrySet_tvShowEpisode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tvShowtvShowEpisode" Association="Self.FK_tvShowtvShowEpisode">
+            <End Role="filmEntrySet_tvShow" EntitySet="filmEntrySet_tvShow" />
+            <End Role="filmEntrySet_tvShowEpisode" EntitySet="filmEntrySet_tvShowEpisode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usermovieList" Association="Self.FK_usermovieList">
+            <End Role="userSet" EntitySet="userSet" />
+            <End Role="movieListSet" EntitySet="movieListSet" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="user">
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VjezbaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="actorDoingCharacterSet">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="username" Type="String" Nullable="false" />
-          <Property Name="passSalt" Type="String" Nullable="false" />
-          <Property Name="passHash" Type="String" Nullable="false" />
-          <Property Name="verified" Type="Boolean" Nullable="false" DefaultValue="false" />
-          <Property Name="banned" Type="Boolean" Nullable="false" DefaultValue="false" />
-          <Property Name="banReason" Type="String" Nullable="true" />
-          <Property Name="registrationTime" Type="DateTime" Nullable="false" />
-          <Property Name="email" Type="String" Nullable="false" />
-          <Property Name="firstName" Type="String" Nullable="false" />
-          <Property Name="lastName" Type="String" Nullable="false" />
-          <Property Name="birthdate" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="movieList" Relationship="Model1.usermovieList" FromRole="user" ToRole="movieList" />
-          <Property Name="avatarLink" Type="String" Nullable="false" />
-          <NavigationProperty Name="role" Relationship="Model1.roleuser" FromRole="user" ToRole="role" />
-          </EntityType>
-        <EntityType Name="role">
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="character_Id" Type="Int32" Nullable="false" />
+          <Property Name="personInFilmEntry_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="characterSet" Relationship="Self.FK_characteractorDoingCharacter" FromRole="actorDoingCharacterSet" ToRole="characterSet" />
+          <NavigationProperty Name="personInFilmEntrySet" Relationship="Self.FK_personInFilmEntryactorDoingCharacter" FromRole="actorDoingCharacterSet" ToRole="personInFilmEntrySet" />
+        </EntityType>
+        <EntityType Name="characterSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="actorDoingCharacterSet" Relationship="Self.FK_characteractorDoingCharacter" FromRole="characterSet" ToRole="actorDoingCharacterSet" />
+          <NavigationProperty Name="imageSet" Relationship="Self.imageSet_characterImage" FromRole="characterSet" ToRole="imageSet" />
+        </EntityType>
+        <EntityType Name="filmEntryHasGenreSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="genre_Id" Type="Int32" Nullable="false" />
+          <Property Name="filmEntry_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="filmEntrySet" Relationship="Self.FK_filmEntryfilmEntryHasGenre" FromRole="filmEntryHasGenreSet" ToRole="filmEntrySet" />
+          <NavigationProperty Name="genreSet" Relationship="Self.FK_genrefilmEntryHasGenre" FromRole="filmEntryHasGenreSet" ToRole="genreSet" />
+        </EntityType>
+        <EntityType Name="filmEntrySet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="duration" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="releaseDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="countryOfOrigin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="filmEntryHasGenreSet" Relationship="Self.FK_filmEntryfilmEntryHasGenre" FromRole="filmEntrySet" ToRole="filmEntryHasGenreSet" />
+          <NavigationProperty Name="personInFilmEntrySet" Relationship="Self.FK_filmEntryactorInFilmEntry" FromRole="filmEntrySet" ToRole="personInFilmEntrySet" />
+          <NavigationProperty Name="movieListEntrySet" Relationship="Self.FK_filmEntrymovieListEntry" FromRole="filmEntrySet" ToRole="movieListEntrySet" />
+          <NavigationProperty Name="filmEntrySet_movie" Relationship="Self.FK_movie_inherits_filmEntry" FromRole="filmEntrySet" ToRole="filmEntrySet_movie" />
+          <NavigationProperty Name="filmEntrySet_tvShow" Relationship="Self.FK_tvShow_inherits_filmEntry" FromRole="filmEntrySet" ToRole="filmEntrySet_tvShow" />
+          <NavigationProperty Name="filmEntrySet_tvShow1" Relationship="Self.filmEntrySet_tvShowEpisode" FromRole="filmEntrySet" ToRole="filmEntrySet_tvShow" />
+          <NavigationProperty Name="imageSet" Relationship="Self.imageSet_filmEntryImage" FromRole="filmEntrySet" ToRole="imageSet" />
+        </EntityType>
+        <EntityType Name="filmEntrySet_movie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="filmEntrySet" Relationship="Self.FK_movie_inherits_filmEntry" FromRole="filmEntrySet_movie" ToRole="filmEntrySet" />
+        </EntityType>
+        <EntityType Name="filmEntrySet_tvShow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="dateFirstEpisodeAired" Type="DateTime" Precision="3" />
+          <Property Name="dateLastEpisodeAired" Type="DateTime" Precision="3" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="filmEntrySet" Relationship="Self.FK_tvShow_inherits_filmEntry" FromRole="filmEntrySet_tvShow" ToRole="filmEntrySet" />
+          <NavigationProperty Name="filmEntrySet1" Relationship="Self.filmEntrySet_tvShowEpisode" FromRole="filmEntrySet_tvShow" ToRole="filmEntrySet" />
+        </EntityType>
+        <EntityType Name="genreSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="filmEntryHasGenreSet" Relationship="Self.FK_genrefilmEntryHasGenre" FromRole="genreSet" ToRole="filmEntryHasGenreSet" />
+        </EntityType>
+        <EntityType Name="imageSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="altText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="characterSet" Relationship="Self.imageSet_characterImage" FromRole="imageSet" ToRole="characterSet" />
+          <NavigationProperty Name="filmEntrySet" Relationship="Self.imageSet_filmEntryImage" FromRole="imageSet" ToRole="filmEntrySet" />
+          <NavigationProperty Name="personSet" Relationship="Self.imageSet_personImage" FromRole="imageSet" ToRole="personSet" />
+        </EntityType>
+        <EntityType Name="movieListEntrySet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userRating" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="movieList_Id" Type="Int32" Nullable="false" />
+          <Property Name="filmEntry_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="filmEntrySet" Relationship="Self.FK_filmEntrymovieListEntry" FromRole="movieListEntrySet" ToRole="filmEntrySet" />
+          <NavigationProperty Name="movieListSet" Relationship="Self.FK_movieListmovieListEntry" FromRole="movieListEntrySet" ToRole="movieListSet" />
+        </EntityType>
+        <EntityType Name="movieListSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="listName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="user_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="movieListEntrySet" Relationship="Self.FK_movieListmovieListEntry" FromRole="movieListSet" ToRole="movieListEntrySet" />
+          <NavigationProperty Name="userSet" Relationship="Self.FK_usermovieList" FromRole="movieListSet" ToRole="userSet" />
+        </EntityType>
+        <EntityType Name="personInFilmEntrySet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="filmEntry_Id" Type="Int32" Nullable="false" />
+          <Property Name="person_Id" Type="Int32" Nullable="false" />
+          <Property Name="personRole_roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="actorDoingCharacterSet" Relationship="Self.FK_personInFilmEntryactorDoingCharacter" FromRole="personInFilmEntrySet" ToRole="actorDoingCharacterSet" />
+          <NavigationProperty Name="filmEntrySet" Relationship="Self.FK_filmEntryactorInFilmEntry" FromRole="personInFilmEntrySet" ToRole="filmEntrySet" />
+          <NavigationProperty Name="personSet" Relationship="Self.FK_personpersonInFilmEntry" FromRole="personInFilmEntrySet" ToRole="personSet" />
+          <NavigationProperty Name="personRoleSet" Relationship="Self.FK_personRolepersonInFilmEntry" FromRole="personInFilmEntrySet" ToRole="personRoleSet" />
+        </EntityType>
+        <EntityType Name="personRoleSet">
           <Key>
             <PropertyRef Name="roleName" />
           </Key>
-          <Property Name="roleName" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" MaxLength="50" />
-          <Property Name="roleDescription" Type="String" Nullable="false" />
-          <NavigationProperty Name="user" Relationship="Model1.roleuser" FromRole="role" ToRole="user" />
+          <Property Name="roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="roleDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="personInFilmEntrySet" Relationship="Self.FK_personRolepersonInFilmEntry" FromRole="personRoleSet" ToRole="personInFilmEntrySet" />
         </EntityType>
-        <EntityType Name="movie" BaseType="Model1.filmEntry">
-        </EntityType>
-        <EntityType Name="movieList">
+        <EntityType Name="personSet">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="listName" Type="String" Nullable="false" />
-          <NavigationProperty Name="movieListEntry" Relationship="Model1.movieListmovieListEntry" FromRole="movieList" ToRole="movieListEntry" />
-          <NavigationProperty Name="user" Relationship="Model1.usermovieList" FromRole="movieList" ToRole="user" />
-          <Property Name="dateCreated" Type="DateTime" Nullable="false" />
-          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="birthdate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="personInFilmEntrySet" Relationship="Self.FK_personpersonInFilmEntry" FromRole="personSet" ToRole="personInFilmEntrySet" />
+          <NavigationProperty Name="imageSet" Relationship="Self.imageSet_personImage" FromRole="personSet" ToRole="imageSet" />
         </EntityType>
-        <EntityType Name="movieListEntry">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="movieList" Relationship="Model1.movieListmovieListEntry" FromRole="movieListEntry" ToRole="movieList" />
-          <NavigationProperty Name="filmEntry" Relationship="Model1.filmEntrymovieListEntry" FromRole="movieListEntry" ToRole="filmEntry" />
-          <Property Name="userRating" Type="String" Nullable="false" />
-          <Property Name="dateCreated" Type="DateTime" Nullable="false" />
-          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
-        </EntityType>
-        <Association Name="movieListmovieListEntry">
-          <End Type="Model1.movieList" Role="movieList" Multiplicity="1" />
-          <End Type="Model1.movieListEntry" Role="movieListEntry" Multiplicity="*" />
-        </Association>
-        <EntityType Name="tvShow" BaseType="Model1.filmEntry">
-          <Property Name="dateFirstEpisodeAired" Type="DateTime" Nullable="true" />
-          <Property Name="dateLastEpisodeAired" Type="DateTime" Nullable="true" />
-          <NavigationProperty Name="tvShowEpisode" Relationship="Model1.tvShowtvShowEpisode" FromRole="tvShow" ToRole="tvShowEpisode" />
-        </EntityType>
-        <EntityType Name="filmEntry">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="movieListEntry" Relationship="Model1.filmEntrymovieListEntry" FromRole="filmEntry" ToRole="movieListEntry" />
-          <Property Name="name" Type="String" Nullable="false" />
-          <Property Name="description" Type="String" Nullable="false" />
-          <Property Name="duration" Type="Time" Nullable="false" />
-          <Property Name="releaseDate" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="actorInFilmEntry" Relationship="Model1.filmEntryactorInFilmEntry" FromRole="filmEntry" ToRole="actorInFilmEntry" />
-          <NavigationProperty Name="filmEntryImage" Relationship="Model1.filmEntryfilmEntryImage" FromRole="filmEntry" ToRole="filmEntryImage" />
-          <Property Name="status" Type="String" Nullable="false" />
-          <Property Name="dateCreated" Type="DateTime" Nullable="false" />
-          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="filmEntryHasGenre" Relationship="Model1.filmEntryfilmEntryHasGenre" FromRole="filmEntry" ToRole="filmEntryHasGenre" />
-          <Property Name="countryOfOrigin" Type="String" Nullable="false" />
-        </EntityType>
-        <Association Name="filmEntrymovieListEntry">
-          <End Type="Model1.filmEntry" Role="filmEntry" Multiplicity="1" />
-          <End Type="Model1.movieListEntry" Role="movieListEntry" Multiplicity="*" />
-        </Association>
-        <Association Name="usermovieList">
-          <End Type="Model1.user" Role="user" Multiplicity="1" />
-          <End Type="Model1.movieList" Role="movieList" Multiplicity="*" />
-        </Association>
-        <EntityType Name="tvShowEpisode" BaseType="Model1.filmEntry">
-          <NavigationProperty Name="tvShow" Relationship="Model1.tvShowtvShowEpisode" FromRole="tvShowEpisode" ToRole="tvShow" />
-        </EntityType>
-        <EntityType Name="person">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="firstName" Type="String" Nullable="false" />
-          <Property Name="lastName" Type="String" Nullable="false" />
-          <Property Name="birthdate" Type="String" Nullable="false" />
-          <Property Name="dateCreated" Type="DateTime" Nullable="false" />
-          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="actorImage" Relationship="Model1.actoractorImage" FromRole="actor" ToRole="actorImage" />
-          <NavigationProperty Name="personInFilmEntry" Relationship="Model1.personpersonInFilmEntry" FromRole="person" ToRole="personInFilmEntry" />
-        </EntityType>
-        <EntityType Name="personInFilmEntry">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dateCreated" Type="DateTime" Nullable="false" />
-          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="filmEntry" Relationship="Model1.filmEntryactorInFilmEntry" FromRole="actorInFilmEntry" ToRole="filmEntry" />
-          <NavigationProperty Name="person" Relationship="Model1.personpersonInFilmEntry" FromRole="personInFilmEntry" ToRole="person" />
-          <NavigationProperty Name="personRole" Relationship="Model1.personRolepersonInFilmEntry" FromRole="personInFilmEntry" ToRole="personRole" />
-          <NavigationProperty Name="actorDoingCharacter" Relationship="Model1.personInFilmEntryactorDoingCharacter" FromRole="personInFilmEntry" ToRole="actorDoingCharacter" />
-        </EntityType>
-        <Association Name="filmEntryactorInFilmEntry">
-          <End Type="Model1.filmEntry" Role="filmEntry" Multiplicity="1" />
-          <End Type="Model1.personInFilmEntry" Role="actorInFilmEntry" Multiplicity="*" />
-        </Association>
-        <EntityType Name="character">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" />
-          <Property Name="description" Type="String" Nullable="false" />
-          <Property Name="dateCreated" Type="DateTime" Nullable="false" />
-          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="actorDoingCharacter" Relationship="Model1.characteractorDoingCharacter" FromRole="character" ToRole="actorDoingCharacter" />
-          <NavigationProperty Name="characterImage" Relationship="Model1.charactercharacterImage" FromRole="character" ToRole="characterImage" />
-        </EntityType>
-        <EntityType Name="actorDoingCharacter">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="character" Relationship="Model1.characteractorDoingCharacter" FromRole="actorDoingCharacter" ToRole="character" />
-          <Property Name="dateCreated" Type="DateTime" Nullable="false" />
-          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="personInFilmEntry" Relationship="Model1.personInFilmEntryactorDoingCharacter" FromRole="actorDoingCharacter" ToRole="personInFilmEntry" />
-        </EntityType>
-        <Association Name="characteractorDoingCharacter">
-          <End Type="Model1.character" Role="character" Multiplicity="1" />
-          <End Type="Model1.actorDoingCharacter" Role="actorDoingCharacter" Multiplicity="*" />
-        </Association>
-        <EntityType Name="filmEntryImage" BaseType="Model1.image">
-          <NavigationProperty Name="filmEntry" Relationship="Model1.filmEntryfilmEntryImage" FromRole="filmEntryImage" ToRole="filmEntry" />
-        </EntityType>
-        <Association Name="filmEntryfilmEntryImage">
-          <End Type="Model1.filmEntry" Role="filmEntry" Multiplicity="1" />
-          <End Type="Model1.filmEntryImage" Role="filmEntryImage" Multiplicity="*" />
-        </Association>
-        <EntityType Name="personImage" BaseType="Model1.image">
-          <NavigationProperty Name="actor" Relationship="Model1.actoractorImage" FromRole="actorImage" ToRole="actor" />
-        </EntityType>
-        <EntityType Name="image">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="link" Type="String" Nullable="false" />
-          <Property Name="altText" Type="String" Nullable="false" />
-          <Property Name="dateCreated" Type="DateTime" Nullable="false" />
-          <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="characterImage" BaseType="Model1.image">
-          <NavigationProperty Name="character" Relationship="Model1.charactercharacterImage" FromRole="characterImage" ToRole="character" />
-        </EntityType>
-        <Association Name="charactercharacterImage">
-          <End Type="Model1.character" Role="character" Multiplicity="1" />
-          <End Type="Model1.characterImage" Role="characterImage" Multiplicity="*" />
-        </Association>
-        <Association Name="actoractorImage">
-          <End Type="Model1.person" Role="actor" Multiplicity="1" />
-          <End Type="Model1.personImage" Role="actorImage" Multiplicity="*" />
-        </Association>
-        <EntityType Name="filmEntryHasGenre">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="genre" Relationship="Model1.genrefilmEntryHasGenre" FromRole="filmEntryHasGenre" ToRole="genre" />
-          <NavigationProperty Name="filmEntry" Relationship="Model1.filmEntryfilmEntryHasGenre" FromRole="filmEntryHasGenre" ToRole="filmEntry" />
-        </EntityType>
-        <EntityType Name="genre">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" />
-          <Property Name="description" Type="String" Nullable="false" />
-          <NavigationProperty Name="filmEntryHasGenre" Relationship="Model1.genrefilmEntryHasGenre" FromRole="genre" ToRole="filmEntryHasGenre" />
-        </EntityType>
-        <Association Name="genrefilmEntryHasGenre">
-          <End Type="Model1.genre" Role="genre" Multiplicity="1" />
-          <End Type="Model1.filmEntryHasGenre" Role="filmEntryHasGenre" Multiplicity="*" />
-        </Association>
-        <Association Name="filmEntryfilmEntryHasGenre">
-          <End Type="Model1.filmEntry" Role="filmEntry" Multiplicity="1" />
-          <End Type="Model1.filmEntryHasGenre" Role="filmEntryHasGenre" Multiplicity="*" />
-        </Association>
-        <Association Name="personpersonInFilmEntry">
-          <End Type="Model1.person" Role="person" Multiplicity="1" />
-          <End Type="Model1.personInFilmEntry" Role="personInFilmEntry" Multiplicity="*" />
-        </Association>
-        <EntityType Name="personRole">
+        <EntityType Name="roleSet">
           <Key>
             <PropertyRef Name="roleName" />
           </Key>
-          <Property Name="roleName" Type="String" Nullable="false" annotation:StoreGeneratedPattern="Identity" MaxLength="50" />
-          <Property Name="roleDescription" Type="String" Nullable="false" />
-          <NavigationProperty Name="personInFilmEntry" Relationship="Model1.personRolepersonInFilmEntry" FromRole="personRole" ToRole="personInFilmEntry" />
+          <Property Name="roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="roleDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="userSet" Relationship="Self.FK_roleuser" FromRole="roleSet" ToRole="userSet" />
         </EntityType>
-        <Association Name="personRolepersonInFilmEntry">
-          <End Type="Model1.personRole" Role="personRole" Multiplicity="1" />
-          <End Type="Model1.personInFilmEntry" Role="personInFilmEntry" Multiplicity="*" />
+        <EntityType Name="userSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="passSalt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="passHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="verified" Type="Boolean" Nullable="false" />
+          <Property Name="banned" Type="Boolean" Nullable="false" />
+          <Property Name="banReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="registrationTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="birthdate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="avatarLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="role_roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="movieListSet" Relationship="Self.FK_usermovieList" FromRole="userSet" ToRole="movieListSet" />
+          <NavigationProperty Name="roleSet" Relationship="Self.FK_roleuser" FromRole="userSet" ToRole="roleSet" />
+        </EntityType>
+        <Association Name="FK_characteractorDoingCharacter">
+          <End Role="characterSet" Type="Self.characterSet" Multiplicity="1" />
+          <End Role="actorDoingCharacterSet" Type="Self.actorDoingCharacterSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="characterSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="actorDoingCharacterSet">
+              <PropertyRef Name="character_Id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <Association Name="personInFilmEntryactorDoingCharacter">
-          <End Type="Model1.personInFilmEntry" Role="personInFilmEntry" Multiplicity="1" />
-          <End Type="Model1.actorDoingCharacter" Role="actorDoingCharacter" Multiplicity="0..1" />
+        <Association Name="FK_personInFilmEntryactorDoingCharacter">
+          <End Role="personInFilmEntrySet" Type="Self.personInFilmEntrySet" Multiplicity="1" />
+          <End Role="actorDoingCharacterSet" Type="Self.actorDoingCharacterSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personInFilmEntrySet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="actorDoingCharacterSet">
+              <PropertyRef Name="personInFilmEntry_Id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <Association Name="tvShowtvShowEpisode">
-          <End Type="Model1.tvShow" Role="tvShow" Multiplicity="1" />
-          <End Type="Model1.tvShowEpisode" Role="tvShowEpisode" Multiplicity="*" />
+        <Association Name="FK_filmEntryfilmEntryHasGenre">
+          <End Role="filmEntrySet" Type="Self.filmEntrySet" Multiplicity="1" />
+          <End Role="filmEntryHasGenreSet" Type="Self.filmEntryHasGenreSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filmEntrySet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="filmEntryHasGenreSet">
+              <PropertyRef Name="filmEntry_Id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
-        <Association Name="roleuser">
-          <End Type="Model1.role" Role="role" Multiplicity="1" />
-          <End Type="Model1.user" Role="user" Multiplicity="*" />
+        <Association Name="FK_genrefilmEntryHasGenre">
+          <End Role="genreSet" Type="Self.genreSet" Multiplicity="1" />
+          <End Role="filmEntryHasGenreSet" Type="Self.filmEntryHasGenreSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genreSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="filmEntryHasGenreSet">
+              <PropertyRef Name="genre_Id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
+        <Association Name="FK_filmEntryactorInFilmEntry">
+          <End Role="filmEntrySet" Type="Self.filmEntrySet" Multiplicity="1" />
+          <End Role="personInFilmEntrySet" Type="Self.personInFilmEntrySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filmEntrySet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personInFilmEntrySet">
+              <PropertyRef Name="filmEntry_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_filmEntrymovieListEntry">
+          <End Role="filmEntrySet" Type="Self.filmEntrySet" Multiplicity="1" />
+          <End Role="movieListEntrySet" Type="Self.movieListEntrySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="filmEntrySet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="movieListEntrySet">
+              <PropertyRef Name="filmEntry_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_movie_inherits_filmEntry">
+          <End Role="filmEntrySet" Type="Self.filmEntrySet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="filmEntrySet_movie" Type="Self.filmEntrySet_movie" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="filmEntrySet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="filmEntrySet_movie">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tvShow_inherits_filmEntry">
+          <End Role="filmEntrySet" Type="Self.filmEntrySet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="filmEntrySet_tvShow" Type="Self.filmEntrySet_tvShow" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="filmEntrySet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="filmEntrySet_tvShow">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_movieListmovieListEntry">
+          <End Role="movieListSet" Type="Self.movieListSet" Multiplicity="1" />
+          <End Role="movieListEntrySet" Type="Self.movieListEntrySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movieListSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="movieListEntrySet">
+              <PropertyRef Name="movieList_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usermovieList">
+          <End Role="userSet" Type="Self.userSet" Multiplicity="1" />
+          <End Role="movieListSet" Type="Self.movieListSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="movieListSet">
+              <PropertyRef Name="user_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personpersonInFilmEntry">
+          <End Role="personSet" Type="Self.personSet" Multiplicity="1" />
+          <End Role="personInFilmEntrySet" Type="Self.personInFilmEntrySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="personInFilmEntrySet">
+              <PropertyRef Name="person_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personRolepersonInFilmEntry">
+          <End Role="personRoleSet" Type="Self.personRoleSet" Multiplicity="1" />
+          <End Role="personInFilmEntrySet" Type="Self.personInFilmEntrySet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personRoleSet">
+              <PropertyRef Name="roleName" />
+            </Principal>
+            <Dependent Role="personInFilmEntrySet">
+              <PropertyRef Name="personRole_roleName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roleuser">
+          <End Role="roleSet" Type="Self.roleSet" Multiplicity="1" />
+          <End Role="userSet" Type="Self.userSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roleSet">
+              <PropertyRef Name="roleName" />
+            </Principal>
+            <Dependent Role="userSet">
+              <PropertyRef Name="role_roleName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="filmEntrySet_tvShowEpisode">
+          <End Role="filmEntrySet" Type="Self.filmEntrySet" Multiplicity="*" />
+          <End Role="filmEntrySet_tvShow" Type="Self.filmEntrySet_tvShow" Multiplicity="0..1" />
+        </Association>
+        <Association Name="imageSet_characterImage">
+          <End Role="characterSet" Type="Self.characterSet" Multiplicity="0..1" />
+          <End Role="imageSet" Type="Self.imageSet" Multiplicity="*" />
+        </Association>
+        <Association Name="imageSet_filmEntryImage">
+          <End Role="filmEntrySet" Type="Self.filmEntrySet" Multiplicity="0..1" />
+          <End Role="imageSet" Type="Self.imageSet" Multiplicity="*" />
+        </Association>
+        <Association Name="imageSet_personImage">
+          <End Role="personSet" Type="Self.personSet" Multiplicity="0..1" />
+          <End Role="imageSet" Type="Self.imageSet" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="VjezbaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="actorDoingCharacterSet" EntityType="Self.actorDoingCharacterSet" />
+          <EntitySet Name="characterSet" EntityType="Self.characterSet" />
+          <EntitySet Name="filmEntryHasGenreSet" EntityType="Self.filmEntryHasGenreSet" />
+          <EntitySet Name="filmEntrySet" EntityType="Self.filmEntrySet" />
+          <EntitySet Name="filmEntrySet_movie" EntityType="Self.filmEntrySet_movie" />
+          <EntitySet Name="filmEntrySet_tvShow" EntityType="Self.filmEntrySet_tvShow" />
+          <EntitySet Name="genreSet" EntityType="Self.genreSet" />
+          <EntitySet Name="imageSet" EntityType="Self.imageSet" />
+          <EntitySet Name="movieListEntrySet" EntityType="Self.movieListEntrySet" />
+          <EntitySet Name="movieListSet" EntityType="Self.movieListSet" />
+          <EntitySet Name="personInFilmEntrySet" EntityType="Self.personInFilmEntrySet" />
+          <EntitySet Name="personRoleSet" EntityType="Self.personRoleSet" />
+          <EntitySet Name="personSet" EntityType="Self.personSet" />
+          <EntitySet Name="roleSet" EntityType="Self.roleSet" />
+          <EntitySet Name="userSet" EntityType="Self.userSet" />
+          <AssociationSet Name="FK_characteractorDoingCharacter" Association="Self.FK_characteractorDoingCharacter">
+            <End Role="characterSet" EntitySet="characterSet" />
+            <End Role="actorDoingCharacterSet" EntitySet="actorDoingCharacterSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personInFilmEntryactorDoingCharacter" Association="Self.FK_personInFilmEntryactorDoingCharacter">
+            <End Role="personInFilmEntrySet" EntitySet="personInFilmEntrySet" />
+            <End Role="actorDoingCharacterSet" EntitySet="actorDoingCharacterSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_filmEntryfilmEntryHasGenre" Association="Self.FK_filmEntryfilmEntryHasGenre">
+            <End Role="filmEntrySet" EntitySet="filmEntrySet" />
+            <End Role="filmEntryHasGenreSet" EntitySet="filmEntryHasGenreSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_genrefilmEntryHasGenre" Association="Self.FK_genrefilmEntryHasGenre">
+            <End Role="genreSet" EntitySet="genreSet" />
+            <End Role="filmEntryHasGenreSet" EntitySet="filmEntryHasGenreSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_filmEntryactorInFilmEntry" Association="Self.FK_filmEntryactorInFilmEntry">
+            <End Role="filmEntrySet" EntitySet="filmEntrySet" />
+            <End Role="personInFilmEntrySet" EntitySet="personInFilmEntrySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_filmEntrymovieListEntry" Association="Self.FK_filmEntrymovieListEntry">
+            <End Role="filmEntrySet" EntitySet="filmEntrySet" />
+            <End Role="movieListEntrySet" EntitySet="movieListEntrySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_movie_inherits_filmEntry" Association="Self.FK_movie_inherits_filmEntry">
+            <End Role="filmEntrySet" EntitySet="filmEntrySet" />
+            <End Role="filmEntrySet_movie" EntitySet="filmEntrySet_movie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tvShow_inherits_filmEntry" Association="Self.FK_tvShow_inherits_filmEntry">
+            <End Role="filmEntrySet" EntitySet="filmEntrySet" />
+            <End Role="filmEntrySet_tvShow" EntitySet="filmEntrySet_tvShow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_movieListmovieListEntry" Association="Self.FK_movieListmovieListEntry">
+            <End Role="movieListSet" EntitySet="movieListSet" />
+            <End Role="movieListEntrySet" EntitySet="movieListEntrySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usermovieList" Association="Self.FK_usermovieList">
+            <End Role="userSet" EntitySet="userSet" />
+            <End Role="movieListSet" EntitySet="movieListSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personpersonInFilmEntry" Association="Self.FK_personpersonInFilmEntry">
+            <End Role="personSet" EntitySet="personSet" />
+            <End Role="personInFilmEntrySet" EntitySet="personInFilmEntrySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personRolepersonInFilmEntry" Association="Self.FK_personRolepersonInFilmEntry">
+            <End Role="personRoleSet" EntitySet="personRoleSet" />
+            <End Role="personInFilmEntrySet" EntitySet="personInFilmEntrySet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roleuser" Association="Self.FK_roleuser">
+            <End Role="roleSet" EntitySet="roleSet" />
+            <End Role="userSet" EntitySet="userSet" />
+          </AssociationSet>
+          <AssociationSet Name="filmEntrySet_tvShowEpisode" Association="Self.filmEntrySet_tvShowEpisode">
+            <End Role="filmEntrySet" EntitySet="filmEntrySet" />
+            <End Role="filmEntrySet_tvShow" EntitySet="filmEntrySet_tvShow" />
+          </AssociationSet>
+          <AssociationSet Name="imageSet_characterImage" Association="Self.imageSet_characterImage">
+            <End Role="characterSet" EntitySet="characterSet" />
+            <End Role="imageSet" EntitySet="imageSet" />
+          </AssociationSet>
+          <AssociationSet Name="imageSet_filmEntryImage" Association="Self.imageSet_filmEntryImage">
+            <End Role="filmEntrySet" EntitySet="filmEntrySet" />
+            <End Role="imageSet" EntitySet="imageSet" />
+          </AssociationSet>
+          <AssociationSet Name="imageSet_personImage" Association="Self.imageSet_personImage">
+            <End Role="personSet" EntitySet="personSet" />
+            <End Role="imageSet" EntitySet="imageSet" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
-    <EntitySetMapping Name="userSet">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.user)">
-        <MappingFragment StoreEntitySet="userSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="passSalt" ColumnName="passSalt" />
-          <ScalarProperty Name="passHash" ColumnName="passHash" />
-          <ScalarProperty Name="verified" ColumnName="verified" />
-          <ScalarProperty Name="banned" ColumnName="banned" />
-          <ScalarProperty Name="banReason" ColumnName="banReason" />
-          <ScalarProperty Name="registrationTime" ColumnName="registrationTime" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="firstName" ColumnName="firstName" />
-          <ScalarProperty Name="lastName" ColumnName="lastName" />
-          <ScalarProperty Name="birthdate" ColumnName="birthdate" />
-          <ScalarProperty Name="avatarLink" ColumnName="avatarLink" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="roleSet">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.role)">
-        <MappingFragment StoreEntitySet="roleSet">
-          <ScalarProperty Name="roleName" ColumnName="roleName" />
-          <ScalarProperty Name="roleDescription" ColumnName="roleDescription" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="movieListSet">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.movieList)">
-        <MappingFragment StoreEntitySet="movieListSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="listName" ColumnName="listName" />
-          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
-          <ScalarProperty Name="dateLastUpdated" ColumnName="dateLastUpdated" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="movieListEntrySet">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.movieListEntry)">
-        <MappingFragment StoreEntitySet="movieListEntrySet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="userRating" ColumnName="userRating" />
-          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
-          <ScalarProperty Name="dateLastUpdated" ColumnName="dateLastUpdated" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="personSet">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.person)">
-        <MappingFragment StoreEntitySet="personSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="firstName" ColumnName="firstName" />
-          <ScalarProperty Name="lastName" ColumnName="lastName" />
-          <ScalarProperty Name="birthdate" ColumnName="birthdate" />
-          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
-          <ScalarProperty Name="dateLastUpdated" ColumnName="dateLastUpdated" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="personInFilmEntrySet">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.personInFilmEntry)">
-        <MappingFragment StoreEntitySet="personInFilmEntrySet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
-          <ScalarProperty Name="dateLastUpdated" ColumnName="dateLastUpdated" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="filmEntrySet">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.filmEntry)">
-        <MappingFragment StoreEntitySet="filmEntrySet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="duration" ColumnName="duration" />
-          <ScalarProperty Name="releaseDate" ColumnName="releaseDate" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
-          <ScalarProperty Name="dateLastUpdated" ColumnName="dateLastUpdated" />
-          <ScalarProperty Name="countryOfOrigin" ColumnName="countryOfOrigin" />
-        </MappingFragment>
-      </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.tvShow)">
-        <MappingFragment StoreEntitySet="filmEntrySet_tvShow">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="dateFirstEpisodeAired" ColumnName="dateFirstEpisodeAired" />
-          <ScalarProperty Name="dateLastEpisodeAired" ColumnName="dateLastEpisodeAired" />
-        </MappingFragment>
-      </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.tvShowEpisode)">
-        <MappingFragment StoreEntitySet="filmEntrySet_tvShowEpisode">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.movie)">
-        <MappingFragment StoreEntitySet="filmEntrySet_movie">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="characterSet">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.character)">
-        <MappingFragment StoreEntitySet="characterSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
-          <ScalarProperty Name="dateLastUpdated" ColumnName="dateLastUpdated" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="actorDoingCharacterSet">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.actorDoingCharacter)">
-        <MappingFragment StoreEntitySet="actorDoingCharacterSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
-          <ScalarProperty Name="dateLastUpdated" ColumnName="dateLastUpdated" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="imageSet">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.image)">
-        <MappingFragment StoreEntitySet="imageSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="link" ColumnName="link" />
-          <ScalarProperty Name="altText" ColumnName="altText" />
-          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
-          <ScalarProperty Name="dateLastUpdated" ColumnName="dateLastUpdated" />
-        </MappingFragment>
-      </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.filmEntryImage)">
-        <MappingFragment StoreEntitySet="imageSet_filmEntryImage">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.characterImage)">
-        <MappingFragment StoreEntitySet="imageSet_characterImage">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.personImage)">
-        <MappingFragment StoreEntitySet="imageSet_personImage">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="filmEntryHasGenreSet">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.filmEntryHasGenre)">
-        <MappingFragment StoreEntitySet="filmEntryHasGenreSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="genreSet">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.genre)">
-        <MappingFragment StoreEntitySet="genreSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="description" ColumnName="description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="personRoleSet">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.personRole)">
-        <MappingFragment StoreEntitySet="personRoleSet">
-          <ScalarProperty Name="roleName" ColumnName="roleName" />
-          <ScalarProperty Name="roleDescription" ColumnName="roleDescription" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="movieListmovieListEntry" TypeName="Model1.movieListmovieListEntry" StoreEntitySet="movieListEntrySet">
-      <EndProperty Name="movieList">
-        <ScalarProperty Name="Id" ColumnName="movieList_Id" />
-      </EndProperty>
-      <EndProperty Name="movieListEntry">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="filmEntrymovieListEntry" TypeName="Model1.filmEntrymovieListEntry" StoreEntitySet="movieListEntrySet">
-      <EndProperty Name="filmEntry">
-        <ScalarProperty Name="Id" ColumnName="filmEntry_Id" />
-      </EndProperty>
-      <EndProperty Name="movieListEntry">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="usermovieList" TypeName="Model1.usermovieList" StoreEntitySet="movieListSet">
-      <EndProperty Name="user">
-        <ScalarProperty Name="Id" ColumnName="user_Id" />
-      </EndProperty>
-      <EndProperty Name="movieList">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="filmEntryactorInFilmEntry" TypeName="Model1.filmEntryactorInFilmEntry" StoreEntitySet="personInFilmEntrySet">
-      <EndProperty Name="filmEntry">
-        <ScalarProperty Name="Id" ColumnName="filmEntry_Id" />
-      </EndProperty>
-      <EndProperty Name="actorInFilmEntry">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="characteractorDoingCharacter" TypeName="Model1.characteractorDoingCharacter" StoreEntitySet="actorDoingCharacterSet">
-      <EndProperty Name="character">
-        <ScalarProperty Name="Id" ColumnName="character_Id" />
-      </EndProperty>
-      <EndProperty Name="actorDoingCharacter">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="filmEntryfilmEntryImage" TypeName="Model1.filmEntryfilmEntryImage" StoreEntitySet="imageSet_filmEntryImage">
-      <EndProperty Name="filmEntry">
-        <ScalarProperty Name="Id" ColumnName="filmEntry_Id" />
-      </EndProperty>
-      <EndProperty Name="filmEntryImage">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="charactercharacterImage" TypeName="Model1.charactercharacterImage" StoreEntitySet="imageSet_characterImage">
-      <EndProperty Name="character">
-        <ScalarProperty Name="Id" ColumnName="character_Id" />
-      </EndProperty>
-      <EndProperty Name="characterImage">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="actoractorImage" TypeName="Model1.actoractorImage" StoreEntitySet="imageSet_personImage">
-      <EndProperty Name="actor">
-        <ScalarProperty Name="Id" ColumnName="actor_Id" />
-      </EndProperty>
-      <EndProperty Name="actorImage">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="genrefilmEntryHasGenre" TypeName="Model1.genrefilmEntryHasGenre" StoreEntitySet="filmEntryHasGenreSet">
-      <EndProperty Name="genre">
-        <ScalarProperty Name="Id" ColumnName="genre_Id" />
-      </EndProperty>
-      <EndProperty Name="filmEntryHasGenre">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="filmEntryfilmEntryHasGenre" TypeName="Model1.filmEntryfilmEntryHasGenre" StoreEntitySet="filmEntryHasGenreSet">
-      <EndProperty Name="filmEntry">
-        <ScalarProperty Name="Id" ColumnName="filmEntry_Id" />
-      </EndProperty>
-      <EndProperty Name="filmEntryHasGenre">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="personpersonInFilmEntry" TypeName="Model1.personpersonInFilmEntry" StoreEntitySet="personInFilmEntrySet">
-      <EndProperty Name="person">
-        <ScalarProperty Name="Id" ColumnName="person_Id" />
-      </EndProperty>
-      <EndProperty Name="personInFilmEntry">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="personRolepersonInFilmEntry" TypeName="Model1.personRolepersonInFilmEntry" StoreEntitySet="personInFilmEntrySet">
-      <EndProperty Name="personRole">
-        <ScalarProperty Name="roleName" ColumnName="personRole_roleName" />
-      </EndProperty>
-      <EndProperty Name="personInFilmEntry">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="personInFilmEntryactorDoingCharacter" TypeName="Model1.personInFilmEntryactorDoingCharacter" StoreEntitySet="actorDoingCharacterSet">
-      <EndProperty Name="personInFilmEntry">
-        <ScalarProperty Name="Id" ColumnName="personInFilmEntry_Id" />
-      </EndProperty>
-      <EndProperty Name="actorDoingCharacter">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="tvShowtvShowEpisode" TypeName="Model1.tvShowtvShowEpisode" StoreEntitySet="filmEntrySet_tvShowEpisode">
-      <EndProperty Name="tvShow">
-        <ScalarProperty Name="Id" ColumnName="tvShow_Id" />
-      </EndProperty>
-      <EndProperty Name="tvShowEpisode">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="roleuser" TypeName="Model1.roleuser" StoreEntitySet="userSet">
-      <EndProperty Name="role">
-        <ScalarProperty Name="roleName" ColumnName="role_roleName" />
-      </EndProperty>
-      <EndProperty Name="user">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-  </EntityContainerMapping>
-</Mapping></edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VjezbaModelStoreContainer" CdmEntityContainer="VjezbaEntities">
+          <EntitySetMapping Name="actorDoingCharacterSet">
+            <EntityTypeMapping TypeName="VjezbaModel.actorDoingCharacterSet">
+              <MappingFragment StoreEntitySet="actorDoingCharacterSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="dateLastUpdated" ColumnName="dateLastUpdated" />
+                <ScalarProperty Name="character_Id" ColumnName="character_Id" />
+                <ScalarProperty Name="personInFilmEntry_Id" ColumnName="personInFilmEntry_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="characterSet">
+            <EntityTypeMapping TypeName="VjezbaModel.characterSet">
+              <MappingFragment StoreEntitySet="characterSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="dateLastUpdated" ColumnName="dateLastUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="filmEntryHasGenreSet">
+            <EntityTypeMapping TypeName="VjezbaModel.filmEntryHasGenreSet">
+              <MappingFragment StoreEntitySet="filmEntryHasGenreSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="genre_Id" ColumnName="genre_Id" />
+                <ScalarProperty Name="filmEntry_Id" ColumnName="filmEntry_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="filmEntrySet">
+            <EntityTypeMapping TypeName="VjezbaModel.filmEntrySet">
+              <MappingFragment StoreEntitySet="filmEntrySet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="releaseDate" ColumnName="releaseDate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="dateLastUpdated" ColumnName="dateLastUpdated" />
+                <ScalarProperty Name="countryOfOrigin" ColumnName="countryOfOrigin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="filmEntrySet_movie">
+            <EntityTypeMapping TypeName="VjezbaModel.filmEntrySet_movie">
+              <MappingFragment StoreEntitySet="filmEntrySet_movie">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="filmEntrySet_tvShow">
+            <EntityTypeMapping TypeName="VjezbaModel.filmEntrySet_tvShow">
+              <MappingFragment StoreEntitySet="filmEntrySet_tvShow">
+                <ScalarProperty Name="dateFirstEpisodeAired" ColumnName="dateFirstEpisodeAired" />
+                <ScalarProperty Name="dateLastEpisodeAired" ColumnName="dateLastEpisodeAired" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="genreSet">
+            <EntityTypeMapping TypeName="VjezbaModel.genreSet">
+              <MappingFragment StoreEntitySet="genreSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="imageSet">
+            <EntityTypeMapping TypeName="VjezbaModel.imageSet">
+              <MappingFragment StoreEntitySet="imageSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="altText" ColumnName="altText" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="dateLastUpdated" ColumnName="dateLastUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="movieListEntrySet">
+            <EntityTypeMapping TypeName="VjezbaModel.movieListEntrySet">
+              <MappingFragment StoreEntitySet="movieListEntrySet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="userRating" ColumnName="userRating" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="dateLastUpdated" ColumnName="dateLastUpdated" />
+                <ScalarProperty Name="movieList_Id" ColumnName="movieList_Id" />
+                <ScalarProperty Name="filmEntry_Id" ColumnName="filmEntry_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="movieListSet">
+            <EntityTypeMapping TypeName="VjezbaModel.movieListSet">
+              <MappingFragment StoreEntitySet="movieListSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="listName" ColumnName="listName" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="dateLastUpdated" ColumnName="dateLastUpdated" />
+                <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personInFilmEntrySet">
+            <EntityTypeMapping TypeName="VjezbaModel.personInFilmEntrySet">
+              <MappingFragment StoreEntitySet="personInFilmEntrySet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="dateLastUpdated" ColumnName="dateLastUpdated" />
+                <ScalarProperty Name="filmEntry_Id" ColumnName="filmEntry_Id" />
+                <ScalarProperty Name="person_Id" ColumnName="person_Id" />
+                <ScalarProperty Name="personRole_roleName" ColumnName="personRole_roleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personRoleSet">
+            <EntityTypeMapping TypeName="VjezbaModel.personRoleSet">
+              <MappingFragment StoreEntitySet="personRoleSet">
+                <ScalarProperty Name="roleName" ColumnName="roleName" />
+                <ScalarProperty Name="roleDescription" ColumnName="roleDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personSet">
+            <EntityTypeMapping TypeName="VjezbaModel.personSet">
+              <MappingFragment StoreEntitySet="personSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="dateLastUpdated" ColumnName="dateLastUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roleSet">
+            <EntityTypeMapping TypeName="VjezbaModel.roleSet">
+              <MappingFragment StoreEntitySet="roleSet">
+                <ScalarProperty Name="roleName" ColumnName="roleName" />
+                <ScalarProperty Name="roleDescription" ColumnName="roleDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userSet">
+            <EntityTypeMapping TypeName="VjezbaModel.userSet">
+              <MappingFragment StoreEntitySet="userSet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="passSalt" ColumnName="passSalt" />
+                <ScalarProperty Name="passHash" ColumnName="passHash" />
+                <ScalarProperty Name="verified" ColumnName="verified" />
+                <ScalarProperty Name="banned" ColumnName="banned" />
+                <ScalarProperty Name="banReason" ColumnName="banReason" />
+                <ScalarProperty Name="registrationTime" ColumnName="registrationTime" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+                <ScalarProperty Name="avatarLink" ColumnName="avatarLink" />
+                <ScalarProperty Name="role_roleName" ColumnName="role_roleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="filmEntrySet_tvShowEpisode" TypeName="VjezbaModel.filmEntrySet_tvShowEpisode" StoreEntitySet="filmEntrySet_tvShowEpisode">
+            <EndProperty Name="filmEntrySet">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="filmEntrySet_tvShow">
+              <ScalarProperty Name="Id" ColumnName="tvShow_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="imageSet_characterImage" TypeName="VjezbaModel.imageSet_characterImage" StoreEntitySet="imageSet_characterImage">
+            <EndProperty Name="characterSet">
+              <ScalarProperty Name="Id" ColumnName="character_Id" />
+            </EndProperty>
+            <EndProperty Name="imageSet">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="imageSet_filmEntryImage" TypeName="VjezbaModel.imageSet_filmEntryImage" StoreEntitySet="imageSet_filmEntryImage">
+            <EndProperty Name="filmEntrySet">
+              <ScalarProperty Name="Id" ColumnName="filmEntry_Id" />
+            </EndProperty>
+            <EndProperty Name="imageSet">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="imageSet_personImage" TypeName="VjezbaModel.imageSet_personImage" StoreEntitySet="imageSet_personImage">
+            <EndProperty Name="personSet">
+              <ScalarProperty Name="Id" ColumnName="actor_Id" />
+            </EndProperty>
+            <EndProperty Name="imageSet">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
-    <edmx:Connection>
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
       </DesignerInfoPropertySet>
-    </edmx:Connection>
-    <edmx:Options>
+    </Connection>
+    <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
-        <DesignerProperty Name="UseLegacyProvider" Value="False" />
       </DesignerInfoPropertySet>
-    </edmx:Options>
+    </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <edmx:Diagrams>
-    </edmx:Diagrams>
-  </edmx:Designer>
+    <Diagrams></Diagrams>
+  </Designer>
 </edmx:Edmx>
