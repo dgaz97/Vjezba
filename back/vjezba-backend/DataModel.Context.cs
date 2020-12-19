@@ -13,9 +13,9 @@ namespace vjezba_backend
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class VjezbaEntities1 : DbContext
+    public partial class VjezbaEntities : DbContext
     {
-        public VjezbaEntities1()
+        public VjezbaEntities()
             : base("name=VjezbaEntities1")
         {
         }
