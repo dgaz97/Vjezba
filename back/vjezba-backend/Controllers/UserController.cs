@@ -15,7 +15,7 @@ namespace vjezba_backend.Controllers
 {
     public class UserController : ApiController
     {
-        // GET api/<controller>
+        // GET api/<controller>/
         public HttpResponseMessage Get()
         {
             int cnt = -66;
@@ -28,10 +28,16 @@ namespace vjezba_backend.Controllers
             }
         }
 
-        // GET api/<controller>/5
+        // GET api/<controller>/{id}
         public string Get(int id)
         {
-            return id.ToString();
+            using (var db = new VjezbaEntities())
+            {
+                var u =from x in db.user
+                         where x.Id == id
+                         select x;
+                return u.First().username;
+            }
         }
 
         class unutarnjaKlasa
