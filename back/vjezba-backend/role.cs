@@ -12,24 +12,18 @@ namespace vjezba_backend
     using System;
     using System.Collections.Generic;
     
-    public partial class characterSet
+    public partial class role
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public characterSet()
+        public role()
         {
-            this.actorDoingCharacterSet = new HashSet<actorDoingCharacterSet>();
-            this.imageSet = new HashSet<imageSet>();
+            this.user = new HashSet<user>();
         }
     
-        public int Id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public System.DateTime dateCreated { get; set; }
-        public System.DateTime dateLastUpdated { get; set; }
+        public string roleName { get; set; }
+        public string roleDescription { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<actorDoingCharacterSet> actorDoingCharacterSet { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<imageSet> imageSet { get; set; }
+        public virtual ICollection<user> user { get; set; }
     }
 }

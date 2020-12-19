@@ -130,11 +130,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="actorDoingCharacterSet.cs">
+    <Compile Include="actorDoingCharacter.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="characterSet.cs">
+    <Compile Include="character.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\UserController.cs" />
@@ -153,47 +153,47 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="filmEntryHasGenreSet.cs">
+    <Compile Include="filmEntry.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="filmEntrySet.cs">
+    <Compile Include="filmEntryHasGenre.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="filmEntrySet_movie.cs">
+    <Compile Include="filmEntry_movie.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="filmEntrySet_tvShow.cs">
+    <Compile Include="filmEntry_tvShow.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="genreSet.cs">
+    <Compile Include="genre.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="imageSet.cs">
+    <Compile Include="image.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="movieListEntrySet.cs">
+    <Compile Include="movieList.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="movieListSet.cs">
+    <Compile Include="movieListEntry.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="personInFilmEntrySet.cs">
+    <Compile Include="person.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="personRoleSet.cs">
+    <Compile Include="personInFilmEntry.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="personSet.cs">
+    <Compile Include="personRole.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="roleSet.cs">
+    <Compile Include="role.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="userSet.cs">
+    <Compile Include="user.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

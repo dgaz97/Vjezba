@@ -12,15 +12,15 @@ namespace vjezba_backend
     using System;
     using System.Collections.Generic;
     
-    public partial class filmEntrySet
+    public partial class filmEntry
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public filmEntrySet()
+        public filmEntry()
         {
-            this.filmEntryHasGenreSet = new HashSet<filmEntryHasGenreSet>();
-            this.personInFilmEntrySet = new HashSet<personInFilmEntrySet>();
-            this.movieListEntrySet = new HashSet<movieListEntrySet>();
-            this.imageSet = new HashSet<imageSet>();
+            this.personInFilmEntry = new HashSet<personInFilmEntry>();
+            this.filmEntryHasGenre = new HashSet<filmEntryHasGenre>();
+            this.movieListEntry = new HashSet<movieListEntry>();
+            this.image = new HashSet<image>();
         }
     
         public int Id { get; set; }
@@ -34,15 +34,15 @@ namespace vjezba_backend
         public string countryOfOrigin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<filmEntryHasGenreSet> filmEntryHasGenreSet { get; set; }
+        public virtual ICollection<personInFilmEntry> personInFilmEntry { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<personInFilmEntrySet> personInFilmEntrySet { get; set; }
+        public virtual ICollection<filmEntryHasGenre> filmEntryHasGenre { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<movieListEntrySet> movieListEntrySet { get; set; }
-        public virtual filmEntrySet_movie filmEntrySet_movie { get; set; }
-        public virtual filmEntrySet_tvShow filmEntrySet_tvShow { get; set; }
-        public virtual filmEntrySet_tvShow filmEntrySet_tvShow1 { get; set; }
+        public virtual ICollection<movieListEntry> movieListEntry { get; set; }
+        public virtual filmEntry_movie filmEntry_movie { get; set; }
+        public virtual filmEntry_tvShow filmEntry_tvShow { get; set; }
+        public virtual filmEntry_tvShow filmEntry_tvShow1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<imageSet> imageSet { get; set; }
+        public virtual ICollection<image> image { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace vjezba_backend.Controllers
             int cnt = -66;
             using (var db = new VjezbaEntities())
             {
-                cnt = db.userSet.Count();
+                cnt = db.user.Count();
                 HttpResponseMessage m = new HttpResponseMessage(HttpStatusCode.OK);
                 m.Content = new StringContent($"{{\"date\": \"test\", \"ggg\": 52, \"brojKorisnika\":{cnt}}}", System.Text.Encoding.UTF8, "application/json");
                 return m;
@@ -47,16 +47,14 @@ namespace vjezba_backend.Controllers
         [HttpPost]
         public string Post(/*[FromBody] string value*/)
         {
-            //HttpResponseMessage m = new HttpResponseMessage(HttpStatusCode.OK);
-            //m.Content = new StringContent($"{value}", System.Text.Encoding.UTF8, "text/plain");
-            //return m;
             Task<string> t = Request.Content.ReadAsStringAsync();
             t.Wait();
+            using (var db=new VjezbaEntities())
+            {
+                user k = (user) JsonSerializer.Deserialize(t.Result, typeof(user));
+                return k.ToString();
 
-            unutarnjaKlasa k = (unutarnjaKlasa) JsonSerializer.Deserialize(t.Result, typeof(unutarnjaKlasa));
-            return k.ToString();
-            //return (Regex.Unescape(t.Result));
-            //return (string) JObject.Parse(t.Result.Replace(System.Environment.NewLine, String.Empty)).ToString();
+            }
             
         }
 

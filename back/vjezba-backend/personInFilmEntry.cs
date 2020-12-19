@@ -12,19 +12,25 @@ namespace vjezba_backend
     using System;
     using System.Collections.Generic;
     
-    public partial class genreSet
+    public partial class personInFilmEntry
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public genreSet()
+        public personInFilmEntry()
         {
-            this.filmEntryHasGenreSet = new HashSet<filmEntryHasGenreSet>();
+            this.actorDoingCharacter = new HashSet<actorDoingCharacter>();
         }
     
         public int Id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
+        public System.DateTime dateCreated { get; set; }
+        public System.DateTime dateLastUpdated { get; set; }
+        public int filmEntry_Id { get; set; }
+        public int person_Id { get; set; }
+        public string personRole_roleName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<filmEntryHasGenreSet> filmEntryHasGenreSet { get; set; }
+        public virtual ICollection<actorDoingCharacter> actorDoingCharacter { get; set; }
+        public virtual filmEntry filmEntry { get; set; }
+        public virtual person person { get; set; }
+        public virtual personRole personRole { get; set; }
     }
 }

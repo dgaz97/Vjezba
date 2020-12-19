@@ -16,7 +16,7 @@ namespace vjezba_backend
     public partial class VjezbaEntities : DbContext
     {
         public VjezbaEntities()
-            : base("name=VjezbaEntities1")
+            : base("name=VjezbaEntities")
         {
         }
     
@@ -25,20 +25,20 @@ namespace vjezba_backend
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<actorDoingCharacterSet> actorDoingCharacterSet { get; set; }
-        public virtual DbSet<characterSet> characterSet { get; set; }
-        public virtual DbSet<filmEntryHasGenreSet> filmEntryHasGenreSet { get; set; }
-        public virtual DbSet<filmEntrySet> filmEntrySet { get; set; }
-        public virtual DbSet<filmEntrySet_movie> filmEntrySet_movie { get; set; }
-        public virtual DbSet<filmEntrySet_tvShow> filmEntrySet_tvShow { get; set; }
-        public virtual DbSet<genreSet> genreSet { get; set; }
-        public virtual DbSet<imageSet> imageSet { get; set; }
-        public virtual DbSet<movieListEntrySet> movieListEntrySet { get; set; }
-        public virtual DbSet<movieListSet> movieListSet { get; set; }
-        public virtual DbSet<personInFilmEntrySet> personInFilmEntrySet { get; set; }
-        public virtual DbSet<personRoleSet> personRoleSet { get; set; }
-        public virtual DbSet<personSet> personSet { get; set; }
-        public virtual DbSet<roleSet> roleSet { get; set; }
-        public virtual DbSet<userSet> userSet { get; set; }
+        public virtual DbSet<actorDoingCharacter> actorDoingCharacter { get; set; }
+        public virtual DbSet<character> character { get; set; }
+        public virtual DbSet<filmEntry> filmEntry { get; set; }
+        public virtual DbSet<filmEntry_movie> filmEntry_movie { get; set; }
+        public virtual DbSet<filmEntry_tvShow> filmEntry_tvShow { get; set; }
+        public virtual DbSet<filmEntryHasGenre> filmEntryHasGenre { get; set; }
+        public virtual DbSet<genre> genre { get; set; }
+        public virtual DbSet<image> image { get; set; }
+        public virtual DbSet<movieList> movieList { get; set; }
+        public virtual DbSet<movieListEntry> movieListEntry { get; set; }
+        public virtual DbSet<person> person { get; set; }
+        public virtual DbSet<personInFilmEntry> personInFilmEntry { get; set; }
+        public virtual DbSet<personRole> personRole { get; set; }
+        public virtual DbSet<role> role { get; set; }
+        public virtual DbSet<user> user { get; set; }
     }
 }

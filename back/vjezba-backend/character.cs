@@ -12,20 +12,24 @@ namespace vjezba_backend
     using System;
     using System.Collections.Generic;
     
-    public partial class filmEntrySet_tvShow
+    public partial class character
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public filmEntrySet_tvShow()
+        public character()
         {
-            this.filmEntrySet1 = new HashSet<filmEntrySet>();
+            this.actorDoingCharacter = new HashSet<actorDoingCharacter>();
+            this.image = new HashSet<image>();
         }
     
-        public Nullable<System.DateTime> dateFirstEpisodeAired { get; set; }
-        public Nullable<System.DateTime> dateLastEpisodeAired { get; set; }
         public int Id { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
+        public System.DateTime dateCreated { get; set; }
+        public System.DateTime dateLastUpdated { get; set; }
     
-        public virtual filmEntrySet filmEntrySet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<filmEntrySet> filmEntrySet1 { get; set; }
+        public virtual ICollection<actorDoingCharacter> actorDoingCharacter { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<image> image { get; set; }
     }
 }

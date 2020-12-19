@@ -12,13 +12,16 @@ namespace vjezba_backend
     using System;
     using System.Collections.Generic;
     
-    public partial class filmEntryHasGenreSet
+    public partial class image
     {
         public int Id { get; set; }
-        public int genre_Id { get; set; }
-        public int filmEntry_Id { get; set; }
+        public string link { get; set; }
+        public string altText { get; set; }
+        public System.DateTime dateCreated { get; set; }
+        public System.DateTime dateLastUpdated { get; set; }
     
-        public virtual filmEntrySet filmEntrySet { get; set; }
-        public virtual genreSet genreSet { get; set; }
+        public virtual character character { get; set; }
+        public virtual filmEntry filmEntry { get; set; }
+        public virtual person person { get; set; }
     }
 }

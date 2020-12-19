@@ -12,13 +12,13 @@ namespace vjezba_backend
     using System;
     using System.Collections.Generic;
     
-    public partial class personSet
+    public partial class person
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public personSet()
+        public person()
         {
-            this.personInFilmEntrySet = new HashSet<personInFilmEntrySet>();
-            this.imageSet = new HashSet<imageSet>();
+            this.personInFilmEntry = new HashSet<personInFilmEntry>();
+            this.image = new HashSet<image>();
         }
     
         public int Id { get; set; }
@@ -29,8 +29,8 @@ namespace vjezba_backend
         public System.DateTime dateLastUpdated { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<personInFilmEntrySet> personInFilmEntrySet { get; set; }
+        public virtual ICollection<personInFilmEntry> personInFilmEntry { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<imageSet> imageSet { get; set; }
+        public virtual ICollection<image> image { get; set; }
     }
 }
