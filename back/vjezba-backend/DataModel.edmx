@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="VjezbaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="actorDoingCharacterSet">
           <Key>
             <PropertyRef Name="Id" />
@@ -447,7 +447,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="VjezbaModelStoreContainer">
+        <EntityContainer Name="DataModelStoreContainer">
           <EntitySet Name="actorDoingCharacterSet" EntityType="Self.actorDoingCharacterSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="characterSet" EntityType="Self.characterSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="filmEntryHasGenreSet" EntityType="Self.filmEntryHasGenreSet" Schema="dbo" store:Type="Tables" />
@@ -556,7 +556,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="VjezbaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="actorDoingCharacterSet">
           <Key>
             <PropertyRef Name="Id" />
@@ -917,7 +917,7 @@
           <End Role="personSet" Type="Self.personSet" Multiplicity="0..1" />
           <End Role="imageSet" Type="Self.imageSet" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="VjezbaEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="VjezbaEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="actorDoingCharacterSet" EntityType="Self.actorDoingCharacterSet" />
           <EntitySet Name="characterSet" EntityType="Self.characterSet" />
           <EntitySet Name="filmEntryHasGenreSet" EntityType="Self.filmEntryHasGenreSet" />
@@ -1007,9 +1007,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="VjezbaModelStoreContainer" CdmEntityContainer="VjezbaEntities">
+        <EntityContainerMapping StorageEntityContainer="DataModelStoreContainer" CdmEntityContainer="VjezbaEntities1">
           <EntitySetMapping Name="actorDoingCharacterSet">
-            <EntityTypeMapping TypeName="VjezbaModel.actorDoingCharacterSet">
+            <EntityTypeMapping TypeName="DataModel.actorDoingCharacterSet">
               <MappingFragment StoreEntitySet="actorDoingCharacterSet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
@@ -1020,7 +1020,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="characterSet">
-            <EntityTypeMapping TypeName="VjezbaModel.characterSet">
+            <EntityTypeMapping TypeName="DataModel.characterSet">
               <MappingFragment StoreEntitySet="characterSet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1031,7 +1031,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="filmEntryHasGenreSet">
-            <EntityTypeMapping TypeName="VjezbaModel.filmEntryHasGenreSet">
+            <EntityTypeMapping TypeName="DataModel.filmEntryHasGenreSet">
               <MappingFragment StoreEntitySet="filmEntryHasGenreSet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="genre_Id" ColumnName="genre_Id" />
@@ -1040,7 +1040,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="filmEntrySet">
-            <EntityTypeMapping TypeName="VjezbaModel.filmEntrySet">
+            <EntityTypeMapping TypeName="DataModel.filmEntrySet">
               <MappingFragment StoreEntitySet="filmEntrySet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1055,14 +1055,14 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="filmEntrySet_movie">
-            <EntityTypeMapping TypeName="VjezbaModel.filmEntrySet_movie">
+            <EntityTypeMapping TypeName="DataModel.filmEntrySet_movie">
               <MappingFragment StoreEntitySet="filmEntrySet_movie">
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="filmEntrySet_tvShow">
-            <EntityTypeMapping TypeName="VjezbaModel.filmEntrySet_tvShow">
+            <EntityTypeMapping TypeName="DataModel.filmEntrySet_tvShow">
               <MappingFragment StoreEntitySet="filmEntrySet_tvShow">
                 <ScalarProperty Name="dateFirstEpisodeAired" ColumnName="dateFirstEpisodeAired" />
                 <ScalarProperty Name="dateLastEpisodeAired" ColumnName="dateLastEpisodeAired" />
@@ -1071,7 +1071,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="genreSet">
-            <EntityTypeMapping TypeName="VjezbaModel.genreSet">
+            <EntityTypeMapping TypeName="DataModel.genreSet">
               <MappingFragment StoreEntitySet="genreSet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1080,7 +1080,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="imageSet">
-            <EntityTypeMapping TypeName="VjezbaModel.imageSet">
+            <EntityTypeMapping TypeName="DataModel.imageSet">
               <MappingFragment StoreEntitySet="imageSet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="link" ColumnName="link" />
@@ -1091,7 +1091,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="movieListEntrySet">
-            <EntityTypeMapping TypeName="VjezbaModel.movieListEntrySet">
+            <EntityTypeMapping TypeName="DataModel.movieListEntrySet">
               <MappingFragment StoreEntitySet="movieListEntrySet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="userRating" ColumnName="userRating" />
@@ -1103,7 +1103,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="movieListSet">
-            <EntityTypeMapping TypeName="VjezbaModel.movieListSet">
+            <EntityTypeMapping TypeName="DataModel.movieListSet">
               <MappingFragment StoreEntitySet="movieListSet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="listName" ColumnName="listName" />
@@ -1114,7 +1114,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="personInFilmEntrySet">
-            <EntityTypeMapping TypeName="VjezbaModel.personInFilmEntrySet">
+            <EntityTypeMapping TypeName="DataModel.personInFilmEntrySet">
               <MappingFragment StoreEntitySet="personInFilmEntrySet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
@@ -1126,7 +1126,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="personRoleSet">
-            <EntityTypeMapping TypeName="VjezbaModel.personRoleSet">
+            <EntityTypeMapping TypeName="DataModel.personRoleSet">
               <MappingFragment StoreEntitySet="personRoleSet">
                 <ScalarProperty Name="roleName" ColumnName="roleName" />
                 <ScalarProperty Name="roleDescription" ColumnName="roleDescription" />
@@ -1134,7 +1134,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="personSet">
-            <EntityTypeMapping TypeName="VjezbaModel.personSet">
+            <EntityTypeMapping TypeName="DataModel.personSet">
               <MappingFragment StoreEntitySet="personSet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="firstName" ColumnName="firstName" />
@@ -1146,7 +1146,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="roleSet">
-            <EntityTypeMapping TypeName="VjezbaModel.roleSet">
+            <EntityTypeMapping TypeName="DataModel.roleSet">
               <MappingFragment StoreEntitySet="roleSet">
                 <ScalarProperty Name="roleName" ColumnName="roleName" />
                 <ScalarProperty Name="roleDescription" ColumnName="roleDescription" />
@@ -1154,7 +1154,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="userSet">
-            <EntityTypeMapping TypeName="VjezbaModel.userSet">
+            <EntityTypeMapping TypeName="DataModel.userSet">
               <MappingFragment StoreEntitySet="userSet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="username" ColumnName="username" />
@@ -1173,7 +1173,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="filmEntrySet_tvShowEpisode" TypeName="VjezbaModel.filmEntrySet_tvShowEpisode" StoreEntitySet="filmEntrySet_tvShowEpisode">
+          <AssociationSetMapping Name="filmEntrySet_tvShowEpisode" TypeName="DataModel.filmEntrySet_tvShowEpisode" StoreEntitySet="filmEntrySet_tvShowEpisode">
             <EndProperty Name="filmEntrySet">
               <ScalarProperty Name="Id" ColumnName="Id" />
             </EndProperty>
@@ -1181,7 +1181,7 @@
               <ScalarProperty Name="Id" ColumnName="tvShow_Id" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="imageSet_characterImage" TypeName="VjezbaModel.imageSet_characterImage" StoreEntitySet="imageSet_characterImage">
+          <AssociationSetMapping Name="imageSet_characterImage" TypeName="DataModel.imageSet_characterImage" StoreEntitySet="imageSet_characterImage">
             <EndProperty Name="characterSet">
               <ScalarProperty Name="Id" ColumnName="character_Id" />
             </EndProperty>
@@ -1189,7 +1189,7 @@
               <ScalarProperty Name="Id" ColumnName="Id" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="imageSet_filmEntryImage" TypeName="VjezbaModel.imageSet_filmEntryImage" StoreEntitySet="imageSet_filmEntryImage">
+          <AssociationSetMapping Name="imageSet_filmEntryImage" TypeName="DataModel.imageSet_filmEntryImage" StoreEntitySet="imageSet_filmEntryImage">
             <EndProperty Name="filmEntrySet">
               <ScalarProperty Name="Id" ColumnName="filmEntry_Id" />
             </EndProperty>
@@ -1197,7 +1197,7 @@
               <ScalarProperty Name="Id" ColumnName="Id" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="imageSet_personImage" TypeName="VjezbaModel.imageSet_personImage" StoreEntitySet="imageSet_personImage">
+          <AssociationSetMapping Name="imageSet_personImage" TypeName="DataModel.imageSet_personImage" StoreEntitySet="imageSet_personImage">
             <EndProperty Name="personSet">
               <ScalarProperty Name="Id" ColumnName="actor_Id" />
             </EndProperty>

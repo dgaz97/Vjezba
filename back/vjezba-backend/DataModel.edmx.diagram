@@ -4,39 +4,39 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fb0018418f754dff85595b05c4d5c21b" Name="Diagram1">
-        <EntityTypeShape EntityType="VjezbaModel.actorDoingCharacterSet" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.characterSet" Width="1.5" PointX="3.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.filmEntryHasGenreSet" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.filmEntrySet" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.filmEntrySet_movie" Width="1.5" PointX="3" PointY="17.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.filmEntrySet_tvShow" Width="1.5" PointX="3" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.genreSet" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.imageSet" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.movieListEntrySet" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.movieListSet" Width="1.5" PointX="0.75" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.personInFilmEntrySet" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.personRoleSet" Width="1.5" PointX="0.75" PointY="17.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.personSet" Width="1.5" PointX="3.75" PointY="23.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.roleSet" Width="1.5" PointX="1.5" PointY="28.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.userSet" Width="1.5" PointX="1.5" PointY="23.25" IsExpanded="true" />
-        <AssociationConnector Association="VjezbaModel.FK_characteractorDoingCharacter" ManuallyRouted="false" />
-        <AssociationConnector Association="VjezbaModel.FK_personInFilmEntryactorDoingCharacter" ManuallyRouted="false" />
-        <AssociationConnector Association="VjezbaModel.FK_filmEntryfilmEntryHasGenre" ManuallyRouted="false" />
-        <AssociationConnector Association="VjezbaModel.FK_genrefilmEntryHasGenre" ManuallyRouted="false" />
-        <AssociationConnector Association="VjezbaModel.FK_filmEntryactorInFilmEntry" ManuallyRouted="false" />
-        <AssociationConnector Association="VjezbaModel.FK_filmEntrymovieListEntry" ManuallyRouted="false" />
-        <AssociationConnector Association="VjezbaModel.FK_movie_inherits_filmEntry" ManuallyRouted="false" />
-        <AssociationConnector Association="VjezbaModel.FK_tvShow_inherits_filmEntry" ManuallyRouted="false" />
-        <AssociationConnector Association="VjezbaModel.FK_movieListmovieListEntry" ManuallyRouted="false" />
-        <AssociationConnector Association="VjezbaModel.FK_usermovieList" ManuallyRouted="false" />
-        <AssociationConnector Association="VjezbaModel.FK_personpersonInFilmEntry" ManuallyRouted="false" />
-        <AssociationConnector Association="VjezbaModel.FK_personRolepersonInFilmEntry" ManuallyRouted="false" />
-        <AssociationConnector Association="VjezbaModel.FK_roleuser" ManuallyRouted="false" />
-        <AssociationConnector Association="VjezbaModel.filmEntrySet_tvShowEpisode" ManuallyRouted="false" />
-        <AssociationConnector Association="VjezbaModel.imageSet_characterImage" ManuallyRouted="false" />
-        <AssociationConnector Association="VjezbaModel.imageSet_filmEntryImage" ManuallyRouted="false" />
-        <AssociationConnector Association="VjezbaModel.imageSet_personImage" ManuallyRouted="false" />
+      <Diagram DiagramId="19e33a0a5802417bb40e7b920724e3ae" Name="Diagram1">
+        <EntityTypeShape EntityType="DataModel.actorDoingCharacterSet" Width="1.5" PointX="8.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.characterSet" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.filmEntryHasGenreSet" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.filmEntrySet" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.filmEntrySet_movie" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.filmEntrySet_tvShow" Width="1.5" PointX="3" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.genreSet" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.imageSet" Width="1.5" PointX="6" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.movieListEntrySet" Width="1.5" PointX="6" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.movieListSet" Width="1.5" PointX="3.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.personInFilmEntrySet" Width="1.5" PointX="6" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.personRoleSet" Width="1.5" PointX="3.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.personSet" Width="1.5" PointX="3.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.roleSet" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.userSet" Width="1.5" PointX="1.5" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="DataModel.FK_characteractorDoingCharacter" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_personInFilmEntryactorDoingCharacter" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_filmEntryfilmEntryHasGenre" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_genrefilmEntryHasGenre" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_filmEntryactorInFilmEntry" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_filmEntrymovieListEntry" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_movie_inherits_filmEntry" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_tvShow_inherits_filmEntry" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_movieListmovieListEntry" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_usermovieList" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_personpersonInFilmEntry" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_personRolepersonInFilmEntry" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK_roleuser" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.filmEntrySet_tvShowEpisode" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.imageSet_characterImage" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.imageSet_filmEntryImage" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.imageSet_personImage" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
