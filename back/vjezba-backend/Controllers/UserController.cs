@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json.Linq;
 using System.Text;
+using AutoMapper;
+using vjezba_backend.Models;
+using System.Security.Cryptography;
 
 namespace vjezba_backend.Controllers
 {
@@ -52,13 +55,40 @@ namespace vjezba_backend.Controllers
         }
         // POST api/<controller>
         [HttpPost]
-        public HttpResponseMessage Post(/*[FromBody] string value*/)
+        public HttpResponseMessage Post([FromBody] UserToRegister value)
         {
+            int SALTSIZE = 48;
+            int HASHSIZE = 48;
+            int ITERATIONS = 15000;
+            HashAlgorithmName HASH = HashAlgorithmName.SHA256;
+            //PBKDF2
+
             Task<string> t = Request.Content.ReadAsStringAsync();
             t.Wait();
+
+            MapperConfiguration config = (MapperConfiguration) new MapperConfiguration(cfg => cfg.CreateMap<UserToRegister, user>());
+
+            user u = config.CreateMapper().Map<user>(value);
+
+            byte[] salt = new byte[SALTSIZE];
+            RandomNumberGenerator rcsp = RNGCryptoServiceProvider.Create();
+            rcsp.GetBytes(salt);
+            u.passSalt = Convert.ToBase64String(salt);
+            Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(value.password, salt, ITERATIONS, HASH);
+            u.passHash = Convert.ToBase64String(pbkdf2.GetBytes(HASHSIZE));
+
+            u.verified = false;
+            u.banned = false;
+            u.banReason = null;
+            u.registrationTime = DateTime.Now;
+            u.avatarLink = "img/default.webp";
+            u.role_roleName = "user";
+
+            //u.passSalt=System.Security.Cryptography
+
             using (var db=new VjezbaEntities())
             {
-                user u = (user) JsonSerializer.Deserialize(t.Result, typeof(user));
+                //user u = (user) JsonSerializer.Deserialize(t.Result, typeof(user));
                 StringBuilder sb = new StringBuilder();
                 HttpResponseMessage m;
                 HttpStatusCode status;
@@ -66,12 +96,23 @@ namespace vjezba_backend.Controllers
                 int usersWithUsername = (from x in db.user
                             where x.username == u.username
                             select x).Count();
+                int usersWithEmail = (from x in db.user
+                                         where x.email == u.email
+                                         select x).Count();
                 if (usersWithUsername != 0)
                 {
                     status = HttpStatusCode.BadRequest;
                     sb.AppendLine($"{{");
                     sb.AppendLine($"\"success\":false,");
                     sb.AppendLine($"\"errorMsg\":\"User already exists\"");
+                    sb.AppendLine($"}}");
+                }
+                else if (usersWithEmail != 0)
+                {
+                    status = HttpStatusCode.BadRequest;
+                    sb.AppendLine($"{{");
+                    sb.AppendLine($"\"success\":false,");
+                    sb.AppendLine($"\"errorMsg\":\"Email already in use\"");
                     sb.AppendLine($"}}");
                 }
                 else try
