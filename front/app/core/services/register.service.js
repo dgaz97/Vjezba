@@ -9,4 +9,14 @@ angular
                 }
             });
         }
+    ])
+    .factory('CheckUsername', ['$resource',
+        function ($resource) {
+            return $resource('https://localhost:44385/api/user/check/:Username', {}, {
+                checkUsername: {
+                    method: 'GET',
+                    params:{Username:'Username'}
+                }
+            });
+        }
     ]);
