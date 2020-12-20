@@ -13,9 +13,11 @@ using System.Text;
 using AutoMapper;
 using vjezba_backend.Models;
 using System.Security.Cryptography;
+using System.Web.Http.Cors;
 
 namespace vjezba_backend.Controllers
 {
+    [EnableCors(origins: "http://localhost:8000", headers: "*", methods: "*")]
     public class UserController : ApiController
     {
         // GET api/<controller>/
