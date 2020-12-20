@@ -17,12 +17,13 @@ using System.Web.Http.Cors;
 
 namespace vjezba_backend.Controllers
 {
-    [EnableCors(origins: "http://localhost:8000", headers: "*", methods: "*")]
+    [EnableCors(origins: "http://localhost:8000, https://localhost:8000", headers: "*", methods: "*")]
     public class UserController : ApiController
     {
         // GET api/<controller>/
         public HttpResponseMessage Get()
         {
+            Console.WriteLine($"Entered user get");
             int cnt = -66;
             using (var db = new VjezbaEntities())
             {
@@ -34,14 +35,22 @@ namespace vjezba_backend.Controllers
         }
 
         // GET api/<controller>/{id}
-        public string Get(int id)
+        public object Get(int id)
         {
+            Console.WriteLine($"Entered user get with id {id}");
             using (var db = new VjezbaEntities())
             {
                 var u =from x in db.user
                          where x.Id == id
                          select x;
-                return u.First().username;
+                if (u.Count() != 0)
+                {
+                    return u.First().ToJson();
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
