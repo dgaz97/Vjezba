@@ -10,5 +10,6 @@ angular.module('myApp', [
   'myApp.bs1',
   'myApp.bs2',
   'myApp.bs3',
+  'myApp.register-view',
   'myApp.version'
 ]);

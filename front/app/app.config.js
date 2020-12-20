@@ -17,6 +17,9 @@ angular
             .when('/bootstrap/bs3',{
                 template: '<bs3></bs3>'
             })
+            .when('/register',{
+                template: '<register-view></register-view>'
+            })
             .otherwise('/home');
     }]
 );
