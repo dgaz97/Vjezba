@@ -78,7 +78,6 @@ namespace vjezba_backend.Controllers
             t.Wait();
 
             MapperConfiguration config = (MapperConfiguration) new MapperConfiguration(cfg => cfg.CreateMap<UserToRegister, user>());
-
             user u = config.CreateMapper().Map<user>(value);
 
             byte[] salt = new byte[SALTSIZE];

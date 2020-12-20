@@ -13,6 +13,5 @@ namespace vjezba_backend.Models
         public string firstName { get; set; }
         public string lastName { get; set; }
         public System.DateTime birthdate { get; set; }
-        public string role_roleName { get; set; }
     }
 }
