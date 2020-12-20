@@ -54,6 +54,37 @@ namespace vjezba_backend.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("api/user/check/{Username}")]
+        public HttpResponseMessage CheckUsername(string Username)
+        {
+            HttpResponseMessage m;
+            HttpStatusCode status;
+            StringBuilder sb = new StringBuilder();
+            using (var db = new VjezbaEntities())
+            {
+                int count = (from x in db.user
+                             where x.username == Username
+                             select x).Count();
+                if (count != 0)
+                {
+                    status = HttpStatusCode.OK;
+                    sb.Append($@"{{");
+                    sb.Append($@"""status"":""exists""");
+                    sb.Append($@"}}");
+                }
+                else {
+                    status = HttpStatusCode.OK;
+                    sb.Append($@"{{");
+                    sb.Append($@"""status"":""noexists""");
+                    sb.Append($@"}}");
+                }
+            }
+            m = new HttpResponseMessage(status);
+            m.Content = new StringContent(sb.ToString(), System.Text.Encoding.UTF8, "application/json");
+            return m;
+        }
+
         class unutarnjaKlasa
         {
             bool test;
