@@ -1,6 +1,64 @@
 <div class="container">
-    <p>{{$ctrl.test}} teijouifsahiouzgoi</p>
+
+    <form class="form-horizontal">
+    <div class="form-group row" id="username-fg">
+        <div class="col-sm-3">
+            <label for="username" class="control-label">Username</label>
+        </div>
+        <div class="col-sm-9">
+            <input class="form-control input-lg" ng-model="$ctrl.username" id="username" ng-change="$ctrl.cond()"/>
+        </div>
+    </div>
+    <div class="form-group row" id="email-fg">
+        <div class="col-sm-3">
+            <label for="email" class="control-label">Email</label>
+        </div>
+        <div class="col-sm-9">
+            <input type="email" class="form-control input-lg" ng-model="$ctrl.email" id="email" ng-change="$ctrl.cond()"/>
+        </div>
+    </div>
+    <div class="form-group row" id="password1-fg">
+        <div class="col-sm-3">
+            <label for="password1" class="control-label">Password</label>
+            <div id="check-passworddoesntmatch" ng-hide="{{$ctrl.hidePassMismatch}}">
+                <p class="text-danger">Password doesn't match</p>
+            </div>
+            <div id="check-passwordwrongformat" ng-hide="{{$ctrl.hideBadPassFormat}}">
+                <p class="text-danger">Password must be at least 8 characters, and must contain a number and a capital and a lowercase letter</p>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <input type="password" class="form-control input-lg" ng-model="$ctrl.password1" id="password1" ng-change="$ctrl.cond()"/>
+        </div>
+    </div>
+    <div class="form-group row" id="password2-fg">
+        <div class="col-sm-3">
+            <label for="password2" class="control-label">Repeat password</label>
+        </div>
+        <div class="col-sm-9">
+            <input type="password" class="form-control input-lg" ng-model="$ctrl.password2" id="password2" ng-change="$ctrl.cond()"/>
+        </div>
+    </div>
+    <div class="form-group row" id="firstname-fg">
+        <div class="col-sm-3">
+            <label for="firstname" class="control-label">First name</label>
+        </div>
+        <div class="col-sm-9">
+            <input class="form-control input-lg" ng-model="$ctrl.firstName" id="firstname" ng-change="$ctrl.cond()"/>
+        </div>
+    </div>
+    <div class="form-group row" id="lastname-fg">
+        <div class="col-sm-3">
+            <label for="lastname" class="control-label">Last name</label>
+        </div>
+        <div class="col-sm-9">
+            <input class="form-control input-lg" ng-model="$ctrl.lastName" id="lastname" ng-change="$ctrl.cond()"/>
+        </div>
+    </div>
+    </form>
+
+    <!--p>{{$ctrl.test}} teijouifsahiouzgoi</p>
     <h1>{{$ctrl.user}}</h1>
-    <input type="input" class="input" ng-model="$ctrl.brojKorisnika" ng-change="$ctrl.updateUser()"/>
+    <input type="input" class="input" ng-model="$ctrl.brojKorisnika" ng-change="$ctrl.updateUser()"/-->
 </div>
 <!--h2>{{$ctrl.self.user}} bbbbbbb</h2-->

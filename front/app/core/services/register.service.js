@@ -3,10 +3,9 @@ angular
     .factory('Register', ['$resource',
         function ($resource) {
             return $resource('https://localhost:44385/api/user/:Id', {}, {
-                query: {
+                getUser: {
                     method: 'GET',
-                    params:{Id:'Id'},
-                    isArray: true
+                    params:{Id:'Id'}
                 }
             });
         }
