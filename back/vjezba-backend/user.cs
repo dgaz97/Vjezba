@@ -11,7 +11,8 @@ namespace vjezba_backend
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Text;
+
     public partial class user
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -38,5 +39,16 @@ namespace vjezba_backend
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<movieList> movieList { get; set; }
         public virtual role role { get; set; }
+
+        public object ToJson()
+        {
+            var x = new
+            {
+                username = username,
+                firstName = firstName,
+                lastName = lastName
+            };
+            return x;
+
     }
 }
