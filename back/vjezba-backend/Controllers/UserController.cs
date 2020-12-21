@@ -85,6 +85,47 @@ namespace vjezba_backend.Controllers
             return m;
         }
 
+        [HttpPost]
+        [Route("api/user/checkEmail/")]
+        public HttpResponseMessage CheckEmail([FromBody] JObject data)
+        {
+            HttpResponseMessage m;
+            HttpStatusCode status;
+            StringBuilder sb = new StringBuilder();
+            JToken EmailToken;
+            String Email;
+
+            if (!data.TryGetValue("Email", out EmailToken)) {
+                m = new HttpResponseMessage(HttpStatusCode.BadRequest);
+                return m;
+            }
+            Email=EmailToken.Value<String>();
+            
+            using (var db = new VjezbaEntities())
+            {
+                int count = (from x in db.user
+                             where x.email == Email
+                             select x).Count();
+                if (count != 0)
+                {
+                    status = HttpStatusCode.OK;
+                    sb.Append($@"{{");
+                    sb.Append($@"""status"":""exists""");
+                    sb.Append($@"}}");
+                }
+                else
+                {
+                    status = HttpStatusCode.OK;
+                    sb.Append($@"{{");
+                    sb.Append($@"""status"":""noexists""");
+                    sb.Append($@"}}");
+                }
+            }
+            m = new HttpResponseMessage(status);
+            m.Content = new StringContent(sb.ToString(), System.Text.Encoding.UTF8, "application/json");
+            return m;
+        }
+
         class unutarnjaKlasa
         {
             bool test;

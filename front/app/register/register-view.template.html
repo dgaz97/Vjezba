@@ -15,9 +15,12 @@
     <div class="form-group row" id="email-fg">
         <div class="col-sm-3">
             <label for="email" class="control-label">Email</label>
+            <div id="check-emailexists" ng-hide="{{$ctrl.hideEmailExists}}">
+                <p class="text-danger">Email already in use</p>
+            </div>
         </div>
         <div class="col-sm-9">
-            <input type="email" class="form-control input-lg" ng-model="$ctrl.email" id="email" ng-change="$ctrl.cond()"/>
+            <input type="email" class="form-control input-lg" ng-model="$ctrl.email" id="email" ng-change="$ctrl.emailCheck()"/>
         </div>
     </div>
     <div class="form-group row" id="password1-fg">

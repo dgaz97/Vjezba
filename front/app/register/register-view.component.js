@@ -1,8 +1,8 @@
 angular.module('myApp.register-view')
     .component('registerView', {
         templateUrl: 'register/register-view.template.html',
-        controller: ['$routeParams', 'Register', 'CheckUsername',
-         function RegisterController($routeParams, Register, CheckUsername) {
+        controller: ['$routeParams', 'Register', 'CheckUsername', 'CheckEmail',
+         function RegisterController($routeParams, Register, CheckUsername, CheckEmail) {
             var self = this;
             self.brojKorisnika = 5;
 
@@ -16,6 +16,7 @@ angular.module('myApp.register-view')
             self.hidePassMismatch = "true";
             self.hideBadPassFormat = "true";
             self.hideUsernameExists = "true";
+            self.hideEmailExists = "true";
 
             //self.allGood=false;
 
@@ -82,9 +83,22 @@ angular.module('myApp.register-view')
                         angular.element(document.querySelector("#check-usernameexists")).addClass("ng-hide");
                     }
                 });
+            }
 
-
-
+            self.emailCheck = function () {
+                self.userData = CheckEmail.checkEmail({ Email: self.email }).$promise
+                .then(function(data){
+                    if (data.status == 'exists') {
+                        angular.element(document.querySelector("#email-fg")).addClass("has-error");
+                        self.hideEmailExists = "false";
+                        angular.element(document.querySelector("#check-emailexists")).removeClass("ng-hide");
+                        return;
+                    } else {
+                        angular.element(document.querySelector("#email-fg")).removeClass("has-error");
+                        self.hideEmailExists = "false";
+                        angular.element(document.querySelector("#check-emailexists")).addClass("ng-hide");
+                    }
+                });
             }
 
             self.test = "kkkkkjjjjj";

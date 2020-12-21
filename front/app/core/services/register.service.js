@@ -19,4 +19,14 @@ angular
                 }
             });
         }
+    ])
+    .factory('CheckEmail', ['$resource',
+        function ($resource) {
+            return $resource('https://localhost:44385/api/user/checkEmail/:Email', {}, {
+                checkEmail: {
+                    method: 'POST',
+                    data:{Email:'Email'}
+                }
+            });
+        }
     ]);
