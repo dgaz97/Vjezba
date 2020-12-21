@@ -55,7 +55,7 @@ namespace vjezba_backend.Controllers
         }
 
         [HttpGet]
-        [Route("api/user/check/{Username}")]
+        [Route("api/user/checkUsername/{Username}")]
         public HttpResponseMessage CheckUsername(string Username)
         {
             HttpResponseMessage m;

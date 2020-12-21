@@ -1,7 +1,8 @@
 angular.module('myApp.register-view')
     .component('registerView', {
         templateUrl: 'register/register-view.template.html',
-        controller: ['$routeParams', 'Register', 'CheckUsername', function RegisterController($routeParams, Register, CheckUsername) {
+        controller: ['$routeParams', 'Register', 'CheckUsername',
+         function RegisterController($routeParams, Register, CheckUsername) {
             var self = this;
             self.brojKorisnika = 5;
 

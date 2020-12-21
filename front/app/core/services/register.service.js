@@ -12,7 +12,7 @@ angular
     ])
     .factory('CheckUsername', ['$resource',
         function ($resource) {
-            return $resource('https://localhost:44385/api/user/check/:Username', {}, {
+            return $resource('https://localhost:44385/api/user/checkUsername/:Username', {}, {
                 checkUsername: {
                     method: 'GET',
                     params:{Username:'Username'}
