@@ -1,1 +1,1 @@
-angular.module('myApp.register-view', ['ngRoute', 'core.register']);
+angular.module('myApp.register-view', ['core.register']);
