@@ -16,11 +16,13 @@ angular.module('myApp.register-view')
             self.hidePassMismatch = "true";
             self.hideBadPassFormat = "true";
             self.hideUsernameExists = "true";
+            self.hideEmailBad = "true";
             self.hideEmailExists = "true";
 
             //self.allGood=false;
 
             self.regex = [RegExp('.*[A-Z]+.*'), RegExp('.*[a-z]+.*'), RegExp('.*[0-9]+.*'), RegExp('.{8,}')];
+            self.emailRegex = RegExp('^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(.+))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
 
 
 
@@ -86,6 +88,18 @@ angular.module('myApp.register-view')
             }
 
             self.emailCheck = function () {
+                //console.log([self.email,(self.emailRegex.test(self.email)), self.emailRegex]);
+                if (!(self.emailRegex.test(self.email))){
+                    angular.element(document.querySelector("#email-fg")).addClass("has-error");
+                    self.hideEmailBad = "false";
+                    angular.element(document.querySelector("#check-emailbad")).removeClass("ng-hide");
+                    return;
+                }
+                else{
+                    angular.element(document.querySelector("#email-fg")).removeClass("has-error");
+                    self.hideEmailBad = "true";
+                    angular.element(document.querySelector("#check-emailbad")).addClass("ng-hide");
+                }
                 self.userData = CheckEmail.checkEmail({ Email: self.email }).$promise
                 .then(function(data){
                     if (data.status == 'exists') {
