@@ -54,13 +54,23 @@ namespace vjezba_backend.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("api/user/checkUsername/{Username}")]
-        public HttpResponseMessage CheckUsername(string Username)
+        [HttpPost]
+        [Route("api/user/checkUsername/")]
+        public HttpResponseMessage CheckUsername([FromBody] JObject data)
         {
+
             HttpResponseMessage m;
             HttpStatusCode status;
             StringBuilder sb = new StringBuilder();
+            JToken UsernameToken;
+            String Username;
+
+            if (!data.TryGetValue("Username", out UsernameToken))
+            {
+                m = new HttpResponseMessage(HttpStatusCode.BadRequest);
+                return m;
+            }
+            Username = UsernameToken.Value<String>();
             using (var db = new VjezbaEntities())
             {
                 int count = (from x in db.user

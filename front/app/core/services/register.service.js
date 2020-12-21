@@ -14,8 +14,8 @@ angular
         function ($resource) {
             return $resource('https://localhost:44385/api/user/checkUsername/:Username', {}, {
                 checkUsername: {
-                    method: 'GET',
-                    params:{Username:'Username'}
+                    method: 'POST',
+                    data:{Username:'Username'}
                 }
             });
         }
