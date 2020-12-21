@@ -1,10 +1,9 @@
 angular.module('myApp.register-view')
     .component('registerView', {
         templateUrl: 'register/register-view.template.html',
-        controller: ['$routeParams', 'Register', 'CheckUsername', 'CheckEmail',
-         function RegisterController($routeParams, Register, CheckUsername, CheckEmail) {
-            var self = this;
-            self.brojKorisnika = 5;
+        controller: ['$location', 'Register', 'CheckUsername', 'CheckEmail',
+            function RegisterController($location, Register, CheckUsername, CheckEmail) {
+                var self = this;
 
                 //ng-model
                 self.username;
@@ -222,4 +221,20 @@ angular.module('myApp.register-view')
                     console.log(self.usernameOK + self.passwordOK + self.emailOK + self.firstNameOK + self.lastNameOK + self.birthdateOK);
                 }
 
+                self.submitRegister = function () {
+                    Register.register({
+                        username: self.username,
+                        password: self.password1,
+                        email: self.email,
+                        firstName: self.firstName,
+                        lastName: self.lastName,
+                        birthdate: self.birthdate
+                    }).$promise.then(function(data){
+                        console.log(data);
+                        if (data.success==true){
+                            $location.path("#!/home");
+                        }
+                    });
+                }
+            }]
     });
