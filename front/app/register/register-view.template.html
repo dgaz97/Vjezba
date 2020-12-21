@@ -1,17 +1,21 @@
 <div class="container">
 
-    <form class="form-horizontal">
-    <div class="form-group row" id="username-fg">
-        <div class="col-sm-3">
-            <label for="username" class="control-label">Username</label>
-            <div id="check-usernameexists" ng-hide="{{$ctrl.hideUsernameExists}}">
-                <p class="text-danger">Username already in use</p>
+    <form class="form-horizontal" ng-submit="$ctrl.submitRegister()">
+        <div class="form-group row" id="username-fg">
+            <div class="col-sm-3">
+                <label for="username" class="control-label">Username</label>
+                <div id="check-usernameshort" ng-hide="{{$ctrl.hideUsernameShort}}">
+                    <p class="text-danger">Username must be at least 6 characters</p>
+                </div>
+                <div id="check-usernameexists" ng-hide="{{$ctrl.hideUsernameExists}}">
+                    <p class="text-danger">Username already in use</p>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <input class="form-control input-lg" ng-model="$ctrl.username" id="username"
+                    ng-change="$ctrl.usernameCheck()" />
             </div>
         </div>
-        <div class="col-sm-9">
-            <input class="form-control input-lg" ng-model="$ctrl.username" id="username" ng-change="$ctrl.usernameCheck()"/>
-        </div>
-    </div>
         <div class="form-group row" id="email-fg">
             <div class="col-sm-3">
                 <label for="email" class="control-label">Email</label>
@@ -52,27 +56,45 @@
                     ng-change="$ctrl.passCheck()" />
             </div>
         </div>
-    <div class="form-group row" id="firstname-fg">
-        <div class="col-sm-3">
-            <label for="firstname" class="control-label">First name</label>
+        <div class="form-group row" id="firstname-fg">
+            <div class="col-sm-3">
+                <label for="firstname" class="control-label">First name</label>
+                <div id="check-namenull" ng-hide="{{$ctrl.hideEmptyName}}">
+                    <p class="text-danger">Name can't be empty</p>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <input class="form-control input-lg" ng-model="$ctrl.firstName" id="firstname"
+                    ng-change="$ctrl.firstnameCheck()" />
+            </div>
         </div>
-        <div class="col-sm-9">
-            <input class="form-control input-lg" ng-model="$ctrl.firstName" id="firstname" ng-change="$ctrl.cond()"/>
+        <div class="form-group row" id="lastname-fg">
+            <div class="col-sm-3">
+                <label for="lastname" class="control-label">Last name</label>
+                <div id="check-lastnamenull" ng-hide="{{$ctrl.hideEmptyLastName}}">
+                    <p class="text-danger">Last name can't be empty</p>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <input class="form-control input-lg" ng-model="$ctrl.lastName" id="lastname"
+                    ng-change="$ctrl.lastnameCheck()" />
+            </div>
         </div>
-    </div>
-    <div class="form-group row" id="lastname-fg">
-        <div class="col-sm-3">
-            <label for="lastname" class="control-label">Last name</label>
+        <div class="form-group row" id="birthdate-fg">
+            <div class="col-sm-3">
+                <label for="birthdate" class="control-label">Birth date</label>
+                <div id="check-birthdatebad" ng-hide="{{$ctrl.hideBirthdateBad}}">
+                    <p class="text-danger">You must be at least 13 years old</p>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <input type="date" class="form-control input-lg" ng-model="$ctrl.birthdate" id="birthdate"
+                    ng-change="$ctrl.birthdateCheck()" />
+            </div>
         </div>
-        <div class="col-sm-9">
-            <input class="form-control input-lg" ng-model="$ctrl.lastName" id="lastname" ng-change="$ctrl.cond()"/>
+        <div class="form-group row" id="registerbutton-fg">
+            <button type="submit" id="register-button" class="btn btn-lg btn-block" ng-disabled="!$ctrl.allOK">Register</button>
         </div>
-    </div>
     </form>
-
-    <h1>{{$ctrl.user}}</h1>
-    <input type="input" class="input" ng-model="$ctrl.brojKorisnika" ng-change="$ctrl.usernameCheck()">
-
-    
 </div>
 <!--h2>{{$ctrl.self.user}} bbbbbbb</h2-->
