@@ -2,30 +2,38 @@ angular
     .module('core.register')
     .factory('Register', ['$resource',
         function ($resource) {
-            return $resource('https://localhost:44385/api/user/:Id', {}, {
-                getUser: {
-                    method: 'GET',
-                    params:{Id:'Id'}
+            return $resource('https://localhost:44385/api/user/', {}, {
+                register: {
+                    method: 'POST',
+                    data:
+                    {
+                        username: "username",
+                        password: "password",
+                        email: "email",
+                        firstName: "firstname",
+                        lastName: "lastname",
+                        birthdate: "birthdate"
+                    }
                 }
             });
         }
     ])
     .factory('CheckUsername', ['$resource',
         function ($resource) {
-            return $resource('https://localhost:44385/api/user/checkUsername/:Username', {}, {
+            return $resource('https://localhost:44385/api/user/checkUsername/', {}, {
                 checkUsername: {
                     method: 'POST',
-                    data:{Username:'Username'}
+                    data: { Username: 'Username' }
                 }
             });
         }
     ])
     .factory('CheckEmail', ['$resource',
         function ($resource) {
-            return $resource('https://localhost:44385/api/user/checkEmail/:Email', {}, {
+            return $resource('https://localhost:44385/api/user/checkEmail/', {}, {
                 checkEmail: {
                     method: 'POST',
-                    data:{Email:'Email'}
+                    data: { Email: 'Email' }
                 }
             });
         }
