@@ -49,6 +49,7 @@ namespace vjezba_backend
                 lastName = lastName
             };
             return x;
+        }
 
     }
 }
