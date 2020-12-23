@@ -1,1 +1,1 @@
-angular.module('core', ['core.register']);
+angular.module('core', ['core.register','core.login']);
