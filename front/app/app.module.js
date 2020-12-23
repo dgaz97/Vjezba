@@ -24,5 +24,11 @@ angular
           $location.path('/login');
         }
       }
+      else{
+        if(next.originalPath=="/register"||next.originalPath=="/login"){
+          event.preventDefault();
+          $location.path('/home');
+        }
+      }
     })
   }]);
