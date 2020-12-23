@@ -7,12 +7,12 @@ angular
                     method: 'POST',
                     data:
                     {
-                        username: "username",
-                        password: "password",
-                        email: "email",
-                        firstName: "firstname",
-                        lastName: "lastname",
-                        birthdate: "birthdate"
+                        username: "",
+                        password: "",
+                        email: "",
+                        firstName: "",
+                        lastName: "",
+                        birthdate: ""
                     }
                 }
             });
@@ -23,7 +23,7 @@ angular
             return $resource('https://localhost:44385/api/user/checkUsername/', {}, {
                 checkUsername: {
                     method: 'POST',
-                    data: { Username: 'Username' }
+                    data: { Username: '' }
                 }
             });
         }
@@ -33,7 +33,7 @@ angular
             return $resource('https://localhost:44385/api/user/checkEmail/', {}, {
                 checkEmail: {
                     method: 'POST',
-                    data: { Email: 'Email' }
+                    data: { Email: '' }
                 }
             });
         }
