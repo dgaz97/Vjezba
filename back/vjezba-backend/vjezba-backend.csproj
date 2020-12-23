@@ -183,6 +183,7 @@
     <Compile Include="image.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserToLogin.cs" />
     <Compile Include="Models\UserToRegister.cs" />
     <Compile Include="movieList.cs">
       <DependentUpon>DataModel.tt</DependentUpon>

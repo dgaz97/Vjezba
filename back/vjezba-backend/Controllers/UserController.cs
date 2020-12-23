@@ -231,18 +231,62 @@ namespace vjezba_backend.Controllers
             }
 
         }
-                {
+        [HttpPost]
+        [Route("api/user/login/")]
+        public HttpResponseMessage Login([FromBody] UserToLogin value)
+        {
+            HttpStatusCode status;
+            StringBuilder sb = new StringBuilder();
 
+            byte[] salt;
+            string passDB;
+
+            if (value == null || String.IsNullOrWhiteSpace(value.username) || String.IsNullOrWhiteSpace(value.password))
+            {
+                sb.Append($@"{{""status"":false, ""errorMsg"":""Invalid request""}}");
+                return generateResponse(HttpStatusCode.BadRequest, sb);
+            }
+
+            using (var db = new VjezbaEntities())
+            {
+                user u;
+                try
+                {
+                    u = (from x in db.user
+                         where x.username == value.username
+                         select x).First();
+                    salt = Convert.FromBase64String(u.passSalt);
+
+                    passDB = u.passHash;
+
+                    Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(value.password, salt, ITERATIONS, HASH);
+                    string passGen = Convert.ToBase64String(pbkdf2.GetBytes(HASHSIZE));
+
+                    if (passGen == passDB)
+                    {
+                        status = HttpStatusCode.OK;
+                        sb.AppendLine($"{{");
+                        sb.AppendLine($"\"success\":true");
+                        sb.AppendLine($"}}");
+                    }
+                    else
+                    {
+                        status = HttpStatusCode.OK;
+                        sb.AppendLine($"{{");
+                        sb.AppendLine($"\"success\":false,");
+                        sb.AppendLine($"\"errorMsg\":\"Wrong password\"");
+                        sb.AppendLine($"}}");
+                    }
                 }
+                catch (InvalidOperationException)
                 {
                     status = HttpStatusCode.BadRequest;
                     sb.AppendLine($"{{");
                     sb.AppendLine($"\"success\":false,");
+                    sb.AppendLine($"\"errorMsg\":\"User doesn't exist\"");
                     sb.AppendLine($"}}");
-
                 }
             }
-            
             return generateResponse(status, sb);
 
 
