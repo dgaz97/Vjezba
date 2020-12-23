@@ -179,17 +179,17 @@ namespace vjezba_backend.Controllers
             u.role_roleName = "user";
 
 
-            using (var db=new VjezbaEntities())
+            using (var db = new VjezbaEntities())
             {
                 StringBuilder sb = new StringBuilder();
                 HttpStatusCode status;
 
                 int usersWithUsername = (from x in db.user
-                            where x.username == u.username
-                            select x).Count();
-                int usersWithEmail = (from x in db.user
-                                         where x.email == u.email
+                                         where x.username == u.username
                                          select x).Count();
+                int usersWithEmail = (from x in db.user
+                                      where x.email == u.email
+                                      select x).Count();
                 if (usersWithUsername != 0)
                 {
                     status = HttpStatusCode.BadRequest;
@@ -207,23 +207,37 @@ namespace vjezba_backend.Controllers
                     sb.AppendLine($"}}");
                 }
                 else try
-                {
-                    Console.WriteLine(u.Id);
-                    db.user.Add(u);
-                    db.SaveChanges();
+                    {
+                        Console.WriteLine(u.Id);
+                        db.user.Add(u);
+                        db.SaveChanges();
 
-                    status = HttpStatusCode.OK;
-                    sb.AppendLine($"{{");
-                    sb.AppendLine($"\"success\":true,");
-                    sb.AppendLine($"\"errorMsg\":\"User added successfully\"");
-                    sb.AppendLine($"}}");
+                        status = HttpStatusCode.OK;
+                        sb.AppendLine($"{{");
+                        sb.AppendLine($"\"success\":true,");
+                        sb.AppendLine($"\"errorMsg\":\"User added successfully\"");
+                        sb.AppendLine($"}}");
+                    }
+                    catch (System.Data.Entity.Validation.DbEntityValidationException)
+                    {
+                        status = HttpStatusCode.BadRequest;
+                        sb.AppendLine($"{{");
+                        sb.AppendLine($"\"success\":false,");
+                        sb.AppendLine($"\"errorMsg\":\"User attributes missing\"");
+                        sb.AppendLine($"}}");
+
+                    }
+                return generateResponse(status, sb);
+            }
+
+        }
+                {
+
                 }
-                catch (System.Data.Entity.Validation.DbEntityValidationException)
                 {
                     status = HttpStatusCode.BadRequest;
                     sb.AppendLine($"{{");
                     sb.AppendLine($"\"success\":false,");
-                    sb.AppendLine($"\"errorMsg\":\"User attributes missing\"");
                     sb.AppendLine($"}}");
 
                 }
