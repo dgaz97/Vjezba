@@ -38,21 +38,6 @@ angular.module('myApp.register-view')
                 self.regex = [RegExp('.*[A-Z]+.*'), RegExp('.*[a-z]+.*'), RegExp('.*[0-9]+.*'), RegExp('.{8,}')];
                 self.emailRegex = RegExp('^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(.+))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
 
-
-
-                //self.user=CheckUsername.checkUsername({Username:self.username});
-
-                /*self.updateUser = function updateUser(){
-                    self.user=Register.getUser({Id:self.brojKorisnika});
-                }
-    
-                self.testfun=function (){
-                    angular.element(document.querySelector("#username-fg")).addClass("has-error");
-                }
-                self.testfun2=function (){
-                    angular.element(document.querySelector("#username-fg")).removeClass("has-error");
-                }*/
-
                 self.passCheck = function () {
 
                     if (self.password1 != self.password2) {
@@ -217,8 +202,6 @@ angular.module('myApp.register-view')
                         self.allOK = true;
                     else
                         self.allOK = false;
-                    console.log(self.allOK);
-                    console.log(self.usernameOK + self.passwordOK + self.emailOK + self.firstNameOK + self.lastNameOK + self.birthdateOK);
                 }
 
                 self.submitRegister = function () {
@@ -230,7 +213,6 @@ angular.module('myApp.register-view')
                         lastName: self.lastName,
                         birthdate: self.birthdate
                     }).$promise.then(function(data){
-                        console.log(data);
                         if (data.success==true){
                             $location.path("#!/home");
                         }

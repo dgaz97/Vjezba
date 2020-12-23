@@ -8,18 +8,19 @@ angular
             .when('/view2', {
                 templateUrl: '/view2/view2.html'
             })
-            .when('/bootstrap/bs1',{
+            .when('/bootstrap/bs1', {
                 template: '<bs1></bs1>'
             })
-            .when('/bootstrap/bs2',{
+            .when('/bootstrap/bs2', {
                 template: '<bs2></bs2>'
             })
-            .when('/bootstrap/bs3',{
+            .when('/bootstrap/bs3', {
                 template: '<bs3></bs3>'
             })
-            .when('/register',{
+            .when('/register', {
                 template: '<register-view></register-view>'
             })
             .otherwise('/home');
+
     }]
-);
+    );
