@@ -34,38 +34,52 @@ namespace vjezba_backend.Controllers
             using (var db = new VjezbaEntities())
             {
                 cnt = db.user.Count();
-                HttpResponseMessage m = new HttpResponseMessage(HttpStatusCode.OK);
-                m.Content = new StringContent($"{{\"date\": \"test\", \"ggg\": 52, \"brojKorisnika\":{cnt}}}", System.Text.Encoding.UTF8, "application/json");
-                return m;
+
+                StringBuilder sb = new StringBuilder();
+                sb.Append($"{{\"date\": \"test\", \"ggg\": 52, \"brojKorisnika\":{cnt}}}");
+                return generateResponse(HttpStatusCode.OK, sb);
             }
         }
 
         // GET api/<controller>/{id}
-        public object Get(int id)
+        public HttpResponseMessage Get(int id)
         {
+            user u;
             Console.WriteLine($"Entered user get with id {id}");
+            StringBuilder sb = new StringBuilder();
+
             using (var db = new VjezbaEntities())
             {
-                var u =from x in db.user
-                         where x.Id == id
-                         select x;
-                if (u.Count() != 0)
+                var uList = from x in db.user
+                            where x.Id == id
+                            select x;
+                if (uList.Count() != 0)
                 {
-                    return u.First().ToJson();
+                    u = uList.First();
                 }
                 else
                 {
-                    return null;
+                    u = null;
                 }
             }
+            HttpStatusCode status;
+            if (u == null)
+            {
+                status = HttpStatusCode.BadRequest;
+                sb.Append($@"{{""status"" : false }}");
+            }
+            else
+            {
+                status = HttpStatusCode.OK;
+                sb.Append(u.ToJson());
+            }
+            return generateResponse(status, sb);
         }
 
         [HttpPost]
         [Route("api/user/checkUsername/")]
         public HttpResponseMessage CheckUsername([FromBody] JObject data)
         {
-
-            HttpResponseMessage m;
             HttpStatusCode status;
             StringBuilder sb = new StringBuilder();
             JToken UsernameToken;
@@ -73,8 +87,7 @@ namespace vjezba_backend.Controllers
 
             if (!data.TryGetValue("Username", out UsernameToken))
             {
-                m = new HttpResponseMessage(HttpStatusCode.BadRequest);
-                return m;
+                return generateResponse(HttpStatusCode.BadRequest, sb);
             }
             Username = UsernameToken.Value<String>();
             using (var db = new VjezbaEntities())
@@ -89,34 +102,33 @@ namespace vjezba_backend.Controllers
                     sb.Append($@"""status"":""exists""");
                     sb.Append($@"}}");
                 }
-                else {
+                else
+                {
                     status = HttpStatusCode.OK;
                     sb.Append($@"{{");
                     sb.Append($@"""status"":""noexists""");
                     sb.Append($@"}}");
                 }
             }
-            m = new HttpResponseMessage(status);
-            m.Content = new StringContent(sb.ToString(), System.Text.Encoding.UTF8, "application/json");
-            return m;
+
+            return generateResponse(status,sb);
         }
 
         [HttpPost]
         [Route("api/user/checkEmail/")]
         public HttpResponseMessage CheckEmail([FromBody] JObject data)
         {
-            HttpResponseMessage m;
             HttpStatusCode status;
             StringBuilder sb = new StringBuilder();
             JToken EmailToken;
             String Email;
 
-            if (!data.TryGetValue("Email", out EmailToken)) {
-                m = new HttpResponseMessage(HttpStatusCode.BadRequest);
-                return m;
+            if (!data.TryGetValue("Email", out EmailToken))
+            {
+                return generateResponse(HttpStatusCode.BadRequest, sb);
             }
-            Email=EmailToken.Value<String>();
-            
+            Email = EmailToken.Value<String>();
+
             using (var db = new VjezbaEntities())
             {
                 int count = (from x in db.user
@@ -137,9 +149,7 @@ namespace vjezba_backend.Controllers
                     sb.Append($@"}}");
                 }
             }
-            m = new HttpResponseMessage(status);
-            m.Content = new StringContent(sb.ToString(), System.Text.Encoding.UTF8, "application/json");
-            return m;
+            return generateResponse(status, sb);
         }
 
         // POST api/<controller>
@@ -171,9 +181,7 @@ namespace vjezba_backend.Controllers
 
             using (var db=new VjezbaEntities())
             {
-                //user u = (user) JsonSerializer.Deserialize(t.Result, typeof(user));
                 StringBuilder sb = new StringBuilder();
-                HttpResponseMessage m;
                 HttpStatusCode status;
 
                 int usersWithUsername = (from x in db.user
@@ -219,11 +227,11 @@ namespace vjezba_backend.Controllers
                     sb.AppendLine($"}}");
 
                 }
-                m = new HttpResponseMessage(status);
-                m.Content = new StringContent(sb.ToString(), System.Text.Encoding.UTF8, "application/json");
-                return m;
             }
             
+            return generateResponse(status, sb);
+
+
         }
 
         // PUT api/<controller>/5
@@ -234,6 +242,12 @@ namespace vjezba_backend.Controllers
         // DELETE api/<controller>/5
         public void Delete(int id)
         {
+        }
+        private HttpResponseMessage generateResponse(HttpStatusCode status, StringBuilder sb)
+        {
+            HttpResponseMessage m = new HttpResponseMessage(status);
+            m.Content = new StringContent(sb.ToString(), System.Text.Encoding.UTF8, "application/json");
+            return m;
         }
     }
 }
