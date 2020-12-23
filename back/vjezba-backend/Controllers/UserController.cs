@@ -27,6 +27,9 @@ namespace vjezba_backend.Controllers
         HashAlgorithmName HASH = HashAlgorithmName.SHA256;
 
         // GET api/<controller>/
+        /**
+         * Test metoda, ne radi ništa korisno
+         */
         public HttpResponseMessage Get()
         {
             Console.WriteLine($"Entered user get");
@@ -42,6 +45,10 @@ namespace vjezba_backend.Controllers
         }
 
         // GET api/<controller>/{id}
+        /**
+         * Metoda koja dohvaća podatke jednog korisnika
+         */
+        //TODO: ovu metodu onemogućiti, ili urediti tako da obični korisnik može dohvatiti samo svoje podatke
         public HttpResponseMessage Get(int id)
         {
             user u;
@@ -76,6 +83,9 @@ namespace vjezba_backend.Controllers
             return generateResponse(status, sb);
         }
 
+        /**
+         * Provjerava postoji li korisnik sa traženim korisničkim imenom
+         */
         [HttpPost]
         [Route("api/user/checkUsername/")]
         public HttpResponseMessage CheckUsername([FromBody] JObject data)
@@ -114,6 +124,9 @@ namespace vjezba_backend.Controllers
             return generateResponse(status,sb);
         }
 
+        /**
+         * Provjerava postoji li korisnik s traženom e-mail adresom
+         */
         [HttpPost]
         [Route("api/user/checkEmail/")]
         public HttpResponseMessage CheckEmail([FromBody] JObject data)
@@ -153,6 +166,9 @@ namespace vjezba_backend.Controllers
         }
 
         // POST api/<controller>
+        /**
+         * Register metoda
+         */
         [HttpPost]
         public HttpResponseMessage Post([FromBody] UserToRegister value)
         {
@@ -231,6 +247,11 @@ namespace vjezba_backend.Controllers
             }
 
         }
+
+        /**
+         * Login metoda
+         * Prihvaća username i password
+         */
         [HttpPost]
         [Route("api/user/login/")]
         public HttpResponseMessage Login([FromBody] UserToLogin value)
@@ -301,6 +322,10 @@ namespace vjezba_backend.Controllers
         public void Delete(int id)
         {
         }
+
+        /**
+         * Pomoćna metoda koja sastavlja HTTP odgovor
+         */
         private HttpResponseMessage generateResponse(HttpStatusCode status, StringBuilder sb)
         {
             HttpResponseMessage m = new HttpResponseMessage(status);
