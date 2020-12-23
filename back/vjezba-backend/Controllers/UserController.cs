@@ -142,16 +142,6 @@ namespace vjezba_backend.Controllers
             return m;
         }
 
-        class unutarnjaKlasa
-        {
-            bool test;
-            string test2;
-            DateTime test3;
-            public override string ToString()
-            {
-                    return test + " " + test2 + " " + test3;
-            }
-        }
         // POST api/<controller>
         [HttpPost]
         public HttpResponseMessage Post([FromBody] UserToRegister value)
@@ -161,7 +151,7 @@ namespace vjezba_backend.Controllers
             Task<string> t = Request.Content.ReadAsStringAsync();
             t.Wait();
 
-            MapperConfiguration config = (MapperConfiguration) new MapperConfiguration(cfg => cfg.CreateMap<UserToRegister, user>());
+            MapperConfiguration config = (MapperConfiguration)new MapperConfiguration(cfg => cfg.CreateMap<UserToRegister, user>());
             user u = config.CreateMapper().Map<user>(value);
 
             byte[] salt = new byte[SALTSIZE];
@@ -178,7 +168,6 @@ namespace vjezba_backend.Controllers
             u.avatarLink = "img/default.webp";
             u.role_roleName = "user";
 
-            //u.passSalt=System.Security.Cryptography
 
             using (var db=new VjezbaEntities())
             {
