@@ -20,6 +20,9 @@ angular
             .when('/register', {
                 template: '<register-view></register-view>'
             })
+            .when('/login',{
+                template: '<login-view></login-view>'
+            })
             .otherwise('/home');
 
     }]

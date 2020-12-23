@@ -1,0 +1,1 @@
+angular.module('myApp.login-view', ['core.login']);

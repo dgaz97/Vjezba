@@ -13,5 +13,6 @@ angular
     'myApp.bs2',
     'myApp.bs3',
     'myApp.register-view',
+    'myApp.login-view',
     'myApp.version'
   ])
