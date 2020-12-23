@@ -20,6 +20,12 @@ namespace vjezba_backend.Controllers
     [EnableCors(origins: "http://localhost:8000, https://localhost:8000", headers: "*", methods: "*")]
     public class UserController : ApiController
     {
+        //PBKDF2
+        const int SALTSIZE = 48;
+        const int HASHSIZE = 48;
+        const int ITERATIONS = 15000;
+        HashAlgorithmName HASH = HashAlgorithmName.SHA256;
+
         // GET api/<controller>/
         public HttpResponseMessage Get()
         {
@@ -150,11 +156,7 @@ namespace vjezba_backend.Controllers
         [HttpPost]
         public HttpResponseMessage Post([FromBody] UserToRegister value)
         {
-            int SALTSIZE = 48;
-            int HASHSIZE = 48;
-            int ITERATIONS = 15000;
-            HashAlgorithmName HASH = HashAlgorithmName.SHA256;
-            //PBKDF2
+
 
             Task<string> t = Request.Content.ReadAsStringAsync();
             t.Wait();
