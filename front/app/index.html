@@ -65,9 +65,28 @@
         <p>Resize this responsive page to see the effect!</p>
     </div>
 
+    <navigation></navigation>
 
-    <div class="view-container">
-        <div ng-view class="view-frame"></div>
+    <div class="row">
+        <div class="col-sm-1 affix">
+            <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="197">
+                <li><a href="#!/home">Home</a></li>
+                <li><a href="">Menu 1</a></li>
+                <li><a href="">Menu 2</a></li>
+                <li><a href="">Menu 3</a></li>
+            </ul>
+        </div>
+        
+        <div class="col-sm-11">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="view-container">
+                        <div ng-view class="view-frame"></div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
     </div>
     
     <div>AngularJS seed app: v<span app-version></span></div>
