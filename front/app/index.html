@@ -19,6 +19,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-route/1.8.2/angular-route.min.js "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.8.2/angular-resource.min.js "></script>
 
+    <script src="nav/nav.module.js"></script>
+    <script src="nav/nav.component.js"></script>
+
     <script src="app.module.js"></script>
     <script src="app.config.js"></script>
 
@@ -55,41 +58,8 @@
 
 </head>
 
-<body>
-    
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#!/home">My First Bootstrap Page</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <p class="navbar-text">Some text</p>
-                <ul class="nav navbar-nav">
-                    <li><a href="#!/bootstrap/bs1">Bootstrap1</a></li>
-                    <li><a href="#!/bootstrap/bs2">Bootstrap2</a></li>
-                    <li><a href="#!/bootstrap/bs3">Bootstrap3</a></li>
-                    <button class="btn btn-danger navbar-btn"
-                        onclick='window.location.replace("#!/view2")'>Button</button>
-                </ul>
-                <form class="navbar-form navbar-left" action="#!/home">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#!/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="#!/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav></br>
+<body data-spy="scroll">
+    <br>
     <div class="page-header text-center">
         <h1>My First Bootstrap Page</h1>
         <p>Resize this responsive page to see the effect!</p>
@@ -99,7 +69,7 @@
     <div class="view-container">
         <div ng-view class="view-frame"></div>
     </div>
-
+    
     <div>AngularJS seed app: v<span app-version></span></div>
 
 </body>

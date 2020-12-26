@@ -7,6 +7,7 @@ angular
     'ngRoute',
     'ngResource',
     'core',
+    'myApp.nav',
     'myApp.home',
     'myApp.view2',
     'myApp.bs1',
