@@ -1,10 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
 <html lang="en" ng-app="myApp" class="no-js">
-<!--<![endif]-->
 
 <head>
     <meta charset="utf-8">
@@ -39,7 +34,7 @@
 
     <script src="bootstrap-testovi/bs3/bs3.module.js"></script>
     <script src="bootstrap-testovi/bs3/bs3.component.js"></script>
-    
+
     <script src="core/core.module.js"></script>
     <script src="core/services/register.module.js"></script>
     <script src="core/services/register.service.js"></script>
@@ -48,7 +43,7 @@
 
     <script src="register/register-view.module.js"></script>
     <script src="register/register-view.component.js"></script>
-    
+
     <script src="login/login-view.module.js"></script>
     <script src="login/login-view.component.js"></script>
 
@@ -101,20 +96,12 @@
     </div>
 
 
-
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
-
     <div class="view-container">
         <div ng-view class="view-frame"></div>
     </div>
 
     <div>AngularJS seed app: v<span app-version></span></div>
 
-    <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
 </body>
 
 </html>
