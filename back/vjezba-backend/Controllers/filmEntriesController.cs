@@ -22,7 +22,23 @@ namespace vjezba_backend.Controllers
     {
         private VjezbaEntities db = new VjezbaEntities();
 
-        
+        //TODO: Odvoji u vlastiti controller
+        [HttpGet]
+        public object asdf(string img)
+        {
+            string workingDirectory = HttpRuntime.AppDomainAppPath;
+            //Byte[] b = File.ReadAllBytes(workingDirectory + "/img/" + img);
+            //string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+            //FileStream f = File.Open(workingDirectory+"/img/" + img, FileMode.Open);
+            Byte[] b = File.ReadAllBytes(workingDirectory + "/img/" + img);
+            string ext = Path.GetExtension(workingDirectory + "/img/" + img);
+            HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
+            result.Content = new ByteArrayContent(b.ToArray());
+
+            result.Content.Headers.ContentType = new MediaTypeHeaderValue($"image/{ext.Trim('.')}");
+            return result;
+            //return f;
+        }
 
         // GET: api/filmEntries
         public HttpResponseMessage GetfilmEntry(int page=1)
