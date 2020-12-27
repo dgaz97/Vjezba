@@ -1,1 +1,1 @@
-angular.module('core', ['core.register','core.login']);
+angular.module('core', ['core.register','core.login', 'core.movies']);
