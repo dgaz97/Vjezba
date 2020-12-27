@@ -42,13 +42,14 @@ namespace vjezba_backend
 
         public object ToJson()
         {
-            var x = new
-            {
-                username = username,
-                firstName = firstName,
-                lastName = lastName
-            };
-            return x;
+            StringBuilder sb = new StringBuilder();
+            sb.Append($@"{{");
+            sb.Append($@"""username"":""{username}"",");
+            sb.Append($@"""firstName"":""{firstName}"",");
+            sb.Append($@"""lastName"":""{lastName}""");
+            sb.Append($@"}}");
+
+            return sb.ToString();
         }
 
     }

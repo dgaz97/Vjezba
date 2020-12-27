@@ -11,7 +11,8 @@ namespace vjezba_backend
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Text;
+
     public partial class filmEntry
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -44,5 +45,24 @@ namespace vjezba_backend
         public virtual filmEntry_tvShow filmEntry_tvShow1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<image> image { get; set; }
+
+        public object ToJson()
+        {
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append($@"{{");
+            sb.Append($@"""name"":""{name}"",");
+            sb.Append($@"""description"":""{description}"",");
+            sb.Append($@"""duration"":""{duration}"",");
+            sb.Append($@"""releaseDate"":""{releaseDate}"",");
+            sb.Append($@"""status"":""{status}"",");
+            sb.Append($@"""dateCreated"":""{dateCreated}"",");
+            sb.Append($@"""dateLastUpdated"":""{dateLastUpdated}"",");
+            sb.Append($@"""countryOfOrigin"":""{countryOfOrigin}""");
+            sb.Append($@"}}");
+
+            return sb.ToString();
+        }
     }
 }
