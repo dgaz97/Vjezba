@@ -1,1 +1,1 @@
-angular.module('myApp.register-view', ['core.register']);
+angular.module('myApp.register-view', ['core.register', 'ngCookies']);

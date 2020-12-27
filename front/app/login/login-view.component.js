@@ -1,8 +1,8 @@
 angular.module('myApp.login-view')
     .component('loginView', {
         templateUrl: 'login/login-view.template.html',
-        controller: ['$window', '$location', 'Login',
-            function LoginController($window, $location, Login) {
+        controller: ['$cookies', '$route', '$location', 'Login', '$rootScope',
+            function LoginController($cookies, $route, $location, Login, $rootScope) {
                 var self=this;
                 //ng-model
                 self.username;
@@ -17,10 +17,9 @@ angular.module('myApp.login-view')
                             self.comment=data.errorMsg;
                             self.hideWarning=false;
                         }
-                        console.log(data);
 
-                        $window.sessionStorage.username = self.username;
-                        $window.sessionStorage.loggedIn = true;
+                        $rootScope.username=self.user;
+                        $cookies.put("loggedIn", true);
                         $location.path("#!/home");
                     }, function(error){
                         console.log(error.data);

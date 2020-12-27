@@ -1,1 +1,1 @@
-angular.module('myApp.nav', []);
+angular.module('myApp.nav', ['ngCookies']);

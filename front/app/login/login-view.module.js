@@ -1,1 +1,1 @@
-angular.module('myApp.login-view', ['core.login']);
+angular.module('myApp.login-view', ['core.login', 'ngCookies']);
