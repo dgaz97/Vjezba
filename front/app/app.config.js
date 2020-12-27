@@ -23,6 +23,12 @@ angular
             .when('/login',{
                 template: '<login-view></login-view>'
             })
+            .when('/myLists',{
+                template: '<my-lists></my-lists>'
+            })
+            .when('/allMovies',{
+                template: '<all-movies></all-movies>'
+            })
             .otherwise('/home');
 
     }]

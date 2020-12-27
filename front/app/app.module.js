@@ -16,6 +16,8 @@ angular
     'myApp.bs3',
     'myApp.register-view',
     'myApp.login-view',
+    'myApp.allMovies',
+    'myApp.myLists',
     'myApp.version'
   ])
   .run(['$window','$rootScope', '$location','$cookies', function ($window, $rootScope, $location, $cookies) {
