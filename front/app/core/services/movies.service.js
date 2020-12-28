@@ -9,4 +9,14 @@ angular.module('core.movies')
             isArray:true
         }
     })
+}])
+.factory('MovieDetails',['$resource', function($resource){
+    return $resource('https://localhost:44385/api/filmEntries?id=:id', {}, {
+        getMovie:{
+            method:'GET',
+            params:{
+                id:'@id'
+            }
+        }
+    })
 }]);

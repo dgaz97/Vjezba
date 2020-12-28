@@ -18,6 +18,7 @@ angular
     'myApp.login-view',
     'myApp.allMovies',
     'myApp.myLists',
+    'myApp.movieDetails',
     'myApp.version'
   ])
   .run(['$window','$rootScope', '$location','$cookies', function ($window, $rootScope, $location, $cookies) {

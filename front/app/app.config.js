@@ -29,6 +29,9 @@ angular
             .when('/allMovies',{
                 template: '<all-movies></all-movies>'
             })
+            .when('/movieDetails/:movieId',{
+                template: '<movie-details></movie-details>'
+            })
             .otherwise('/home');
 
     }]
