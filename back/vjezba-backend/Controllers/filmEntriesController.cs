@@ -44,18 +44,19 @@ namespace vjezba_backend.Controllers
 
         }
 
-        /*// GET: api/filmEntries/5
-        [ResponseType(typeof(filmEntry))]
-        public IHttpActionResult GetonefilmEntry(int id)
+        // GET: api/filmEntries/5
+        public HttpResponseMessage GetonefilmEntry(int id)
         {
             filmEntry filmEntry = db.filmEntry.Find(id);
-            if (filmEntry == null)
-            {
-                return NotFound();
-            }
 
-            return Ok(filmEntry);
-        }*/
+            StringBuilder sb = new StringBuilder();
+            sb.Append($@"{{");
+            sb.Append($@"""success"":true,");
+            sb.Append($@"""filmEntry"":");
+            sb.Append(filmEntry.ToJson());
+            sb.Append($@"}}");
+            return generateResponse(HttpStatusCode.OK, sb);
+        }
 
         // PUT: api/filmEntries/5
         [ResponseType(typeof(void))]
