@@ -52,6 +52,7 @@ namespace vjezba_backend
             StringBuilder sb = new StringBuilder();
 
             sb.Append($@"{{");
+            sb.Append($@"""id"":{Id},");
             sb.Append($@"""name"":""{name}"",");
             sb.Append($@"""description"":""{description}"",");
             sb.Append($@"""duration"":""{duration}"",");
