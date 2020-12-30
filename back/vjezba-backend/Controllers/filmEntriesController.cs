@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -9,11 +11,13 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using vjezba_backend;
+using vjezba_backend.Models;
 
 namespace vjezba_backend.Controllers
 {
@@ -58,6 +62,30 @@ namespace vjezba_backend.Controllers
             return generateResponse(HttpStatusCode.OK, sb);
         }
 
+        [HttpPost]
+        [Route("api/filmEntries/create/")]
+        public HttpResponseMessage CreateFilmEntry([FromBody] MovieToAdd data)
+        {
+            Task<string> t = Request.Content.ReadAsStringAsync();
+            t.Wait();
+
+            MapperConfiguration config = (MapperConfiguration)new MapperConfiguration(cfg => cfg.CreateMap<MovieToAdd, filmEntry>());
+            filmEntry f = config.CreateMapper().Map<filmEntry>(data);
+
+            DateTime time = DateTime.Now;
+            f.dateCreated = time;
+            f.dateLastUpdated = time;
+
+            StringBuilder sb = new StringBuilder();
+
+            db.filmEntry.Add(f);
+            db.SaveChanges();
+
+            sb.Append($@"{{");
+            sb.Append($@"""success"":true");
+            sb.Append($@"}}");
+            return generateResponse(HttpStatusCode.OK, sb);
+        }
         // PUT: api/filmEntries/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutfilmEntry(int id, filmEntry filmEntry)

@@ -172,8 +172,6 @@ namespace vjezba_backend.Controllers
         [HttpPost]
         public HttpResponseMessage Post([FromBody] UserToRegister value)
         {
-
-
             Task<string> t = Request.Content.ReadAsStringAsync();
             t.Wait();
 
