@@ -37,6 +37,9 @@
         <AssociationConnector Association="VjezbaModel.image_characterImage" ManuallyRouted="false" />
         <AssociationConnector Association="VjezbaModel.image_filmEntryImage" ManuallyRouted="false" />
         <AssociationConnector Association="VjezbaModel.image_personImage" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="VjezbaModel.countryList" Width="1.5" PointX="0.75" PointY="23.375" />
+        <AssociationConnector Association="VjezbaModel.FK_filmEntry_countryList" />
+        <AssociationConnector Association="VjezbaModel.FK_filmEntry_filmEntry" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

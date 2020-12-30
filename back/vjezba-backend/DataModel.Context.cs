@@ -40,5 +40,6 @@ namespace vjezba_backend
         public virtual DbSet<personRole> personRole { get; set; }
         public virtual DbSet<role> role { get; set; }
         public virtual DbSet<user> user { get; set; }
+        public virtual DbSet<countryList> countryList { get; set; }
     }
 }

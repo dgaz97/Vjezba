@@ -65,5 +65,8 @@ namespace vjezba_backend
 
             return sb.ToString();
         }
+        public virtual countryList countryList { get; set; }
+        public virtual filmEntry filmEntry1 { get; set; }
+        public virtual filmEntry filmEntry2 { get; set; }
     }
 }

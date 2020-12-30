@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="VjezbaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="VjezbaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="actorDoingCharacter">
           <Key>
             <PropertyRef Name="Id" />
@@ -25,6 +25,14 @@
           <Property Name="dateCreated" Type="datetime" Nullable="false" />
           <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="countryList">
+          <Key>
+            <PropertyRef Name="countryCode" />
+          </Key>
+          <Property Name="countryCode" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="countryNameEn" Type="nchar" MaxLength="60" Nullable="false" />
+          <Property Name="countryNameHr" Type="nchar" MaxLength="60" Nullable="false" />
+        </EntityType>
         <EntityType Name="filmEntry">
           <Key>
             <PropertyRef Name="Id" />
@@ -37,7 +45,7 @@
           <Property Name="status" Type="nvarchar(max)" Nullable="false" />
           <Property Name="dateCreated" Type="datetime" Nullable="false" />
           <Property Name="dateLastUpdated" Type="datetime" Nullable="false" />
-          <Property Name="countryOfOrigin" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="countryOfOrigin" Type="nchar" MaxLength="3" Nullable="false" />
         </EntityType>
         <EntityType Name="filmEntry_movie">
           <Key>
@@ -229,6 +237,30 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="image_characterImage">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_filmEntry_countryList">
+          <End Role="countryList" Type="Self.countryList" Multiplicity="1" />
+          <End Role="filmEntry" Type="Self.filmEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="countryList">
+              <PropertyRef Name="countryCode" />
+            </Principal>
+            <Dependent Role="filmEntry">
+              <PropertyRef Name="countryOfOrigin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_filmEntry_filmEntry">
+          <End Role="filmEntry" Type="Self.filmEntry" Multiplicity="1" />
+          <End Role="filmEntry1" Type="Self.filmEntry" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="filmEntry">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="filmEntry1">
               <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
@@ -450,6 +482,7 @@
         <EntityContainer Name="VjezbaModelStoreContainer">
           <EntitySet Name="actorDoingCharacter" EntityType="Self.actorDoingCharacter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="character" EntityType="Self.character" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="countryList" EntityType="Self.countryList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="filmEntry" EntityType="Self.filmEntry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="filmEntry_movie" EntityType="Self.filmEntry_movie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="filmEntry_tvShow" EntityType="Self.filmEntry_tvShow" Schema="dbo" store:Type="Tables" />
@@ -482,6 +515,14 @@
           <AssociationSet Name="FK_characterImage_inherits_image" Association="Self.FK_characterImage_inherits_image">
             <End Role="image" EntitySet="image" />
             <End Role="image_characterImage" EntitySet="image_characterImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_filmEntry_countryList" Association="Self.FK_filmEntry_countryList">
+            <End Role="countryList" EntitySet="countryList" />
+            <End Role="filmEntry" EntitySet="filmEntry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_filmEntry_filmEntry" Association="Self.FK_filmEntry_filmEntry">
+            <End Role="filmEntry" EntitySet="filmEntry" />
+            <End Role="filmEntry1" EntitySet="filmEntry" />
           </AssociationSet>
           <AssociationSet Name="FK_filmEntryactorInFilmEntry" Association="Self.FK_filmEntryactorInFilmEntry">
             <End Role="filmEntry" EntitySet="filmEntry" />
@@ -552,8 +593,7 @@
             <End Role="movieList" EntitySet="movieList" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="VjezbaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -593,7 +633,7 @@
           <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dateLastUpdated" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="countryOfOrigin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="countryOfOrigin" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="personInFilmEntry" Relationship="Self.FK_filmEntryactorInFilmEntry" FromRole="filmEntry" ToRole="personInFilmEntry" />
           <NavigationProperty Name="filmEntryHasGenre" Relationship="Self.FK_filmEntryfilmEntryHasGenre" FromRole="filmEntry" ToRole="filmEntryHasGenre" />
           <NavigationProperty Name="movieListEntry" Relationship="Self.FK_filmEntrymovieListEntry" FromRole="filmEntry" ToRole="movieListEntry" />
@@ -601,6 +641,9 @@
           <NavigationProperty Name="filmEntry_tvShow" Relationship="Self.FK_tvShow_inherits_filmEntry" FromRole="filmEntry" ToRole="filmEntry_tvShow" />
           <NavigationProperty Name="filmEntry_tvShow1" Relationship="Self.filmEntry_tvShowEpisode" FromRole="filmEntry" ToRole="filmEntry_tvShow" />
           <NavigationProperty Name="image" Relationship="Self.image_filmEntryImage" FromRole="filmEntry" ToRole="image" />
+          <NavigationProperty Name="countryList" Relationship="VjezbaModel.FK_filmEntry_countryList" FromRole="filmEntry" ToRole="countryList" />
+          <NavigationProperty Name="filmEntry1" Relationship="VjezbaModel.FK_filmEntry_filmEntry" FromRole="filmEntry" ToRole="filmEntry1" />
+          <NavigationProperty Name="filmEntry2" Relationship="VjezbaModel.FK_filmEntry_filmEntry" FromRole="filmEntry1" ToRole="filmEntry" />
         </EntityType>
         <EntityType Name="filmEntry_movie">
           <Key>
@@ -1001,7 +1044,49 @@
             <End Role="person" EntitySet="person" />
             <End Role="image" EntitySet="image" />
           </AssociationSet>
+          <EntitySet Name="countryList" EntityType="VjezbaModel.countryList" />
+          <AssociationSet Name="FK_filmEntry_countryList" Association="VjezbaModel.FK_filmEntry_countryList">
+            <End Role="countryList" EntitySet="countryList" />
+            <End Role="filmEntry" EntitySet="filmEntry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_filmEntry_filmEntry" Association="VjezbaModel.FK_filmEntry_filmEntry">
+            <End Role="filmEntry" EntitySet="filmEntry" />
+            <End Role="filmEntry1" EntitySet="filmEntry" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="countryList">
+          <Key>
+            <PropertyRef Name="countryCode" />
+          </Key>
+          <Property Name="countryCode" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="countryNameEn" Type="String" Nullable="false" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="countryNameHr" Type="String" Nullable="false" MaxLength="60" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="filmEntry" Relationship="VjezbaModel.FK_filmEntry_countryList" FromRole="countryList" ToRole="filmEntry" />
+        </EntityType>
+        <Association Name="FK_filmEntry_countryList">
+          <End Type="VjezbaModel.countryList" Role="countryList" Multiplicity="1" />
+          <End Type="VjezbaModel.filmEntry" Role="filmEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="countryList">
+              <PropertyRef Name="countryCode" />
+            </Principal>
+            <Dependent Role="filmEntry">
+              <PropertyRef Name="countryOfOrigin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_filmEntry_filmEntry">
+          <End Type="VjezbaModel.filmEntry" Role="filmEntry" Multiplicity="1" />
+          <End Type="VjezbaModel.filmEntry" Role="filmEntry1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="filmEntry">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="filmEntry1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1205,6 +1290,15 @@
               <ScalarProperty Name="Id" ColumnName="Id" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="countryList">
+            <EntityTypeMapping TypeName="VjezbaModel.countryList">
+              <MappingFragment StoreEntitySet="countryList">
+                <ScalarProperty Name="countryNameHr" ColumnName="countryNameHr" />
+                <ScalarProperty Name="countryNameEn" ColumnName="countryNameEn" />
+                <ScalarProperty Name="countryCode" ColumnName="countryCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
