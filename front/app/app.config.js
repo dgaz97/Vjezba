@@ -32,6 +32,9 @@ angular
             .when('/movieDetails/:movieId',{
                 template: '<movie-details></movie-details>'
             })
+            .when('/movie/new',{
+                template: '<create-movie></create-movie>'
+            })
             .otherwise('/home');
 
     }]
