@@ -86,6 +86,39 @@ namespace vjezba_backend.Controllers
             sb.Append($@"}}");
             return generateResponse(HttpStatusCode.OK, sb);
         }
+
+        [HttpPost]
+        [Route("api/filmEntries/edit/")]
+        public HttpResponseMessage EditFilmEntry([FromBody] MovieToAdd data)
+        {
+            Task<string> t = Request.Content.ReadAsStringAsync();
+            t.Wait();
+
+            filmEntry f = (from x in db.filmEntry
+                           where data.Id == x.Id
+                           select x).First();
+
+            //DateTime c = f.dateCreated;
+            MapperConfiguration config = new MapperConfiguration(cfg => cfg.CreateMap<MovieToAdd, filmEntry>());
+            config.CreateMapper().Map<MovieToAdd,filmEntry>(data, f);
+            //f.dateCreated = c;
+
+            DateTime time = DateTime.Now;
+            f.dateLastUpdated = time;
+
+
+            db.SaveChanges();
+
+            StringBuilder sb = new StringBuilder();
+
+            //db.filmEntry.Add(f);
+
+            sb.Append($@"{{");
+            sb.Append($@"""success"":true");
+            sb.Append($@"}}");
+            return generateResponse(HttpStatusCode.OK, sb);
+        }
+
         // PUT: api/filmEntries/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutfilmEntry(int id, filmEntry filmEntry)
