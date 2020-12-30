@@ -26,6 +26,8 @@ namespace vjezba_backend.Controllers
     {
         private VjezbaEntities db = new VjezbaEntities();
 
+
+
         // GET: api/filmEntries
         public HttpResponseMessage GetfilmEntry(int page=1)
         {
@@ -62,6 +64,9 @@ namespace vjezba_backend.Controllers
             return generateResponse(HttpStatusCode.OK, sb);
         }
 
+        /*
+         * Stvaranje novog filma
+         */
         [HttpPost]
         [Route("api/filmEntries/create/")]
         public HttpResponseMessage CreateFilmEntry([FromBody] MovieToAdd data)
@@ -82,11 +87,15 @@ namespace vjezba_backend.Controllers
             db.SaveChanges();
 
             sb.Append($@"{{");
-            sb.Append($@"""success"":true");
+            sb.Append($@"""success"":true,");
+            sb.Append($@"""id"":{f.Id}");
             sb.Append($@"}}");
             return generateResponse(HttpStatusCode.OK, sb);
         }
 
+        /**
+         * Uređivanje postojećeg filma
+         */
         [HttpPost]
         [Route("api/filmEntries/edit/")]
         public HttpResponseMessage EditFilmEntry([FromBody] MovieToAdd data)

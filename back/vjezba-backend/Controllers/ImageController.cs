@@ -7,9 +7,11 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace vjezba_backend.Controllers
 {
+    [EnableCors(origins: "http://localhost:8000, https://localhost:8000", headers: "*", methods: "*")]
     public class ImageController : ApiController
     {
         // GET api/<controller>/5
