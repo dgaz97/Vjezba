@@ -11,7 +11,8 @@ namespace vjezba_backend
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Text;
+
     public partial class countryList
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,5 +27,19 @@ namespace vjezba_backend
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<filmEntry> filmEntry { get; set; }
+
+        public object ToJson()
+        {
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append($@"{{");
+            sb.Append($@"""countryCode"":""{countryCode}"",");
+            sb.Append($@"""countryNameEn"":""{countryNameEn}"",");
+            sb.Append($@"""countryNameHr"":""{countryNameHr}""");
+            sb.Append($@"}}");
+
+            return sb.ToString();
+        }
     }
 }

@@ -30,8 +30,8 @@
             <PropertyRef Name="countryCode" />
           </Key>
           <Property Name="countryCode" Type="nchar" MaxLength="3" Nullable="false" />
-          <Property Name="countryNameEn" Type="nchar" MaxLength="60" Nullable="false" />
-          <Property Name="countryNameHr" Type="nchar" MaxLength="60" Nullable="false" />
+          <Property Name="countryNameEn" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="countryNameHr" Type="nvarchar" MaxLength="60" Nullable="false" />
         </EntityType>
         <EntityType Name="filmEntry">
           <Key>
@@ -1059,8 +1059,8 @@
             <PropertyRef Name="countryCode" />
           </Key>
           <Property Name="countryCode" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
-          <Property Name="countryNameEn" Type="String" Nullable="false" MaxLength="60" FixedLength="true" Unicode="true" />
-          <Property Name="countryNameHr" Type="String" Nullable="false" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="countryNameEn" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="countryNameHr" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="filmEntry" Relationship="VjezbaModel.FK_filmEntry_countryList" FromRole="countryList" ToRole="filmEntry" />
         </EntityType>
         <Association Name="FK_filmEntry_countryList">

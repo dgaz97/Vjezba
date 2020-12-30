@@ -146,9 +146,13 @@
     <Compile Include="character.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\countryController.cs" />
     <Compile Include="Controllers\filmEntriesController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="countryList.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
