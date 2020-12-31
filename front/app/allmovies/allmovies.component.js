@@ -5,12 +5,10 @@ angular.module('myApp.allMovies').component('allMovies',{
 
         
         NOfPages.nOfPages().$promise.then(function(data){
-            console.log(data);
             self.pages = data.numberOfPages;
         });
 
         MovieList.get({page:$routeParams.page}).$promise.then(function(data){
-            console.log(data);
             self.listOfMovies = data.filmEntries;
         });
 
