@@ -1,1 +1,1 @@
-angular.module('myApp.movieDetails',['ngRoute','core.movies'])
+angular.module('myApp.movieDetails',['ngRoute','core.movies', 'core.countries'])

@@ -5,10 +5,19 @@
             <h2>{{$ctrl.movie.name}}</h2>
         </div>
         <div class="row">
-            <small>{{$ctrl.movie.releaseDate}}</small>
+            <small>Release date: {{$ctrl.movie.releaseDate.split(" ")[0]}} || {{$ctrl.movie.status}}</small>
+        </div>
+        <div class="row">
+            <small>Country of origin: {{$ctrl.movie.countryName}}</small>
         </div>
         <div class="row">
             <p>{{$ctrl.movie.description}}</p>
+        </div>
+        <div class="row">
+            <p>Duration: {{$ctrl.movie.duration}}</p>
+        </div>
+        <div class="row">
+            <small>Last updated: {{$ctrl.movie.dateLastUpdated}}</small>
         </div>
     </div>
 </div>
