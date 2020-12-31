@@ -31,6 +31,24 @@ namespace vjezba_backend.Controllers
             return generateResponse(HttpStatusCode.OK, sb);
         }
 
+        [HttpGet]
+        [Route("api/country/countryName/")]
+        public HttpResponseMessage GetCountryName(string code)
+        {
+            StringBuilder sb = new StringBuilder();
+            VjezbaEntities db = new VjezbaEntities();
+
+            string name = (from x in db.countryList
+                          where code == x.countryCode
+                          select x.countryNameEn).First();
+            sb.Append($@"{{");
+            sb.Append($@"""status"":true,");
+            sb.Append($@"""countryName"":""{name}""");
+            sb.Append($@"}}");
+
+            return generateResponse(HttpStatusCode.OK, sb);
+        }
+
         private HttpResponseMessage generateResponse(HttpStatusCode status, StringBuilder sb)
         {
             HttpResponseMessage m = new HttpResponseMessage(status);
