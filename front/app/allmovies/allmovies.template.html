@@ -1,4 +1,12 @@
-<div ng-repeat="movie in $ctrl.listOfMovies">
+<div class="row">
+    <button class="btn btn-success col-sm-4 col-sm-offset-4" onclick="window.location.replace('#!/movie/new/')">Create new film entry</button>
+</div>
+<div class="row">
+    <ul class="pager">
+        <li class="active" ng-repeat="i in [].constructor($ctrl.pages) track by $index"><a href="#!/allMovies/{{$index+1}}">{{$index+1}}</a></li>
+    </ul>
+</div>
+<div class="row" ng-repeat="movie in $ctrl.listOfMovies">
     <div class="col-sm-3">placeholder for image</div>
     <div class="col-sm-9">
         <div class="row">

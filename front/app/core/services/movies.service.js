@@ -50,4 +50,11 @@ angular.module('core.movies')
             }
         }
     })
+}])
+.factory('NOfPages',['$resource', function($resource){
+    return $resource('https://localhost:44385/api/filmEntries/nofpages', {}, {
+        nOfPages:{
+            method:'GET'
+        }
+    })
 }]);

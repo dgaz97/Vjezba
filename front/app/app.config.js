@@ -26,7 +26,7 @@ angular
             .when('/myLists',{
                 template: '<my-lists></my-lists>'
             })
-            .when('/allMovies',{
+            .when('/allMovies/:page',{
                 template: '<all-movies></all-movies>'
             })
             .when('/movieDetails/:movieId',{

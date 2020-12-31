@@ -1,1 +1,1 @@
-angular.module('myApp.allMovies',['core.movies']);
+angular.module('myApp.allMovies',['core.movies', 'ngRoute']);

@@ -50,6 +50,20 @@ namespace vjezba_backend.Controllers
 
         }
 
+        [HttpGet]
+        [Route("api/filmEntries/nofpages/")]
+        public HttpResponseMessage GetNumberOfMoviePages()
+        {
+            StringBuilder sb = new StringBuilder();
+            double count = Math.Ceiling(Convert.ToDouble((from x in db.filmEntry select x).Count())/10);
+            sb.Append($@"{{");
+            sb.Append($@"""success"":true,");
+            sb.Append($@"""numberOfPages"":{Convert.ToInt32(count)}");
+            sb.Append($@"}}");
+
+            return generateResponse(HttpStatusCode.OK, sb);
+        }
+
         // GET: api/filmEntries/5
         public HttpResponseMessage GetonefilmEntry(int id)
         {
