@@ -56,7 +56,7 @@ namespace vjezba_backend
             sb.Append($@"""name"":""{name}"",");
             sb.Append($@"""description"":""{description}"",");
             sb.Append($@"""duration"":""{duration}"",");
-            sb.Append($@"""releaseDate"":""{releaseDate}"",");
+            sb.Append($@"""releaseDate"":""{releaseDate.ToString("yyyy-MM-dd")}"",");
             sb.Append($@"""status"":""{status}"",");
             sb.Append($@"""dateCreated"":""{dateCreated}"",");
             sb.Append($@"""dateLastUpdated"":""{dateLastUpdated}"",");
