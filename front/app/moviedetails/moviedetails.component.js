@@ -1,6 +1,6 @@
 angular.module('myApp.movieDetails').component('movieDetails',{
     templateUrl:'moviedetails/moviedetails.template.html',
-    controller:['$routeParams','MovieDetails', 'CountryName', function MovieDetailsController($routeParams,MovieDetails, CountryName){
+    controller:['$routeParams','MovieDetails', 'CountryName', '$window', function MovieDetailsController($routeParams,MovieDetails, CountryName, $window){
         var self=this;
         self.movie;
         MovieDetails.getMovie({id:$routeParams.movieId}).$promise.then(function(data){
@@ -9,7 +9,12 @@ angular.module('myApp.movieDetails').component('movieDetails',{
             CountryName.getCountryName({code: self.movie.countryOfOrigin}).$promise.then(function(data2){
                 self.movie.countryName = data2.countryName;
             });
-
+            
         });
+        
+        self.openEdit = function(){
+            $window.location.replace('#!/movie/edit/'+$routeParams.movieId)
+        }
+        
     }]
 })

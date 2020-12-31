@@ -1,11 +1,13 @@
 <div class="row">
+</div>
+<div class="row">
     <div class="col-sm-3">img placeholder</div>
     <div class="col-sm-9">
         <div class="row">
-            <h2>{{$ctrl.movie.name}}</h2>
+            <h2>{{$ctrl.movie.name}}</h2><button class="btn btn-xs btn-success" ng-click="$ctrl.openEdit()">Edit this film</button>
         </div>
         <div class="row">
-            <small>Release date: {{$ctrl.movie.releaseDate.split(" ")[0]}} || {{$ctrl.movie.status}}</small>
+            <small>Release date: {{$ctrl.movie.releaseDate}} || {{$ctrl.movie.status}}</small>
         </div>
         <div class="row">
             <small>Country of origin: {{$ctrl.movie.countryName}}</small>

@@ -20,11 +20,11 @@ angular
     'myApp.myLists',
     'myApp.movieDetails',
     'myApp.createMovie',
+    'myApp.editMovie',
     'myApp.version'
   ])
   .run(['$window','$rootScope', '$location','$cookies', function ($window, $rootScope, $location, $cookies) {
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
-      console.log($cookies.get("loggedIn"));
       if ($cookies.get("loggedIn")!="true") {
         if(next.originalPath!="/register"&&next.originalPath!="/login"){
           event.preventDefault();

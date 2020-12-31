@@ -1,0 +1,64 @@
+<div class="row page-header">
+    <h1>Edit film entry</h1>
+</div>
+<form class="form-horizontal" ng-submit="$ctrl.submit()">
+    <div class="form-group row" id="name-fg">
+        <div class="col-sm-3">
+            <label for="title" class="control-label">Film entry title</label>
+        </div>
+        <div class="col-sm-9">
+            <input type="text" class="input-lg form-control" id="title" ng-model="$ctrl.title" ng-change="$ctrl.checkTitle()"/>
+        </div>
+    </div>
+    <div class="form-group row" id="description-fg">
+        <div class="col-sm-3">
+            <label for="description" class="control-label">Film entry description</label>
+        </div>
+        <div class="col-sm-9">
+            <textarea rows="3" cols="50" class="input-lg form-control" id="description" ng-model="$ctrl.description"></textarea>
+        </div>
+    </div>
+    <div class="form-group row" id="country-fg">
+        <div class="col-sm-3">
+            <label for="title" class="control-label">Country of origin</label>
+        </div>
+        <div class="col-sm-9">
+            <select class="form-control input-lg" ng-model="$ctrl.country">
+                <option ng-repeat="c in $ctrl.countries" value="{{c.countryCode}}">{{c.countryNameEn}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row" id="duration-fg">
+        <div class="col-sm-3">
+            <label for="duration" class="control-label">Duration</label>
+        </div>
+        <div class="col-sm-9">
+            <input type="text" placeholder="e.g. hh:mm:ss" class="input-lg form-control" id="duration" ng-model="$ctrl.duration" ng-change="$ctrl.checkDuration()"/>
+        </div>
+    </div>
+    <div class="form-group row" id="status-fg">
+        <div class="col-sm-3">
+            <label for="status" class="control-label">Status</label>
+        </div>
+        <div class="col-sm-9">
+            <select class="form-control input-lg" id="status" ng-model="$ctrl.status">
+                <option value="released">released</option>
+                <option value="planned">planned</option>
+                <option value="cancelled">cancelled</option>
+                <option value="ongoing">ongoing</option>
+                <option value="finished">finished</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row" id="releasedate-fg">
+        <div class="col-sm-3">
+            <label for="releasedate" class="control-label">Release date</label>
+        </div>
+        <div class="col-sm-9">
+            <input class="input-lg form-control" type="date" id="releasedate" ng-change="$ctrl.checkReleasedate()" ng-model="$ctrl.releaseDate"/>
+        </div>
+    </div>
+    <div class="form-group row" id="submit-fg">
+        <button type="submit" id="submit-button" class="btn btn-lg btn-block" ng-disabled="!$ctrl.allOK">Submit</button>
+    </div>
+</form>

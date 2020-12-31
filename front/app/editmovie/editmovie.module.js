@@ -1,0 +1,1 @@
+angular.module('myApp.editMovie',['core.movies', 'core.countries', 'ngRoute'])
