@@ -1,8 +1,8 @@
 angular.module('myApp.register-view')
     .component('registerView', {
         templateUrl: 'register/register-view.template.html',
-        controller: ['$cookies', '$location', 'Register', 'CheckUsername', 'CheckEmail', '$rootScope',
-            function RegisterController($cookies, $location, Register, CheckUsername, CheckEmail, $rootScope) {
+        controller: ['$cookies', '$window', 'Register', 'CheckUsername', 'CheckEmail', '$rootScope',
+            function RegisterController($cookies, $window, Register, CheckUsername, CheckEmail, $rootScope) {
                 var self = this;
 
                 //ng-model
@@ -216,7 +216,7 @@ angular.module('myApp.register-view')
                         if (data.success == true) {
                             $rootScope.username=self.user;
                             $cookies.put("loggedIn", true);
-                            $location.path("#!/home");
+                            $window.location.href = "#!/home";
                         }
                     });
                 }

@@ -39,7 +39,7 @@ angular.module('myApp.createMovie').component('createMovie', {
                 releaseDate:self.releaseDate.toDateString()
             }).$promise.then(function(data){
                 if(data.success==true)
-                    $location.path("#!/movieDetails/${data.id}");
+                    $window.location.href = "#!/movieDetails/" + $routeParams.id;
             });
         }
 
