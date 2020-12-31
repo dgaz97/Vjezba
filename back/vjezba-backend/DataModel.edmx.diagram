@@ -4,24 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ef079df34199421c97f497cf5863d50b" Name="Diagram1">
-        <EntityTypeShape EntityType="VjezbaModel.actorDoingCharacter" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.character" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.filmEntry" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.filmEntry_movie" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.filmEntry_tvShow" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.filmEntryHasGenre" Width="1.5" PointX="6" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.genre" Width="1.5" PointX="3.75" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.image" Width="1.5" PointX="6" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.movieList" Width="1.5" PointX="3.75" PointY="17.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.movieListEntry" Width="1.5" PointX="6" PointY="12.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.person" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.personInFilmEntry" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.personRole" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.role" Width="1.5" PointX="1.5" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="VjezbaModel.user" Width="1.5" PointX="1.5" PointY="16.875" IsExpanded="true" />
+      <Diagram DiagramId="ef079df34199421c97f497cf5863d50b" Name="Diagram1" ZoomLevel="97">
+        <EntityTypeShape EntityType="VjezbaModel.actorDoingCharacter" Width="1.5" PointX="8" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VjezbaModel.character" Width="1.5" PointX="5.375" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VjezbaModel.filmEntry" Width="1.5" PointX="2.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VjezbaModel.filmEntry_movie" Width="1.5" PointX="3.125" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VjezbaModel.filmEntry_tvShow" Width="1.875" PointX="2.375" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VjezbaModel.filmEntryHasGenre" Width="1.75" PointX="5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VjezbaModel.genre" Width="1.5" PointX="3.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VjezbaModel.image" Width="1.5" PointX="6.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VjezbaModel.movieList" Width="1.5" PointX="9.625" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VjezbaModel.movieListEntry" Width="1.5" PointX="9.375" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VjezbaModel.person" Width="1.5" PointX="8.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VjezbaModel.personInFilmEntry" Width="1.5" PointX="10.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VjezbaModel.personRole" Width="1.5" PointX="11.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VjezbaModel.role" Width="1.5" PointX="5.375" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VjezbaModel.user" Width="1.5" PointX="7.25" PointY="4.375" IsExpanded="true" />
         <AssociationConnector Association="VjezbaModel.FK_characteractorDoingCharacter" ManuallyRouted="false" />
-        <AssociationConnector Association="VjezbaModel.FK_personInFilmEntryactorDoingCharacter" ManuallyRouted="false" />
+        <AssociationConnector Association="VjezbaModel.FK_personInFilmEntryactorDoingCharacter" ManuallyRouted="false" ></AssociationConnector>
         <AssociationConnector Association="VjezbaModel.FK_filmEntryactorInFilmEntry" ManuallyRouted="false" />
         <AssociationConnector Association="VjezbaModel.FK_filmEntryfilmEntryHasGenre" ManuallyRouted="false" />
         <AssociationConnector Association="VjezbaModel.FK_filmEntrymovieListEntry" ManuallyRouted="false" />
@@ -37,7 +37,7 @@
         <AssociationConnector Association="VjezbaModel.image_characterImage" ManuallyRouted="false" />
         <AssociationConnector Association="VjezbaModel.image_filmEntryImage" ManuallyRouted="false" />
         <AssociationConnector Association="VjezbaModel.image_personImage" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="VjezbaModel.countryList" Width="1.5" PointX="0.75" PointY="23.375" />
+        <EntityTypeShape EntityType="VjezbaModel.countryList" Width="1.5" PointX="4.5" PointY="9.75" />
         <AssociationConnector Association="VjezbaModel.FK_filmEntry_countryList" />
         <AssociationConnector Association="VjezbaModel.FK_filmEntry_filmEntry" />
       </Diagram>
