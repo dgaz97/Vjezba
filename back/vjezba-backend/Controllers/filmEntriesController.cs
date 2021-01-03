@@ -137,7 +137,8 @@ namespace vjezba_backend.Controllers
             //db.filmEntry.Add(f);
 
             sb.Append($@"{{");
-            sb.Append($@"""success"":true");
+            sb.Append($@"""success"":true,");
+            sb.Append($@"""id"":{f.Id}");
             sb.Append($@"}}");
             return generateResponse(HttpStatusCode.OK, sb);
         }
