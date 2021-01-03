@@ -5,10 +5,12 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using vjezba_backend.Models;
 
 namespace vjezba_backend.Controllers
 {
+    [EnableCors(origins: "http://localhost:8000, https://localhost:8000", headers: "*", methods: "*")]
     public class genreController : ApiController
     {
         public HttpResponseMessage GetAllGenres()
