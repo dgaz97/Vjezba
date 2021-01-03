@@ -29,7 +29,19 @@ namespace vjezba_backend.Controllers
             return generateResponse(HttpStatusCode.OK, sb);
         }
 
-        
+        public HttpResponseMessage GetGenre(int id)
+        {
+            VjezbaEntities db = new VjezbaEntities();
+            StringBuilder sb = new StringBuilder();
+            sb.Append($@"{{");
+            sb.Append($@"""success"":true,");
+            sb.Append($@"""genre"":");
+
+            genre g = (from x in db.genre where x.Id == id select x).First();
+            sb.Append(g.ToJson());
+            sb.Append($@"}}");
+            return generateResponse(HttpStatusCode.OK, sb);
+        }
 
         private HttpResponseMessage generateResponse(HttpStatusCode status, StringBuilder sb)
         {
