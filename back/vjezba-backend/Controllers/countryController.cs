@@ -39,8 +39,8 @@ namespace vjezba_backend.Controllers
             VjezbaEntities db = new VjezbaEntities();
 
             string name = (from x in db.countryList
-                          where code == x.countryCode
-                          select x.countryNameEn).First();
+                           where code == x.countryCode
+                           select x.countryNameEn).First();
             sb.Append($@"{{");
             sb.Append($@"""status"":true,");
             sb.Append($@"""countryName"":""{name}""");

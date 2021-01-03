@@ -25,7 +25,8 @@
             <label for="genres">Genres (you may pick multiple):</label>
         </div>
         <div class="col-sm-9">
-            <select multiple class="form-control input-lg" id="genres" ng-change="$ctrl.checkGenre()" ng-model="$ctrl.genres">
+            <select multiple class="form-control input-lg" id="genres" ng-change="$ctrl.checkGenre()"
+                ng-model="$ctrl.genres">
                 <option ng-repeat="g in $ctrl.allGenres" value="{{g.id}}">{{g.name}}</option>
             </select>
         </div>

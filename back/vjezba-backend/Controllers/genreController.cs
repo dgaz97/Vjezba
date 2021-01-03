@@ -34,7 +34,8 @@ namespace vjezba_backend.Controllers
         public HttpResponseMessage GetFilmsOfGenre(int idGenre)
         {
             VjezbaEntities db = new VjezbaEntities();
-            List<filmEntry> l = (from x in db.filmEntry where x.filmEntryHasGenre.Any(y=>y.genre_Id==idGenre)
+            List<filmEntry> l = (from x in db.filmEntry
+                                 where x.filmEntryHasGenre.Any(y => y.genre_Id == idGenre)
                                  select x).OrderBy(g => g.dateLastUpdated).ToList();
             StringBuilder sb = new StringBuilder();
             sb.Append($@"{{");
@@ -114,7 +115,7 @@ namespace vjezba_backend.Controllers
             oldlist.ForEach(y => db.filmEntryHasGenre.Remove(y));
             g.listOfGenreIds.ForEach(x =>
             {
-                
+
                 genre genre = (from i in db.genre where i.Id == x select i).First();
                 filmEntry filmEntry = (from i in db.filmEntry where i.Id == g.idMovie select i).First();
                 filmEntryHasGenre f = new filmEntryHasGenre();

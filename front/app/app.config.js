@@ -20,25 +20,25 @@ angular
             .when('/register', {
                 template: '<register-view></register-view>'
             })
-            .when('/login',{
+            .when('/login', {
                 template: '<login-view></login-view>'
             })
-            .when('/myLists',{
+            .when('/myLists', {
                 template: '<my-lists></my-lists>'
             })
-            .when('/allMovies/:page',{
+            .when('/allMovies/:page', {
                 template: '<all-movies></all-movies>'
             })
-            .when('/movieDetails/:movieId',{
+            .when('/movieDetails/:movieId', {
                 template: '<movie-details></movie-details>'
             })
-            .when('/movie/new',{
+            .when('/movie/new', {
                 template: '<create-movie></create-movie>'
             })
-            .when('/movie/edit/:id',{
+            .when('/movie/edit/:id', {
                 template: '<edit-movie></edit-movie>'
             })
-            .when('/movie/genre/:id',{
+            .when('/movie/genre/:id', {
                 template: '<movies-of-genre></movies-of-genre>'
             })
             .otherwise('/home');

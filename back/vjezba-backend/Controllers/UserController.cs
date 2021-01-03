@@ -121,7 +121,7 @@ namespace vjezba_backend.Controllers
                 }
             }
 
-            return generateResponse(status,sb);
+            return generateResponse(status, sb);
         }
 
         /**

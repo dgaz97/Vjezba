@@ -24,16 +24,16 @@ angular
     'myApp.moviesOfGenre',
     'myApp.version'
   ])
-  .run(['$window','$rootScope', '$location','$cookies', function ($window, $rootScope, $location, $cookies) {
+  .run(['$window', '$rootScope', '$location', '$cookies', function ($window, $rootScope, $location, $cookies) {
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
-      if ($cookies.get("loggedIn")!="true") {
-        if(next.originalPath!="/register"&&next.originalPath!="/login"){
+      if ($cookies.get("loggedIn") != "true") {
+        if (next.originalPath != "/register" && next.originalPath != "/login") {
           event.preventDefault();
           $location.path('/login');
         }
       }
-      else{
-        if(next.originalPath=="/register"||next.originalPath=="/login"){
+      else {
+        if (next.originalPath == "/register" || next.originalPath == "/login") {
           event.preventDefault();
           $location.path('/home');
         }

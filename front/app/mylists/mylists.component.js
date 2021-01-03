@@ -1,6 +1,6 @@
-angular.module('myApp.myLists').component('myLists',{
-    templateUrl:'mylists/mylists.template.html',
-    controller:[function MyListsController(){
+angular.module('myApp.myLists').component('myLists', {
+    templateUrl: 'mylists/mylists.template.html',
+    controller: [function MyListsController() {
 
     }]
 })

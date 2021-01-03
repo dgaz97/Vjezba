@@ -29,10 +29,10 @@ namespace vjezba_backend.Controllers
 
 
         // GET: api/filmEntries
-        public HttpResponseMessage GetfilmEntry(int page=1)
+        public HttpResponseMessage GetfilmEntry(int page = 1)
         {
             List<filmEntry> l = (from x in db.filmEntry
-                    select x).OrderBy(g=>g.dateLastUpdated).Skip((page-1)*10).Take(10).ToList();
+                                 select x).OrderBy(g => g.dateLastUpdated).Skip((page - 1) * 10).Take(10).ToList();
             StringBuilder sb = new StringBuilder();
             sb.Append($@"{{");
             sb.Append($@"""success"":true,");
@@ -40,7 +40,7 @@ namespace vjezba_backend.Controllers
 
             l.ForEach(y =>
             {
-                sb.Append(y.ToJson()+",");
+                sb.Append(y.ToJson() + ",");
 
             });
             sb.Length--;//Briše zadnji zarez
@@ -55,7 +55,7 @@ namespace vjezba_backend.Controllers
         public HttpResponseMessage GetNumberOfMoviePages()
         {
             StringBuilder sb = new StringBuilder();
-            double count = Math.Ceiling(Convert.ToDouble((from x in db.filmEntry select x).Count())/10);
+            double count = Math.Ceiling(Convert.ToDouble((from x in db.filmEntry select x).Count()) / 10);
             sb.Append($@"{{");
             sb.Append($@"""success"":true,");
             sb.Append($@"""numberOfPages"":{Convert.ToInt32(count)}");
@@ -123,7 +123,7 @@ namespace vjezba_backend.Controllers
 
             //DateTime c = f.dateCreated;
             MapperConfiguration config = new MapperConfiguration(cfg => cfg.CreateMap<MovieToAdd, filmEntry>());
-            config.CreateMapper().Map<MovieToAdd,filmEntry>(data, f);
+            config.CreateMapper().Map<MovieToAdd, filmEntry>(data, f);
             //f.dateCreated = c;
 
             DateTime time = DateTime.Now;

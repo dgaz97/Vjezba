@@ -1,1 +1,1 @@
-angular.module('myApp.myLists',[]);
+angular.module('myApp.myLists', []);

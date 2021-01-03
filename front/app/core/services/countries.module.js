@@ -1,1 +1,1 @@
-angular.module('core.countries',['ngResource'])
+angular.module('core.countries', ['ngResource'])

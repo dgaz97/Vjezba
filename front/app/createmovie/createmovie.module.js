@@ -1,1 +1,1 @@
-angular.module('myApp.createMovie',['core.movies', 'core.countries'])
+angular.module('myApp.createMovie', ['core.movies', 'core.countries'])

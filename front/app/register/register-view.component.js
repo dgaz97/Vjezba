@@ -214,7 +214,7 @@ angular.module('myApp.register-view')
                         birthdate: self.birthdate
                     }).$promise.then(function (data) {
                         if (data.success == true) {
-                            $rootScope.username=self.user;
+                            $rootScope.username = self.user;
                             $cookies.put("loggedIn", true);
                             $window.location.href = "#!/home";
                         }
