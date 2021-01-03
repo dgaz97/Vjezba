@@ -12,7 +12,9 @@ namespace vjezba_backend.Controllers
     [EnableCors(origins: "http://localhost:8000, https://localhost:8000", headers: "*", methods: "*")]
     public class countryController : ApiController
     {
-        // GET api/<controller>
+        /**
+         * Dohvaća sve države iz baze
+         */
         public HttpResponseMessage Get()
         {
             VjezbaEntities db = new VjezbaEntities();
@@ -31,6 +33,9 @@ namespace vjezba_backend.Controllers
             return generateResponse(HttpStatusCode.OK, sb);
         }
 
+        /**
+         * Dohvaća ime države prema ISO kodu
+         */
         [HttpGet]
         [Route("api/country/countryName/")]
         public HttpResponseMessage GetCountryName(string code)
@@ -49,6 +54,9 @@ namespace vjezba_backend.Controllers
             return generateResponse(HttpStatusCode.OK, sb);
         }
 
+        /**
+         * Pomoćna metoda koja sastavlja HTTP odgovor
+         */
         private HttpResponseMessage generateResponse(HttpStatusCode status, StringBuilder sb)
         {
             HttpResponseMessage m = new HttpResponseMessage(status);

@@ -27,8 +27,9 @@ namespace vjezba_backend.Controllers
         private VjezbaEntities db = new VjezbaEntities();
 
 
-
-        // GET: api/filmEntries
+        /**
+         * Dohvaća jednu stranicu filmova
+         */
         public HttpResponseMessage GetfilmEntry(int page = 1)
         {
             List<filmEntry> l = (from x in db.filmEntry
@@ -50,6 +51,9 @@ namespace vjezba_backend.Controllers
 
         }
 
+        /**
+         * Dohvaća broj stranica filmova
+         */
         [HttpGet]
         [Route("api/filmEntries/nofpages/")]
         public HttpResponseMessage GetNumberOfMoviePages()
@@ -64,7 +68,9 @@ namespace vjezba_backend.Controllers
             return generateResponse(HttpStatusCode.OK, sb);
         }
 
-        // GET: api/filmEntries/5
+        /**
+         * Dohvaćanje detalja jednog filma
+         */
         public HttpResponseMessage GetonefilmEntry(int id)
         {
             filmEntry filmEntry = db.filmEntry.Find(id);
@@ -223,6 +229,9 @@ namespace vjezba_backend.Controllers
             return db.filmEntry.Count(e => e.Id == id) > 0;
         }
 
+        /**
+         * Pomoćna metoda koja sastavlja HTTP odgovor
+         */
         private HttpResponseMessage generateResponse(HttpStatusCode status, StringBuilder sb)
         {
             HttpResponseMessage m = new HttpResponseMessage(status);

@@ -13,6 +13,9 @@ namespace vjezba_backend.Controllers
     [EnableCors(origins: "http://localhost:8000, https://localhost:8000", headers: "*", methods: "*")]
     public class genreController : ApiController
     {
+        /**
+         * Dohvaća sve žanrove u bazi
+         */
         public HttpResponseMessage GetAllGenres()
         {
             VjezbaEntities db = new VjezbaEntities();
@@ -31,6 +34,9 @@ namespace vjezba_backend.Controllers
             return generateResponse(HttpStatusCode.OK, sb);
         }
 
+        /**
+         * Dohvaća sve filmove koji su traženog žanra
+         */
         public HttpResponseMessage GetFilmsOfGenre(int idGenre)
         {
             VjezbaEntities db = new VjezbaEntities();
@@ -61,6 +67,9 @@ namespace vjezba_backend.Controllers
 
         }
 
+        /**
+         * Dohvaća ime traženog žanra 
+         */
         public HttpResponseMessage GetGenre(int id)
         {
             VjezbaEntities db = new VjezbaEntities();
@@ -75,6 +84,9 @@ namespace vjezba_backend.Controllers
             return generateResponse(HttpStatusCode.OK, sb);
         }
 
+        /**
+         * Dohvaća žanrove traženog filma
+         */
         public HttpResponseMessage GetGenresOfFilm(int idFilm)
         {
             VjezbaEntities db = new VjezbaEntities();
@@ -102,6 +114,9 @@ namespace vjezba_backend.Controllers
             return generateResponse(HttpStatusCode.OK, sb);
         }
 
+        /**
+         * Traženom filmu dodaje tražene žanrove
+         */
         [HttpPost]
         [Route("api/genre/add/")]
         public HttpResponseMessage AddGenresToMovie(GenresToAddToMovie g)
@@ -132,6 +147,9 @@ namespace vjezba_backend.Controllers
 
         }
 
+        /**
+         * Pomoćna metoda koja sastavlja HTTP odgovor
+         */
         private HttpResponseMessage generateResponse(HttpStatusCode status, StringBuilder sb)
         {
             HttpResponseMessage m = new HttpResponseMessage(status);

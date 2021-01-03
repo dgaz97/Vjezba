@@ -14,7 +14,9 @@ namespace vjezba_backend.Controllers
     [EnableCors(origins: "http://localhost:8000, https://localhost:8000", headers: "*", methods: "*")]
     public class ImageController : ApiController
     {
-        // GET api/<controller>/5
+        /**
+         * Dohvaća traženu sliku
+         */
         [HttpGet]
         public HttpResponseMessage Get(string img)
         {
