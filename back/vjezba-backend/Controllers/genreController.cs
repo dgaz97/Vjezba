@@ -80,8 +80,12 @@ namespace vjezba_backend.Controllers
             StringBuilder sb = new StringBuilder();
 
             List<filmEntryHasGenre> fehg = new List<filmEntryHasGenre>();
+
+            List<filmEntryHasGenre> oldlist = (from i in db.filmEntryHasGenre where i.filmEntry_Id == g.idMovie select i).ToList();
+            oldlist.ForEach(y => db.filmEntryHasGenre.Remove(y));
             g.listOfGenreIds.ForEach(x =>
             {
+                
                 genre genre = (from i in db.genre where i.Id == x select i).First();
                 filmEntry filmEntry = (from i in db.filmEntry where i.Id == g.idMovie select i).First();
                 filmEntryHasGenre f = new filmEntryHasGenre();
