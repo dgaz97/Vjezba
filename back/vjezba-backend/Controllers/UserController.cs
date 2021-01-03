@@ -26,25 +26,6 @@ namespace vjezba_backend.Controllers
         const int ITERATIONS = 15000;
         HashAlgorithmName HASH = HashAlgorithmName.SHA256;
 
-        // GET api/<controller>/
-        /**
-         * Test metoda, ne radi ništa korisno
-         */
-        public HttpResponseMessage Get()
-        {
-            Console.WriteLine($"Entered user get");
-            int cnt = -66;
-            using (var db = new VjezbaEntities())
-            {
-                cnt = db.user.Count();
-
-                StringBuilder sb = new StringBuilder();
-                sb.Append($"{{\"date\": \"test\", \"ggg\": 52, \"brojKorisnika\":{cnt}}}");
-                return generateResponse(HttpStatusCode.OK, sb);
-            }
-        }
-
-        // GET api/<controller>/{id}
         /**
          * Metoda koja dohvaća podatke jednog korisnika
          */
@@ -165,7 +146,6 @@ namespace vjezba_backend.Controllers
             return generateResponse(status, sb);
         }
 
-        // POST api/<controller>
         /**
          * Register metoda
          */
@@ -309,16 +289,6 @@ namespace vjezba_backend.Controllers
             return generateResponse(status, sb);
 
 
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
         }
 
         /**
