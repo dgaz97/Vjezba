@@ -43,6 +43,27 @@ namespace vjezba_backend.Controllers
             return generateResponse(HttpStatusCode.OK, sb);
         }
 
+        public HttpResponseMessage GetGenresOfFilm(int idFilm)
+        {
+            VjezbaEntities db = new VjezbaEntities();
+            StringBuilder sb = new StringBuilder();
+            sb.Append($@"{{");
+            sb.Append($@"""success"":true,");
+            sb.Append($@"""genres"":[");
+
+            filmEntry f = (from i in db.filmEntry where i.Id == idFilm select i).First();
+            foreach (filmEntryHasGenre i in f.filmEntryHasGenre)
+            {
+                sb.Append(i.genre.ToJson());
+                sb.Append($@",");
+            }
+            sb.Length--;
+            sb.Append($@"]");
+
+            sb.Append($@"}}");
+            return generateResponse(HttpStatusCode.OK, sb);
+        }
+
         private HttpResponseMessage generateResponse(HttpStatusCode status, StringBuilder sb)
         {
             HttpResponseMessage m = new HttpResponseMessage(status);
