@@ -18,6 +18,16 @@
             <textarea rows="3" cols="50" class="input-lg form-control" id="description" ng-model="$ctrl.description"></textarea>
         </div>
     </div>
+    <div class="form-group" id="genres-fg">
+        <div class="col-sm-3">
+            <label for="genres">Genres (you may pick multiple):</label>
+        </div>
+        <div class="col-sm-9">
+            <select multiple class="form-control input-lg" id="genres" ng-change="$ctrl.checkGenre()" ng-model="$ctrl.genres">
+                <option ng-repeat="g in $ctrl.allGenres" value="{{g.id}}">{{g.name}}</option>
+            </select>
+        </div>
+    </div>
     <div class="form-group row" id="country-fg">
         <div class="col-sm-3">
             <label for="title" class="control-label">Country of origin</label>
