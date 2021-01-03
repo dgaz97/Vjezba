@@ -11,7 +11,8 @@ namespace vjezba_backend
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Text;
+
     public partial class genre
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,5 +26,16 @@ namespace vjezba_backend
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<filmEntryHasGenre> filmEntryHasGenre { get; set; }
+
+        public object ToJson()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($@"{{");
+            sb.Append($@"""id"":""{Id}"",");
+            sb.Append($@"""name"":""{name}""");
+            sb.Append($@"}}");
+
+            return sb.ToString();
+        }
     }
 }
