@@ -82,7 +82,6 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="image">
           <Key>
@@ -678,7 +677,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="filmEntryHasGenre" Relationship="Self.FK_genrefilmEntryHasGenre" FromRole="genre" ToRole="filmEntryHasGenre" />
         </EntityType>
         <EntityType Name="image">
@@ -1160,7 +1158,6 @@
               <MappingFragment StoreEntitySet="genre">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="description" ColumnName="description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
