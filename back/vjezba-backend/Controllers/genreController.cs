@@ -31,6 +31,35 @@ namespace vjezba_backend.Controllers
             return generateResponse(HttpStatusCode.OK, sb);
         }
 
+        public HttpResponseMessage GetFilmsOfGenre(int idGenre)
+        {
+            VjezbaEntities db = new VjezbaEntities();
+            List<filmEntry> l = (from x in db.filmEntry where x.filmEntryHasGenre.Any(y=>y.genre_Id==idGenre)
+                                 select x).OrderBy(g => g.dateLastUpdated).ToList();
+            StringBuilder sb = new StringBuilder();
+            sb.Append($@"{{");
+            sb.Append($@"""success"":true,");
+            sb.Append($@"""filmEntries"":[");
+
+            if (l.Count == 0)
+            {
+                sb.Append($@"]");
+                sb.Append($@"}}");
+                return generateResponse(HttpStatusCode.OK, sb);
+            }
+
+            l.ForEach(y =>
+            {
+                sb.Append(y.ToJson() + ",");
+
+            });
+            sb.Length--;//Briše zadnji zarez
+            sb.Append($@"]}}");
+
+            return generateResponse(HttpStatusCode.OK, sb);
+
+        }
+
         public HttpResponseMessage GetGenre(int id)
         {
             VjezbaEntities db = new VjezbaEntities();
