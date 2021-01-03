@@ -21,6 +21,7 @@ angular
     'myApp.movieDetails',
     'myApp.createMovie',
     'myApp.editMovie',
+    'myApp.moviesOfGenre',
     'myApp.version'
   ])
   .run(['$window','$rootScope', '$location','$cookies', function ($window, $rootScope, $location, $cookies) {

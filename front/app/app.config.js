@@ -38,6 +38,9 @@ angular
             .when('/movie/edit/:id',{
                 template: '<edit-movie></edit-movie>'
             })
+            .when('/movie/genre/:id',{
+                template: '<movies-of-genre></movies-of-genre>'
+            })
             .otherwise('/home');
 
     }]

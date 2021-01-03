@@ -85,4 +85,24 @@ angular.module('core.movies')
             idFilm:0
         }
     })
+}])
+.factory('GetMoviesOfGenre',['$resource', function($resource){
+    return $resource('https://localhost:44385/api/genre?idGenre=:idGenre', {}, {
+        getMoviesOfGenre:{
+            method:'GET'
+        },
+        params:{
+            idGenre:0
+        }
+    })
+}])
+.factory('GetGenre',['$resource', function($resource){
+    return $resource('https://localhost:44385/api/genre?id=:id', {}, {
+        getGenre:{
+            method:'GET'
+        },
+        params:{
+            id:0
+        }
+    })
 }]);
