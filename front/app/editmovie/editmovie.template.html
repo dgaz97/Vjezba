@@ -7,7 +7,8 @@
             <label for="title" class="control-label">Film entry title</label>
         </div>
         <div class="col-sm-9">
-            <input type="text" class="input-lg form-control" id="title" ng-model="$ctrl.title" ng-change="$ctrl.checkTitle()"/>
+            <input type="text" class="input-lg form-control" id="title" ng-model="$ctrl.title"
+                ng-change="$ctrl.checkTitle()" />
         </div>
     </div>
     <div class="form-group row" id="description-fg">
@@ -15,7 +16,18 @@
             <label for="description" class="control-label">Film entry description</label>
         </div>
         <div class="col-sm-9">
-            <textarea rows="3" cols="50" class="input-lg form-control" id="description" ng-model="$ctrl.description"></textarea>
+            <textarea rows="3" cols="50" class="input-lg form-control" id="description"
+                ng-model="$ctrl.description"></textarea>
+        </div>
+    </div>
+    <div class="form-group" id="genres-fg">
+        <div class="col-sm-3">
+            <label for="genres">Genres (you may pick multiple):</label>
+        </div>
+        <div class="col-sm-9">
+            <select multiple class="form-control input-lg" id="genres" ng-change="$ctrl.checkGenre()" ng-model="$ctrl.genres">
+                <option ng-repeat="g in $ctrl.allGenres" value="{{g.id}}">{{g.name}}</option>
+            </select>
         </div>
     </div>
     <div class="form-group row" id="country-fg">
@@ -33,7 +45,8 @@
             <label for="duration" class="control-label">Duration</label>
         </div>
         <div class="col-sm-9">
-            <input type="text" placeholder="e.g. hh:mm:ss" class="input-lg form-control" id="duration" ng-model="$ctrl.duration" ng-change="$ctrl.checkDuration()"/>
+            <input type="text" placeholder="e.g. hh:mm:ss" class="input-lg form-control" id="duration"
+                ng-model="$ctrl.duration" ng-change="$ctrl.checkDuration()" />
         </div>
     </div>
     <div class="form-group row" id="status-fg">
@@ -55,7 +68,8 @@
             <label for="releasedate" class="control-label">Release date</label>
         </div>
         <div class="col-sm-9">
-            <input class="input-lg form-control" type="date" id="releasedate" ng-change="$ctrl.checkReleasedate()" ng-model="$ctrl.releaseDate"/>
+            <input class="input-lg form-control" type="date" id="releasedate" ng-change="$ctrl.checkReleasedate()"
+                ng-model="$ctrl.releaseDate" />
         </div>
     </div>
     <div class="form-group row" id="submit-fg">

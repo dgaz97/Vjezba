@@ -57,4 +57,32 @@ angular.module('core.movies')
             method:'GET'
         }
     })
+}])
+.factory('AllGenres',['$resource', function($resource){
+    return $resource('https://localhost:44385/api/genre', {}, {
+        getAllGenres:{
+            method:'GET'
+        }
+    })
+}])
+.factory('AddGenresToMovie',['$resource', function($resource){
+    return $resource('https://localhost:44385/api/genre/add', {}, {
+        addGenresToMovie:{
+            method:'POST'
+        },
+        data:{
+            idMovie:0,
+            listOfGenreIds:[]
+        }
+    })
+}])
+.factory('GetGenresOfMovie',['$resource', function($resource){
+    return $resource('https://localhost:44385/api/genre?idFilm=:idFilm', {}, {
+        getGenresOfMovie:{
+            method:'GET'
+        },
+        params:{
+            idFilm:0
+        }
+    })
 }]);
