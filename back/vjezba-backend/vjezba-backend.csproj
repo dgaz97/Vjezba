@@ -190,6 +190,7 @@
     <Compile Include="image.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GenresToAddToMovie.cs" />
     <Compile Include="Models\MovieToAdd.cs" />
     <Compile Include="Models\UserToLogin.cs" />
     <Compile Include="Models\UserToRegister.cs" />

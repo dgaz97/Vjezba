@@ -64,6 +64,32 @@ namespace vjezba_backend.Controllers
             return generateResponse(HttpStatusCode.OK, sb);
         }
 
+        [HttpPost]
+        [Route("api/genre/add/")]
+        public HttpResponseMessage AddGenresToMovie(GenresToAddToMovie g)
+        {
+            VjezbaEntities db = new VjezbaEntities();
+            StringBuilder sb = new StringBuilder();
+
+            List<filmEntryHasGenre> fehg = new List<filmEntryHasGenre>();
+            g.listOfGenreIds.ForEach(x =>
+            {
+                genre genre = (from i in db.genre where i.Id == x select i).First();
+                filmEntry filmEntry = (from i in db.filmEntry where i.Id == g.idMovie select i).First();
+                filmEntryHasGenre f = new filmEntryHasGenre();
+                f.genre = genre;
+                f.filmEntry = filmEntry;
+                db.filmEntryHasGenre.Add(f);
+                db.SaveChanges();
+            });
+            sb.Append($@"{{");
+            sb.Append($@"""success"":true");
+            sb.Append($@"}}");
+
+            return generateResponse(HttpStatusCode.OK, sb);
+
+        }
+
         private HttpResponseMessage generateResponse(HttpStatusCode status, StringBuilder sb)
         {
             HttpResponseMessage m = new HttpResponseMessage(status);
