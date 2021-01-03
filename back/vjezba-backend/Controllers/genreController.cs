@@ -49,11 +49,17 @@ namespace vjezba_backend.Controllers
         {
             VjezbaEntities db = new VjezbaEntities();
             StringBuilder sb = new StringBuilder();
+            filmEntry f = (from i in db.filmEntry where i.Id == idFilm select i).First();
             sb.Append($@"{{");
             sb.Append($@"""success"":true,");
             sb.Append($@"""genres"":[");
 
-            filmEntry f = (from i in db.filmEntry where i.Id == idFilm select i).First();
+            if (f.filmEntryHasGenre.Count == 0)
+            {
+                sb.Append($@"]");
+                sb.Append($@"}}");
+                return generateResponse(HttpStatusCode.OK, sb);
+            }
             foreach (filmEntryHasGenre i in f.filmEntryHasGenre)
             {
                 sb.Append(i.genre.ToJson());
