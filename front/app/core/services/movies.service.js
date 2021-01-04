@@ -105,4 +105,12 @@ angular.module('core.movies')
                 id: 0
             }
         })
+    }])
+    .factory('MovieCountPerGenre', ['$resource', function ($resource) {
+        return $resource('https://localhost:44385/api/genre/moviecount', {}, {
+            movieCountPerGenre: {
+                method: 'GET',
+                isArray:true
+            }
+        })
     }]);
