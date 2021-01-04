@@ -1,3 +1,12 @@
+app/apptemplates
+app/examples
+app/js
+app/src
+app/styles
+app/vsdoc
+app/license-agreements
+app/typescript/kendo*
+
 # Logs
 logs
 *.log
