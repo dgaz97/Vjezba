@@ -1,6 +1,6 @@
 angular.module('myApp.allMovies').component('allMovies', {
     templateUrl: 'allmovies/allmovies.template.html',
-    controller: ['MovieList', 'NOfPages', '$routeParams', function AllMoviesController(MovieList, NOfPages, $routeParams) {
+    controller: ['MovieList', 'NOfPages', 'MovieCountPerGenre', '$routeParams', function AllMoviesController(MovieList, NOfPages, MovieCountPerGenre, $routeParams) {
         var self = this;
 
 

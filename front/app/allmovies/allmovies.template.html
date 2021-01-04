@@ -8,9 +8,9 @@
                 href="#!/allMovies/{{$index+1}}">{{$index+1}}</a></li>
     </ul>
 </div>
-<div class="row" ng-repeat="movie in $ctrl.listOfMovies">
+<div class="row" ng-repeat="movie in $ctrl.listOfMovies" id="row_{{movie.id}}">
     <div class="col-sm-3">placeholder for image</div>
-    <div class="col-sm-9">
+    <div class="col-sm-7">
         <div class="row">
             <a href="#!/movieDetails/{{movie.id}}">
                 <h3>{{movie.name}}</h3>
@@ -19,5 +19,9 @@
         <div class="row">
             <p>{{movie.description}}</p>
         </div>
+    </div>
+    <div class="col-sm-2" id="bar_{{movie.id}}">
+        <span kendo-qrcode k-error-correction="'M'" ng-model="movie.name"
+            style="max-width: 250px; margin: 0 auto;"></span>
     </div>
 </div>

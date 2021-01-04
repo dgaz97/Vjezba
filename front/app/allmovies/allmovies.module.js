@@ -1,1 +1,1 @@
-angular.module('myApp.allMovies', ['core.movies', 'ngRoute']);
+angular.module('myApp.allMovies', ['core.movies', 'ngRoute','kendo.directives']);
