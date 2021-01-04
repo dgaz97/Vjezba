@@ -144,7 +144,41 @@ namespace vjezba_backend.Controllers
             sb.Append($@"}}");
 
             return generateResponse(HttpStatusCode.OK, sb);
+        }
 
+        /**
+         * Metoda koja dohvaća broj filmova po žanru
+         */
+        [HttpGet]
+        [Route("api/genre/moviecount/")]
+        public HttpResponseMessage MovieGenreCount()
+        {
+            VjezbaEntities db = new VjezbaEntities();
+            StringBuilder sb = new StringBuilder();
+
+            List<filmEntryHasGenre> fehg = new List<filmEntryHasGenre>();
+
+            var y = from x in db.filmEntryHasGenre group x by x.genre into grp select new { name = grp.Key.name, count = grp.Count() };
+
+            int totalCount = 0;
+            sb.Append($@"[{{");
+            //sb.Append($@"""success"":true,");
+            sb.Append($@"""genres"":[");
+            y.ToList().ForEach(x =>
+            {
+                sb.Append($@"{{");
+                sb.Append($@"""name"":""{x.name}"",");
+                sb.Append($@"""count"":{x.count}");
+                totalCount += x.count;
+                sb.Append($@"}},");
+            });
+            sb.Length--;
+            sb.Append($@"],");
+            sb.Append($@"""count"":{totalCount},");
+            sb.Append($@"""name"":""Genres""");
+            sb.Append($@"}}]");
+
+            return generateResponse(HttpStatusCode.OK, sb);
         }
 
         /**
