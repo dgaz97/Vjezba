@@ -1,6 +1,20 @@
 <div class="row page-header">
     <h1>Edit film entry</h1>
 </div>
+
+<div class="k-content">
+    <div>
+        <h4>Upload files</h4>
+        <input name="files"
+               type="file"
+               kendo-upload
+               k-async="async"
+               k-select="onSelect"
+               k-validation="validate"
+               />
+    </div>
+</div>
+
 <form class="form-horizontal" ng-submit="$ctrl.submit()">
     <div class="form-group row" id="name-fg">
         <div class="col-sm-3">

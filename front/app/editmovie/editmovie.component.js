@@ -1,7 +1,7 @@
 angular.module('myApp.editMovie').component('editMovie', {
     templateUrl: "editmovie/editmovie.template.html",
-    controller: ['EditMovie', 'CountryList', 'AllGenres', '$window', 'MovieDetails', 'AddGenresToMovie', 'GetGenresOfMovie', '$routeParams'
-        , function CreateMovieController(EditMovie, CountryList, AllGenres, $window, MovieDetails, AddGenresToMovie, GetGenresOfMovie, $routeParams) {
+    controller: ['$scope','EditMovie', 'CountryList', 'AllGenres', '$window', 'MovieDetails', 'AddGenresToMovie', 'GetGenresOfMovie', '$routeParams'
+        , function CreateMovieController($scope, EditMovie, CountryList, AllGenres, $window, MovieDetails, AddGenresToMovie, GetGenresOfMovie, $routeParams) {
             var self = this;
 
             self.title;
@@ -13,15 +13,15 @@ angular.module('myApp.editMovie').component('editMovie', {
             self.genres = [];
 
             MovieDetails.getMovie({ id: $routeParams.id }).$promise.then(function (data) {
-                console.log(data);
+                //console.log(data);
                 self.title = data.filmEntry.name;
                 self.description = data.filmEntry.description;
                 self.country = data.filmEntry.countryOfOrigin
                 self.duration = data.filmEntry.duration;
                 self.status = data.filmEntry.status;
-                console.log(data.filmEntry.releaseDate);
+                //console.log(data.filmEntry.releaseDate);
                 self.releaseDate = new Date(data.filmEntry.releaseDate);
-                console.log(self.releaseDate);
+                //console.log(self.releaseDate);
             });
 
             self.durationOK = true;
@@ -29,6 +29,17 @@ angular.module('myApp.editMovie').component('editMovie', {
             self.dateOK = true;
             self.genreOK = true;
             self.allOK = true;
+
+            $scope.validate={
+                'allowedExtensions':['jpg','jpeg','png','webp']
+            }
+
+            $scope.async={ saveUrl: 'https://localhost:44385/upload/save/movie/'+$routeParams.id, removeUrl: 'https://localhost:44385/upload/remove/movie/'+$routeParams.id, autoUpload: true }
+
+            $scope.onSelect = function(e) {
+                var message = $.map(e.files, function(file) { return file.name; }).join(", ");
+                console.log("event :: select (" + message + ")");
+            }
 
 
             self.durationRegex = /^([0-9]{1,}){1}:([0-5][0-9]){1}:([0-5][0-9]){1}$/;
