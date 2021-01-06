@@ -17,6 +17,7 @@ namespace vjezba_backend.Controllers
         /**
          * Dohvaća traženu sliku
          */
+        //TODO: obrisati
         [HttpGet]
         public HttpResponseMessage Get(string img)
         {
