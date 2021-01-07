@@ -164,11 +164,12 @@ namespace vjezba_backend.Controllers
             string workingDirectory = HttpRuntime.AppDomainAppPath;
             string physicalPath = $"{workingDirectory}/img/{type}/{id}";
 
+
             List<string> files = new List<string>();
             Directory.GetFiles(physicalPath).ToList().ForEach(x =>
             {
                 x = x.Replace(workingDirectory, "");
-                files.Add(x);
+                files.Add($@"https://localhost:44385{x.Replace('\\','/')}");
             });
 
 
