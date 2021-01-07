@@ -1,1 +1,1 @@
-angular.module('myApp.editMovie', ['core.movies', 'core.countries', 'ngRoute', 'kendo.directives'])
+angular.module('myApp.editMovie', ['core.movies', 'core.countries', 'core.images', 'ngRoute', 'kendo.directives'])

@@ -1,7 +1,7 @@
 angular.module('myApp.editMovie').component('editMovie', {
     templateUrl: "editmovie/editmovie.template.html",
-    controller: ['$scope','EditMovie', 'CountryList', 'AllGenres', '$window', 'MovieDetails', 'AddGenresToMovie', 'GetGenresOfMovie', '$routeParams'
-        , function CreateMovieController($scope, EditMovie, CountryList, AllGenres, $window, MovieDetails, AddGenresToMovie, GetGenresOfMovie, $routeParams) {
+    controller: ['$scope', 'EditMovie', 'CountryList', 'AllGenres', '$window', 'MovieDetails', 'AddGenresToMovie', 'GetGenresOfMovie', 'MovieImages', 'DeleteImage', '$routeParams'
+        , function EditMovieController($scope, EditMovie, CountryList, AllGenres, $window, MovieDetails, AddGenresToMovie, GetGenresOfMovie, MovieImages, DeleteImage, $routeParams) {
             var self = this;
 
             self.title;
@@ -13,15 +13,12 @@ angular.module('myApp.editMovie').component('editMovie', {
             self.genres = [];
 
             MovieDetails.getMovie({ id: $routeParams.id }).$promise.then(function (data) {
-                //console.log(data);
                 self.title = data.filmEntry.name;
                 self.description = data.filmEntry.description;
                 self.country = data.filmEntry.countryOfOrigin
                 self.duration = data.filmEntry.duration;
                 self.status = data.filmEntry.status;
-                //console.log(data.filmEntry.releaseDate);
                 self.releaseDate = new Date(data.filmEntry.releaseDate);
-                //console.log(self.releaseDate);
             });
 
             self.durationOK = true;
@@ -30,14 +27,51 @@ angular.module('myApp.editMovie').component('editMovie', {
             self.genreOK = true;
             self.allOK = true;
 
-            $scope.validate={
-                'allowedExtensions':['jpg','jpeg','png','webp']
+            $scope.validate = {
+                'allowedExtensions': ['jpg', 'jpeg', 'png', 'webp']
             }
 
-            $scope.async={ saveUrl: 'https://localhost:44385/upload/save/movie/'+$routeParams.id, removeUrl: 'https://localhost:44385/upload/remove/movie/'+$routeParams.id, autoUpload: true }
+            MovieImages.movieImages({ type: 'movie', id: $routeParams.id }).$promise.then(function (data) {
+                let array = [];
+                let i = 0;
+                data.forEach(x => {
+                    array[i] = {};
+                    array[i++]['image'] = x;
+                });
 
-            $scope.onSelect = function(e) {
-                var message = $.map(e.files, function(file) { return file.name; }).join(", ");
+                self.images = new kendo.data.DataSource({
+                    data: array,
+                    pageSize: 5
+                });
+
+                $scope.deleteImage=function(data){
+                    d = [];
+                    d.push(data);
+                    console.log(d);
+                    DeleteImage.deleteImage(params={type:'movie', id:$routeParams.id}, data="fileNames="+d).$promise.then(function(data2){
+                        self.images.pushDestroy(data);
+                    });
+                }
+
+                $scope.mainGridOptions = {
+                    dataSource: self.images,
+                    pageable: true,
+                    columns: [{
+                        field: "image",
+                        title: "Image",
+                        width: "200pt",
+                        template: '<img src="#=data.image#" style="height:70pt; max-width:180pt padding:5pt 5pt 5pt 5pt;" class="center-block"/>'
+                    }, {
+                        title: "Delete image",
+                        template: '<button ng-click="deleteImage(\'#=data.image.split("/")[data.image.split("/").length-1]#\')" >delete</button>',
+                    }]
+                };
+            });
+
+            $scope.async = { saveUrl: 'https://localhost:44385/upload/save/movie/' + $routeParams.id, removeUrl: 'https://localhost:44385/upload/remove/movie/' + $routeParams.id, autoUpload: true }
+
+            $scope.onSelect = function (e) {
+                var message = $.map(e.files, function (file) { return file.name; }).join(", ");
                 console.log("event :: select (" + message + ")");
             }
 
@@ -95,7 +129,6 @@ angular.module('myApp.editMovie').component('editMovie', {
 
             self.checkReleasedate = function () {
                 self.dateOK = !(!self.releaseDate || /^\s*$/.test(self.releaseDate));
-                //console.log(self.releaseDate.toDateString());
                 self.checkOK();
             }
 
