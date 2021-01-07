@@ -166,11 +166,17 @@ namespace vjezba_backend.Controllers
 
 
             List<string> files = new List<string>();
-            Directory.GetFiles(physicalPath).ToList().ForEach(x =>
+            try
             {
-                x = x.Replace(workingDirectory, "");
-                files.Add($@"https://localhost:44385{x.Replace('\\','/')}");
-            });
+                Directory.GetFiles(physicalPath).ToList().ForEach(x =>
+                {
+                    x = x.Replace(workingDirectory, "");
+                    files.Add($@"https://localhost:44385{x.Replace('\\', '/')}");
+                });
+            }catch (DirectoryNotFoundException ex)
+            {
+                return Json(files, JsonRequestBehavior.AllowGet);
+            }
 
 
 
